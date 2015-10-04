@@ -6,11 +6,9 @@
         <artifactId>encoding-farm</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>encoding-sample</artifactId>
+    <artifactId>encoding-common</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>domain</module>
-        <module>gateway</module>
-    <module>web</module>
-  </modules>
+    </modules>
 </project>
