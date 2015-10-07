@@ -1,4 +1,4 @@
-package manager.ui.rest;
+package manager.ui.ui.rest;
 
 import java.util.List;
 import javax.persistence.EntityManager;

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package manager.ui.model;
+package manager.ui.ui.model;
 
 /**
  *
  * @author Arne
  */
-public class WorkerDetailDto extends WorkerListDetailDto {
+public class SessionDto {
     
 }
