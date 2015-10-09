@@ -5,6 +5,7 @@
  */
 package org.javasmiths.encodingfarm.common.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ import javax.persistence.Version;
  * @author thomas
  */
 @MappedSuperclass
-public class BaseTrackableEntity {
+public class BaseTrackableEntity implements Serializable {
 
 	@Id
 	private String id = UUID.randomUUID().toString();
