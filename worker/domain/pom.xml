@@ -21,10 +21,5 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <type>jar</type>
-        </dependency>
     </dependencies>
 </project>
