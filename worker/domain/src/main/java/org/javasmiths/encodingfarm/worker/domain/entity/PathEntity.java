@@ -5,7 +5,6 @@
  */
 package org.javasmiths.encodingfarm.worker.domain.entity;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,7 +15,7 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
  */
 @Entity
 @Table(name = "ENTITIES")
-public class PathEntity extends BaseTrackableEntity implements Serializable {
+public class PathEntity extends BaseTrackableEntity {
     
     @Column
     private String video_path;
