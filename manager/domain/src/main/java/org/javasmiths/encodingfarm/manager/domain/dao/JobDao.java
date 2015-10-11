@@ -2,7 +2,7 @@ package org.javasmiths.encodingfarm.manager.domain.dao;
 
 
 import java.util.List;
-import org.javasmiths.encodingfarm.manager.domain.entity.SomethingEntity;
+import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,9 +14,9 @@ import org.javasmiths.encodingfarm.manager.domain.entity.SomethingEntity;
  *
  * @author Elias Serneels
  */
-public interface SomethingDao {
-    public void save(SomethingEntity dataEntity);
+public interface JobDao {
+    public void save(JobEntity dataEntity);
 
-		public List<SomethingEntity> listAll();
+		public List<JobEntity> listAll();
 
 }

@@ -6,16 +6,16 @@
 package org.javasmiths.encodingfarm.manager.web.facade;
 
 import java.util.List;
-import org.javasmiths.encodingfarm.manager.web.dto.SomethingDto;
+import org.javasmiths.encodingfarm.manager.web.dto.JobDto;
 
 /**
  *
  * @author thomas
  */
-public interface SomethingFacade {
+public interface JobFacade {
 
 	public void create(String name);
 
-	public List<SomethingDto> listAll();
+	public List<JobDto> listAll();
 	
 }

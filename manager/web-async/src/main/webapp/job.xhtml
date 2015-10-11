@@ -8,7 +8,7 @@
       xmlns:h="http://java.sun.com/jsf/html">
     <ui:composition template="./common/template.xhtml">
         <ui:define name="title">
-            Handle Locations
+            Handle Jobs
         </ui:define>
         <ui:define name="content">
 			<b:row>
@@ -17,17 +17,17 @@
             <b:row>
 				<b:panel>
 					<h:form>
-						Add Location <p:inputText value="#{location.name}"  label="Enter location here" id="location_crt_txt"/> 
-						<p:watermark for="location_crt_txt" value="Enter location here" id="watermark" />
-						<p:commandButton value="Create" update="@form" actionListener="#{location.create}" />
+						Add Job <p:inputText value="#{job.name}"  label="Enter job here" id="job_crt_txt"/> 
+						<p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
+						<p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
 						<hr/>
-						<p:dataTable var="loc" value="#{location.list}">
+						<p:dataTable var="jobs" value="#{job.list}">
 							<p:column headerText="Id">
-								<h:outputText value="#{loc.id}" />
+								<h:outputText value="#{jobs.id}" />
 							</p:column>
 
 							<p:column headerText="Name">
-								<h:outputText value="#{loc.name}" />
+								<h:outputText value="#{jobs.name}" />
 							</p:column>
 						</p:dataTable>
 					</h:form>
@@ -37,7 +37,7 @@
 			<b:row>
 				<h1>Rest Controller</h1>
 				<b:panel>
-					<a href="rest/locations/" target="blank" >json >> LocationController</a>
+					<a href="rest/somethings/" target="blank">json >> LocationController</a>
 				</b:panel>
 			</b:row>
         </ui:define>

@@ -2,10 +2,10 @@ package org.javasmiths.encodingfarm.manager.web.config;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
-import org.javasmiths.encodingfarm.manager.web.controller.LocationSomething;
+import org.javasmiths.encodingfarm.manager.web.controller.JobController;
 
 @javax.ws.rs.ApplicationPath("rest")
-public class SomethingConfig extends Application {
+public class ApplicationConfig extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
@@ -20,7 +20,7 @@ public class SomethingConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(org.javasmiths.encodingfarm.manager.web.controller.LocationSomething.class);
+        resources.add(org.javasmiths.encodingfarm.manager.web.controller.JobController.class);
     }
 
 }

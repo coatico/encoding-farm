@@ -15,8 +15,8 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
  * @author Elias Serneels
  */
 @Entity
-@Table(name = "SOMETHINGS")
-public class SomethingEntity extends BaseTrackableEntity{
+@Table(name = "JOBS")
+public class JobEntity extends BaseTrackableEntity{
     
     @Column
     private String name;

@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.javasmiths.encodingfarm.common.domain.dao.BaseDaoImpl;
-import org.javasmiths.encodingfarm.manager.domain.entity.SomethingEntity;
+import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,7 +19,7 @@ import org.javasmiths.encodingfarm.manager.domain.entity.SomethingEntity;
  * @author Elias Serneels
  */
 @Stateless
-public class SomethingDaoImpl extends BaseDaoImpl<SomethingEntity> implements SomethingDao{
+public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao{
 
 	@PersistenceContext(unitName = "samplePU")
 	protected EntityManager em;
@@ -31,8 +31,8 @@ public class SomethingDaoImpl extends BaseDaoImpl<SomethingEntity> implements So
 	}
 
 	@Override
-	protected Class<SomethingEntity> entityClass() {
-		return SomethingEntity.class;
+	protected Class<JobEntity> entityClass() {
+		return JobEntity.class;
 	}
     
 

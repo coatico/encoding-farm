@@ -10,22 +10,22 @@ import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import org.javasmiths.encodingfarm.manager.web.dto.SomethingDto;
-import org.javasmiths.encodingfarm.manager.web.facade.SomethingFacade;
+import org.javasmiths.encodingfarm.manager.web.dto.JobDto;
+import org.javasmiths.encodingfarm.manager.web.facade.JobFacade;
 
 /**
  *
  * @author thomas
  */
-@Path("somethings")
-public class LocationSomething {
+@Path("jobs")
+public class JobController {
 	
 	@EJB
-	private SomethingFacade facade;
+	private JobFacade facade;
 	
 	@GET
 	@Produces({"application/json", "application/xml"})
-	public List<SomethingDto> listAll(){
+	public List<JobDto> listAll(){
 		return facade.listAll();
 	}
 	

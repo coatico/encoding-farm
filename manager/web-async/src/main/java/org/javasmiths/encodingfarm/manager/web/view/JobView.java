@@ -1,5 +1,6 @@
 package org.javasmiths.encodingfarm.manager.web.view;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -8,22 +9,22 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
-import org.javasmiths.encodingfarm.manager.web.dto.SomethingDto;
-import org.javasmiths.encodingfarm.manager.web.facade.SomethingFacade;
+import org.javasmiths.encodingfarm.manager.web.dto.JobDto;
+import org.javasmiths.encodingfarm.manager.web.facade.JobFacade;
 
 /**
  *
  * @author thomas
  */
 @RequestScoped
-@Named("location")
-public class SomethingView {
+@Named("job")
+public class JobView implements Serializable{
 
 	private String name;
-	private List<SomethingDto> list = new LinkedList<>();
+	private List<JobDto> list = new LinkedList<>();
 		
 	@EJB
-	private SomethingFacade facade;
+	private JobFacade facade;
 	
 
 	@PostConstruct
@@ -44,11 +45,11 @@ public class SomethingView {
 		this.name = name;
 	}
 
-	public List<SomethingDto> getList() {
+	public List<JobDto> getList() {
 		return list;
 	}
 
-	public void setList(List<SomethingDto> list) {
+	public void setList(List<JobDto> list) {
 		this.list = list;
 	}
 	

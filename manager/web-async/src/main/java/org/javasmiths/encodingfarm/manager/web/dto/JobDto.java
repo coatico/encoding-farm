@@ -9,7 +9,7 @@ package org.javasmiths.encodingfarm.manager.web.dto;
  *
  * @author thomas
  */
-public class SomethingDto {
+public class JobDto {
 	
 	private String id;
 	private String name;

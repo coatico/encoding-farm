@@ -19,7 +19,7 @@ public class WeatherSampleTest {
         ClientBuilder.newBuilder().register(JacksonJsonProvider.class);
         System.out.println("sample");
         WeatherSample instance = new WeatherSample();
-        instance.sample();
+       // instance.sample();
     }
     
 }

@@ -6,14 +6,14 @@
 package org.javasmiths.encodingfarm.manager.domain.service;
 
 import java.util.List;
-import org.javasmiths.encodingfarm.manager.domain.entity.SomethingEntity;
+import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
 
 /**
  *
  * @author Elias Serneels
  */
-public interface SomethingService {
-    SomethingEntity registerSomething(String name);
+public interface JobService {
+    JobEntity registerJob(String name);
 	
-	List<SomethingEntity> listAll();
+	List<JobEntity> listAll();
 }
