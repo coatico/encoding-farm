@@ -15,8 +15,6 @@ public class WeatherSample {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://api.openweathermap.org/data/2.5/weather?q=Landen");
         Object o = target.request(MediaType.APPLICATION_JSON).get(Test.class);
-        System.out.println("o");
-        
     }
     
 
