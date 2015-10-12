@@ -27,4 +27,5 @@ public class FileDaoImpl extends BaseDaoImpl<FileEntity> implements FileDao {
 	protected Class<FileEntity> entityClass() {
 		return FileEntity.class;
 	}
+        
 }

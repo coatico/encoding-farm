@@ -20,7 +20,7 @@ public class FileServiceImpl implements FileService{
 	@Override
 	public FileEntity registerFile(String filePath) {
 		FileEntity fileEntity = new FileEntity();
-		fileEntity.setPath(filePath);
+		fileEntity.setFilePath(filePath);
 		dao.save(fileEntity);
 		return fileEntity;
 	}

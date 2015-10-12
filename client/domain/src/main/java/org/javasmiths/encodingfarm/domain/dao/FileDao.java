@@ -11,5 +11,5 @@ import org.javasmiths.encodingfarm.domain.entity.FileEntity;
 public interface FileDao {
 	public void save(FileEntity fileEntity);
 
-		public List<FileEntity> listAll();
+        public List<FileEntity> listAll();
 }

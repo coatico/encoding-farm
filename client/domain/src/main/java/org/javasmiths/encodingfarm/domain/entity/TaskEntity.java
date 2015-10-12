@@ -7,6 +7,7 @@ package org.javasmiths.encodingfarm.domain.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
@@ -15,9 +16,9 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 @Table(name="TASKS")
 public class TaskEntity extends BaseTrackableEntity implements Serializable {
 	
-	@ManyToOne
-    private FileEntity fileEntity;
-    private boolean taskState;
+	@ManyToOne(fetch = FetchType.LAZY)
+        private FileEntity fileEntity;
+        private boolean taskState;
 
 	public FileEntity getFileEntity() {
 		return fileEntity;
