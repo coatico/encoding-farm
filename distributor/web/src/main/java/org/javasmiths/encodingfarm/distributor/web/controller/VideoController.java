@@ -17,7 +17,7 @@ import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacade;
  *
  * @author thomas
  */
-@Path("Videos")
+@Path("videos")
 public class VideoController {
 	
 	@EJB
