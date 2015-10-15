@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package manager.ui.dao;
+package org.javasmiths.encodingfarm.manager.domain.dao;
 
 /**
  *
@@ -17,7 +17,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
-import manager.ui.entity.WorkerEntity;
+import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
+
 
 
 //deze klasse wordt gebruikt om de link te leggen met de db

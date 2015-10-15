@@ -1,4 +1,4 @@
-package manager.ui.ui.rest;
+package org.javasmiths.encodingfarm.manager.webadmin.rest;
 
 import java.util.List;
 import javax.persistence.EntityManager;
