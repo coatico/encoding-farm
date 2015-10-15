@@ -14,7 +14,7 @@ import org.javasmiths.encodingfarm.domain.entity.FileEntity;
 
 @Stateless
 public class FileDaoImpl extends BaseDaoImpl<FileEntity> implements FileDao {
-	@PersistenceContext(unitName = "PU")
+	@PersistenceContext(unitName = "clientPU")
 	protected EntityManager em;
 	
 	
