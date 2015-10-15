@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    
+    <head>
+        <title>Video Conversion</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body>
+        <h1>Progress</h1>
+
+       test
+       <ui:define name="content">
+            <h:form>
+               <p:dataTable var="req" value="#{request.list}">
+                     <p:column headerText="Id">
+                        <h:outputText value="#{req.id}" />
+                    </p:column>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{req.name}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form> 
+       
+          <h:form>
+                <p:dataTable var="job" value="#{job.list}">
+                    <p:column headerText="Status">
+                        <h:outputText value="#{job.status}" />
+                    </p:column>
+                    <p:column headerText="Video_Path">
+                        <h:outputText value="#{job.video_path}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form> 
+       </ui:define>
+               
+    </body>
+</html>

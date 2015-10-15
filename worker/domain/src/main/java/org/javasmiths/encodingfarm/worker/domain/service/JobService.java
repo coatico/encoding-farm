@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.javasmiths.encodingfarm.worker.web.facade;
+package org.javasmiths.encodingfarm.worker.domain.service;
 
 /**
  *
- * @author User
+ * @author Quintendockx
  */
-public class WorkerFacade {
+public interface JobService {
     
 }
