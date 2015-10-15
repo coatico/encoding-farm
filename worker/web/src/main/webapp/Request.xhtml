@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition template="./common/template.xhtml">
+        <ui:define name="title">
+            Handle Requests
+        </ui:define>
+        <ui:define name="content">
+			<b:row>
+				<h1>View Component</h1>
+			</b:row>
+            <b:row>
+				<b:panel>
+					<h:form>
+						Add Request <p:inputText value="#{Request.video_path}"  label="Enter video_path here" id="request_crt_txt"/> 
+						<p:watermark for="request_crt_txt" value="Enter request here" id="watermark" />
+						<p:commandButton value="Create" update="@form" actionListener="#{request.create}" />
+						<hr/>
+						<p:dataTable var="req" value="#{request.list}">
+							<p:column headerText="Id">
+								<h:outputText value="#{req.id}" />
+							</p:column>
+
+							<p:column headerText="Video_path">
+								<h:outputText value="#{req.video_path}" />
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</b:panel>
+
+			</b:row>
+			<b:row>
+				<h1>Rest Controller</h1>
+				<b:panel>
+					<a href="rest/requests/" target="blank" >json >> RequestController</a>
+				</b:panel>
+			</b:row>
+        </ui:define>
+    </ui:composition>
+</html>
+
+
+                
+                             
+                <h2>Requests aanmaken of wijzigen</h2>
+                <h:form>
+                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+                    <ul id="lstBungalowChange" class="change-form">
+                        <li>
+                            <h:inputHidden value="#{bungalow.dto.detail.id}"/>
+                            <div class="inputinfo">Video_path</div>
+                            <h:inputText label="Video_path"
+                                         value="#{bungalow.dto.detail.name}" class="form-control"
+                                         required="true" validatorMessage="Vul een pad in naar je video. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een bungalownaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                            </h:inputText>
+                        </li>   
+                        
+                        </ul>
+                    
+                    <div class="col-md-12">
+                        <div class="input-group">   
+                            <h:commandButton class="button" action="#{bungalow.add()}" value="Opslaan"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+
+                <br/><br/>
+                <h2>Bungalowoverzicht</h2>
+                <div id="tblBungalowContainer">
+                    <ui:include src="dataTables/tableBungalow.xhtml"></ui:include>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
