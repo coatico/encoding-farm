@@ -20,7 +20,7 @@ public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao {
     protected EntityManager em() {
         return em;
     }
-    
+
     @Override
     protected Class<JobEntity> entityClass() {
         return JobEntity.class;

@@ -1,4 +1,3 @@
-
 package org.javasmiths.encodingfarm.worker.domain.entity;
 
 import javax.persistence.Column;
@@ -15,10 +14,10 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 @Entity
 @Table(name = "JOB")
 public class JobEntity extends BaseTrackableEntity {
-    
-    @OneToOne(targetEntity = RequestEntity.class, fetch = FetchType.LAZY, mappedBy ="JOB")
+
+    @OneToOne(targetEntity = RequestEntity.class, fetch = FetchType.LAZY, mappedBy = "JOB")
     private RequestEntity request;
-    
+
     @Column
     private String status;
 
@@ -29,13 +28,13 @@ public class JobEntity extends BaseTrackableEntity {
     public void setRequest(RequestEntity request) {
         this.request = request;
     }
-    
+
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }   
-    
+    }
+
 }
