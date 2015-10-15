@@ -1,8 +1,9 @@
-
 package org.javasmiths.encodingfarm.worker.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
@@ -11,21 +12,21 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
  * @author Pieter
  */
 @Entity
-@Table(name = "JOBS")
+@Table(name = "JOB")
 public class JobEntity extends BaseTrackableEntity {
-    
-    @Column
-    private String video_path;
-    
+
+    @OneToOne(targetEntity = RequestEntity.class, fetch = FetchType.LAZY, mappedBy = "JOB")
+    private RequestEntity request;
+
     @Column
     private String status;
 
-    public String getVideo_path() {
-        return video_path;
+    public RequestEntity getRequest() {
+        return request;
     }
 
-    public void setVideo_path(String video_path) {
-        this.video_path = video_path;
+    public void setRequest(RequestEntity request) {
+        this.request = request;
     }
 
     public String getStatus() {
@@ -34,6 +35,6 @@ public class JobEntity extends BaseTrackableEntity {
 
     public void setStatus(String status) {
         this.status = status;
-    }   
-    
+    }
+
 }

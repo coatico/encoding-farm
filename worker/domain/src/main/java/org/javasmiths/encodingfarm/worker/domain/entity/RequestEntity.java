@@ -1,4 +1,3 @@
-
 package org.javasmiths.encodingfarm.worker.domain.entity;
 
 import javax.persistence.Column;
@@ -12,8 +11,8 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
  */
 @Entity
 @Table(name = "REQUEST")
-public class RequestEntity extends BaseTrackableEntity{
-    
+public class RequestEntity extends BaseTrackableEntity {
+
     @Column
     private String video_path;
 
@@ -24,5 +23,5 @@ public class RequestEntity extends BaseTrackableEntity{
     public void setVideo_path(String video_path) {
         this.video_path = video_path;
     }
-    
+
 }

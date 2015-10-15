@@ -1,4 +1,3 @@
-
 package org.javasmiths.encodingfarm.worker.domain.dao;
 
 import javax.ejb.Stateless;
@@ -12,11 +11,11 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
  * @author Pieter
  */
 @Stateless
-public class RequestDaoImpl extends BaseDaoImpl<RequestEntity> implements RequestDao{
+public class RequestDaoImpl extends BaseDaoImpl<RequestEntity> implements RequestDao {
 
     @PersistenceContext(unitName = "requestPU")
     protected EntityManager em;
-    
+
     @Override
     protected EntityManager em() {
         return em;
