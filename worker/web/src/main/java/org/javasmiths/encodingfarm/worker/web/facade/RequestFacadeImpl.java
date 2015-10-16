@@ -9,24 +9,26 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import org.javasmiths.encodingfarm.worker.domain.service.RequestService;
 import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
+import org.javasmiths.encodingfarm.worker.domain.service.RequestService;
 import org.javasmiths.encodingfarm.worker.web.dto.RequestDto;
+
+
+
 
 /**
  *
  * @author Quintendockx
  */
- @Stateless
-public class RequestFacadeImpl implements RequestFacade{
- 
-    
-        @EJB
+@Stateless
+public class RequestFacadeImpl implements RequestFacade{ 
+
+    @EJB
 	private RequestService requestService;
 	
 	@Override
-	public void create(String video_path) {
-		requestService.registerRequest(video_path);
+	public void create(String name) {
+		requestService.registerRequest(name);
 	}
 
 	@Override
@@ -41,4 +43,5 @@ public class RequestFacadeImpl implements RequestFacade{
 		}
 		return dtos;
 	}
+	
 }
