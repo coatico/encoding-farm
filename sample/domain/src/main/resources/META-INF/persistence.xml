@@ -3,8 +3,6 @@
   <persistence-unit name="samplePU" transaction-type="JTA">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>jdbc/myDatasource</jta-data-source>
-    <class>org.javasmiths.encodingfarm.sample.domain.entity.LocationEntity</class>
-    <class>org.javasmiths.encodingfarm.sample.domain.entity.WeatherDataEntity</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
