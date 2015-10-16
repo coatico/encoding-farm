@@ -5,10 +5,17 @@
  */
 package org.javasmiths.encodingfarm.worker.web.facade;
 
+import java.util.List;
+import org.javasmiths.encodingfarm.worker.web.dto.RequestDto;
+
 /**
  *
- * @author User
+ * @author Quintendockx
  */
-public class WorkerFacade {
+public interface RequestFacade {
     
+    
+    public void create(String name);
+
+	public List<RequestDto> listAll();
 }
