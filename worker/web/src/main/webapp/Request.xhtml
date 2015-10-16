@@ -4,47 +4,47 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:p="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
     <ui:composition template="./common/template.xhtml">
         <ui:define name="title">
             Handle Requests
         </ui:define>
         <ui:define name="content">
-			<b:row>
-				<h1>View Component</h1>
-			</b:row>
             <b:row>
-				<b:panel>
-					<h:form>
-						Add Request <p:inputText value="#{Request.video_path}"  label="Enter video_path here" id="request_crt_txt"/> 
-						<p:watermark for="request_crt_txt" value="Enter request here" id="watermark" />
-						<p:commandButton value="Create" update="@form" actionListener="#{request.create}" />
-						<hr/>
-						<p:dataTable var="req" value="#{request.list}">
-							<p:column headerText="Id">
-								<h:outputText value="#{req.id}" />
-							</p:column>
+                <h1>View Component</h1>
+            </b:row>
+            <b:row>
+                <b:panel>
+                    <h:form>
+                        Add Request <p:inputText value="#{Request.video_path}"  label="Enter video_path here" id="request_crt_txt"/> 
+                        <p:watermark for="request_crt_txt" value="Enter request here" id="watermark" />
+                        <p:commandButton value="Create" update="@form" actionListener="#{request.create}" />
+                        <hr/>
+                        <p:dataTable var="req" value="#{request.list}">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{req.id}" />
+                            </p:column>
 
-							<p:column headerText="Video_path">
-								<h:outputText value="#{req.video_path}" />
-							</p:column>
-						</p:dataTable>
-					</h:form>
-				</b:panel>
+                            <p:column headerText="Video_path">
+                                <h:outputText value="#{req.video_path}" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </b:panel>
 
-			</b:row>
-			<b:row>
-				<h1>Rest Controller</h1>
-				<b:panel>
-					<a href="rest/requests/" target="blank" >json >> RequestController</a>
-				</b:panel>
-			</b:row>
+            </b:row>
+            <b:row>
+                <h1>Rest Controller</h1>
+                <b:panel>
+                    <a href="rest/requests/" target="blank" >json >> RequestController</a>
+                </b:panel>
+            </b:row>
         </ui:define>
     </ui:composition>
 </html>
 
 
-                
-                             
-                
+
+
+

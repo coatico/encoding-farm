@@ -6,7 +6,8 @@
 package org.javasmiths.encodingfarm.worker.web.facade;
 
 import java.util.List;
-import org.javasmiths.encodingfarm.worker.web.dto.RequestDto;
+import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
+import org.javasmiths.encodingfarm.worker.web.dto.JobDto;
 /**
  *
  * @author Quintendockx
@@ -14,7 +15,7 @@ import org.javasmiths.encodingfarm.worker.web.dto.RequestDto;
 public interface JobFacade {
     
     
-      public void create(String name);
+      public void create(RequestEntity requestEntity, String videoPath);
 
-	public List<RequestDto> listAll();
+	public List<JobDto> listAll();
 }
