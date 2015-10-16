@@ -16,27 +16,22 @@ import org.javasmiths.encodingfarm.distributor.domain.entity.VideoEntity;
  * @author thomas
  */
 @Stateless
-public class VideoServiceImpl implements VideoService{
+public class VideoServiceImpl implements VideoService {
 
     @EJB
     private VideoDao dao;
-    
+
     @Override
     public VideoEntity registerVideo(String name) {
-       VideoEntity videoEntity = new VideoEntity();
-       videoEntity.setName(name);
-       dao.save(videoEntity);
-       return videoEntity;
+        VideoEntity videoEntity = new VideoEntity();
+        videoEntity.setName(name);
+        dao.save(videoEntity);
+        return videoEntity;
     }
 
-	@Override
-	public List<VideoEntity> listAll() {
-		return dao.listAll();
-	}
+    @Override
+    public List<VideoEntity> listAll() {
+        return dao.listAll();
+    }
 
-
-	
-	
-    
-    
 }

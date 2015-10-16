@@ -19,15 +19,14 @@ import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacade;
  */
 @Path("videos")
 public class VideoController {
-	
-	@EJB
-	private VideoFacade facade;
-	
-	@GET
-	@Produces({"application/json", "application/xml"})
-	public List<VideoDto> listAll(){
-		return facade.listAll();
-	}
-	
-	
+
+    @EJB
+    private VideoFacade facade;
+
+    @GET
+    @Produces({"application/json", "application/xml"})
+    public List<VideoDto> listAll() {
+        return facade.listAll();
+    }
+
 }

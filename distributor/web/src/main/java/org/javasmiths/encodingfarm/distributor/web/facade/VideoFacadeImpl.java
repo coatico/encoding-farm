@@ -18,29 +18,27 @@ import org.javasmiths.encodingfarm.distributor.web.dto.VideoDto;
  * @author thomas
  */
 @Stateless
-public class VideoFacadeImpl implements VideoFacade{
+public class VideoFacadeImpl implements VideoFacade {
 
-	@EJB
-	private VideoService videoService;
-	
-	@Override
-	public void create(String name) {
-		videoService.registerVideo(name);
-	}
+    @EJB
+    private VideoService videoService;
 
-	@Override
-	public List<VideoDto> listAll() {
-		List<VideoDto> dtos = new LinkedList<>();
-		List<VideoEntity> videosE =  videoService.listAll();
-		for (VideoEntity video : videosE) {
-			VideoDto dto = new VideoDto();
-			dto.setId(video.getId());
-			dto.setName(video.getName());
-			dtos.add(dto);
-		}
-		return dtos;
-	}
-	
-	
-	
+    @Override
+    public void create(String name) {
+        videoService.registerVideo(name);
+    }
+
+    @Override
+    public List<VideoDto> listAll() {
+        List<VideoDto> dtos = new LinkedList<>();
+        List<VideoEntity> videosE = videoService.listAll();
+        for (VideoEntity video : videosE) {
+            VideoDto dto = new VideoDto();
+            dto.setId(video.getId());
+            dto.setName(video.getName());
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+
 }

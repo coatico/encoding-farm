@@ -13,7 +13,8 @@ import org.javasmiths.encodingfarm.distributor.domain.entity.VideoEntity;
  * @author thomas
  */
 public interface VideoDao {
-        public void save(VideoEntity dataEntity);
 
-		public List<VideoEntity> listAll();
+    public void save(VideoEntity dataEntity);
+
+    public List<VideoEntity> listAll();
 }

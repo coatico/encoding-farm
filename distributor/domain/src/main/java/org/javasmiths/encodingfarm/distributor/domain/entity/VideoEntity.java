@@ -17,6 +17,7 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 @Entity
 @Table(name = "VIDEOS")
 public class VideoEntity extends BaseTrackableEntity {
+
     //lol
     @Column
     private String name;
@@ -28,6 +29,5 @@ public class VideoEntity extends BaseTrackableEntity {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
 }
