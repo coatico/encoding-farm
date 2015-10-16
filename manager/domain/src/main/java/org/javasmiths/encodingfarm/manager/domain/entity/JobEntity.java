@@ -12,21 +12,21 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 /**
  *
- * @author thomas
+ * @author Elias Serneels
  */
 @Entity
-@Table (name="Job")//niet verplicht
+@Table(name = "JOBS")
 public class JobEntity extends BaseTrackableEntity{
-	
-	@Column
-	private String name;
+    
+    @Column
+    private String name;
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }
