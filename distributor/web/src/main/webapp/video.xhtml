@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition template="./common/template.xhtml">
+        <ui:define name="title">
+            Handle Videos
+        </ui:define>
+        <ui:define name="content">
+            <b:row>
+                <h1>View Component</h1>
+            </b:row>
+            <b:row>
+                <b:panel>
+                    <h:form>
+                        Add Video <p:inputText value="#{video.name}"  label="Enter videoname here" id="video_crt_txt"/> 
+                        <p:watermark for="video_crt_txt" value="Enter videoname here" id="watermark" />
+                        <p:commandButton value="Create" update="@form" actionListener="#{video.create}" />
+                        <hr/>
+                        <p:dataTable var="vid" value="#{video.list}">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{vid.id}" />
+                            </p:column>
+
+                            <p:column headerText="Name">
+                                <h:outputText value="#{vid.name}" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </b:panel>
+
+            </b:row>
+            <b:row>
+                <h1>Rest Controller</h1>
+                <b:panel>
+                    <a href="rest/videos/" target="blank" >json >> VideoController</a>
+                </b:panel>
+            </b:row>
+        </ui:define>
+    </ui:composition>
+</html>
+
