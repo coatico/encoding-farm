@@ -13,7 +13,7 @@ import org.javasmiths.encodingfarm.worker.domain.entity.JobEntity;
 @Stateless
 public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao {
 
-    @PersistenceContext(name = "jobPU")
+    @PersistenceContext(name = "workerPU")
     protected EntityManager em;
 
     @Override
