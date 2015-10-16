@@ -18,7 +18,7 @@ import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
 @Stateless
 public class WorkerDaoImpl extends BaseDaoImpl<WorkerEntity> implements WorkerDao{
 
-	@PersistenceContext(unitName = "manager-domainPU")
+	@PersistenceContext(unitName = "managerPU")
 	protected EntityManager em;
 	
 	

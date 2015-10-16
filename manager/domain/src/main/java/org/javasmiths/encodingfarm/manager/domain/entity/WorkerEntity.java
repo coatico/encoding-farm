@@ -11,28 +11,28 @@ package org.javasmiths.encodingfarm.manager.domain.entity;
  * @author Arne
  */
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 @Entity
-@Table(name = "Worker")
-@XmlRootElement
-public class WorkerEntity extends BasicEntity implements Serializable {
+@Table(name = "WORKERS")
+public class WorkerEntity extends BaseTrackableEntity {
 
    //In deze File worden de Entities aangemaakt voor de tabel in de database.
-    private String id;
-
+	@Column
     private String firstName;
-
+	@Column
     private String lastName;
-
+	@Column
     private String sex;
-
+	@Column
     private String birthdate;
-
+	@Column
     private String email;
-    
+    @Column
     private String job;
 
     public String getFirstName() {

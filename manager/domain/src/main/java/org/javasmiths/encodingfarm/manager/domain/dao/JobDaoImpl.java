@@ -21,7 +21,7 @@ import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
 @Stateless
 public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao{
 
-	@PersistenceContext(unitName = "manager-domainPU")
+	@PersistenceContext(unitName = "managerPU")
 	protected EntityManager em;
 	
 	
