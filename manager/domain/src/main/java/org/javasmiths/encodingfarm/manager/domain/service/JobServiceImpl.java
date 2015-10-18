@@ -16,22 +16,22 @@ import org.javasmiths.encodingfarm.manager.domain.dao.JobDao;
  * @author Elias Serneels
  */
 @Stateless
-public class JobServiceImpl implements JobService{
-    
+public class JobServiceImpl implements JobService {
+
     @EJB
     private JobDao dao;
-    
+
     @Override
-    public JobEntity registerJob(String name) {
-       JobEntity jobEntity = new JobEntity();
-       jobEntity.setName(name);
-       dao.save(jobEntity);
-       return jobEntity;
+    public JobEntity registerJob(String title) {
+        JobEntity jobEntity = new JobEntity();
+        jobEntity.setJobTitle(title);
+        dao.save(jobEntity);
+        return jobEntity;
     }
 
-	@Override
-	public List<JobEntity> listAll() {
-		return dao.listAll();
-	}
-    
+    @Override
+    public List<JobEntity> listAll() {
+        return dao.listAll();
+    }
+
 }
