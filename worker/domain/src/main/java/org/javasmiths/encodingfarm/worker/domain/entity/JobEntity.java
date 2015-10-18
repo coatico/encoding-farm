@@ -3,7 +3,7 @@ package org.javasmiths.encodingfarm.worker.domain.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
@@ -15,7 +15,7 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 @Table(name = "JOB")
 public class JobEntity extends BaseTrackableEntity {
 
-    @OneToOne(targetEntity = RequestEntity.class, fetch = FetchType.LAZY, mappedBy = "JOB")
+    @ManyToOne(targetEntity = RequestEntity.class, fetch = FetchType.LAZY)
     private RequestEntity request;
 
     @Column
