@@ -20,7 +20,7 @@ import org.javasmiths.encodingfarm.manager.web.facade.JobFacade;
 @Named("job")
 public class JobView implements Serializable{
 
-	private String name;
+	private String jobTitle;
 	private List<JobDto> list = new LinkedList<>();
 		
 	@EJB
@@ -33,16 +33,16 @@ public class JobView implements Serializable{
 	}
 	
 	public void create(ActionEvent actionEvent){
-		facade.create(name);
+		facade.create(jobTitle);
 		list = facade.listAll();
 	}
 
-	public String getName() {
-		return name;
+	public String getjobTitle() {
+		return jobTitle;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setjobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
 	}
 
 	public List<JobDto> getList() {

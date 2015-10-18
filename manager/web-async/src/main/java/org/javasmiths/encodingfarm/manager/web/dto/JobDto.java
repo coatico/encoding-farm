@@ -12,14 +12,14 @@ package org.javasmiths.encodingfarm.manager.web.dto;
 public class JobDto {
 	
 	private String id;
-	private String name;
+	private String jobTitle;
 
-	public String getName() {
-		return name;
+	public String getjobTitle() {
+		return jobTitle;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setjobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
 	}
 
 	public String getId() {

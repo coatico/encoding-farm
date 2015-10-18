@@ -24,8 +24,8 @@ public class JobFacadeImpl implements JobFacade{
 	private JobService jobService;
 	
 	@Override
-	public void create(String name) {
-		jobService.registerJob(name);
+	public void create(String jobTitle) {
+		jobService.registerJob(jobTitle);
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class JobFacadeImpl implements JobFacade{
 		for (JobEntity job : jobsE) {
 			JobDto dto = new JobDto();
 			dto.setId(job.getId());
-			dto.setName(job.getName());
+			dto.setjobTitle(job.getJobTitle());
 			dtos.add(dto);
 		}
 		return dtos;
