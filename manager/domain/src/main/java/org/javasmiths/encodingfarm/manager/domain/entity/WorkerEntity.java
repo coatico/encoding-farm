@@ -27,7 +27,7 @@ public class WorkerEntity extends BaseTrackableEntity {
 	@Column
     private String lastName;
 	@Column
-    private String sex;
+    private String gender;
 	@Column
     private String birthdate;
 	@Column
@@ -51,12 +51,12 @@ public class WorkerEntity extends BaseTrackableEntity {
         this.lastName = lastName;
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getBirthdate() {
