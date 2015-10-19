@@ -5,14 +5,19 @@
  */
 package org.javasmiths.encodingfarm.manager.domain.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 /**
  *
  * @author H
  */
-public class VideoEntity extends BaseTrackableEntity {
+@Entity
+@Table(name = "VIDEOS")
+public class VideoEntity extends BaseTrackableEntity implements Serializable {
     
     @Column
     private String videoCode;
