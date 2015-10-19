@@ -5,84 +5,93 @@
  */
 package org.javasmiths.encodingfarm.manager.domain.entity;
 
-
 /**
  *
  * @author Arne
  */
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 @Entity
 @Table(name = "WORKERS")
-public class WorkerEntity extends BaseTrackableEntity {
+public class WorkerEntity extends BaseTrackableEntity implements Serializable {
 
-   //In deze File worden de Entities aangemaakt voor de tabel in de database.
-	@Column
-    private String firstName;
-	@Column
-    private String lastName;
-	@Column
-    private String gender;
-	@Column
-    private String birthdate;
-	@Column
-    private String email;
+    //In deze File worden de Entities aangemaakt voor de tabel in de database.
     @Column
-    private String job;
+    private String workerFirstName;
+    @Column
+    private String workerLastName;
+    @Column
+    private String workerGender;
+    @Column
+    private String workerBirthdate;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private workerJobEntity workerworkerJob;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private JobStatusDescriptionEntity workerJobStatusDescriptionEntity;
+    @Column
+    private String workerEmail;
 
-    public String getFirstName() {
-        return firstName;
+    public String getWorkerFirstName() {
+        return workerFirstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setWorkerFirstName(String workerFirstName) {
+        this.workerFirstName = workerFirstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getWorkerLastName() {
+        return workerLastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setWorkerLastName(String workerLastName) {
+        this.workerLastName = workerLastName;
     }
 
-    public String getGender() {
-        return gender;
+    public String getWorkerGender() {
+        return workerGender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setWorkerGender(String workerGender) {
+        this.workerGender = workerGender;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getWorkerBirthdate() {
+        return workerBirthdate;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setWorkerBirthdate(String workerBirthdate) {
+        this.workerBirthdate = workerBirthdate;
     }
 
-    public String getEmail() {
-        return email;
+    public workerJobEntity getWorkerworkerJob() {
+        return workerworkerJob;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setWorkerworkerJob(workerJobEntity workerworkerJob) {
+        this.workerworkerJob = workerworkerJob;
     }
 
-    public String getJob() {
-        return job;
+    public JobStatusDescriptionEntity getWorkerJobStatusDescriptionEntity() {
+        return workerJobStatusDescriptionEntity;
     }
 
-    public void setJob(String job) {
-        this.job = job;
+    public void setWorkerJobStatusDescriptionEntity(JobStatusDescriptionEntity workerJobStatusDescriptionEntity) {
+        this.workerJobStatusDescriptionEntity = workerJobStatusDescriptionEntity;
     }
 
-    
-    
+    public String getWorkerEmail() {
+        return workerEmail;
+    }
+
+    public void setWorkerEmail(String workerEmail) {
+        this.workerEmail = workerEmail;
+    }
+
 }

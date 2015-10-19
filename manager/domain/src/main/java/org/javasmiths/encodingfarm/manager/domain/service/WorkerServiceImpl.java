@@ -17,22 +17,22 @@ import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
  * @author Arne Polfliet
  */
 @Stateless
-public class WorkerServiceImpl implements WorkerService{
-    
+public class WorkerServiceImpl implements WorkerService {
+
     @EJB
     private WorkerDao dao;
-    
+
     @Override
     public WorkerEntity registerWorker(String name) {
-       WorkerEntity workerEntity = new WorkerEntity();
-       workerEntity.setFirstName(name);
-       dao.save(workerEntity);
-       return workerEntity;
+        WorkerEntity workerEntity = new WorkerEntity();
+        workerEntity.setWorkerFirstName(name);
+        dao.save(workerEntity);
+        return workerEntity;
     }
 
-	@Override
-	public List<WorkerEntity> listAll() {
-		return dao.listAll();
-	}
-    
+    @Override
+    public List<WorkerEntity> listAll() {
+        return dao.listAll();
+    }
+
 }

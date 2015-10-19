@@ -6,11 +6,11 @@
 package org.javasmiths.encodingfarm.manager.domain.entity;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,29 +25,18 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 public class JobEntity extends BaseTrackableEntity {
 
     @Column
-    private String jobStatusId;
-    @Column
     private String jobTitle;
-    @Column
-    private int jobVideoId;
-    @Column
-    private int jobWorkerId;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private VideoEntity jobVideo;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private WorkerEntity jobWorker;
     @Column(name = "jobCreationDateTime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date jobCreationDateTime;
     @Temporal(TemporalType.TIMESTAMP)
     private Date jobCompletionDateTime;
-    @JoinColumn(name = "jobStatus", referencedColumnName = "jobStatusDescriptionId")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private JobStatusDescriptionEntity jobStatus;
-
-    public String getJobStatusId() {
-        return jobStatusId;
-    }
-
-    public void setJobStatusId(String jobStatusId) {
-        this.jobStatusId = jobStatusId;
-    }
 
     public String getJobTitle() {
         return jobTitle;
@@ -57,20 +46,20 @@ public class JobEntity extends BaseTrackableEntity {
         this.jobTitle = jobTitle;
     }
 
-    public int getJobVideoId() {
-        return jobVideoId;
+    public VideoEntity getJobVideo() {
+        return jobVideo;
     }
 
-    public void setJobVideoId(int jobVideoId) {
-        this.jobVideoId = jobVideoId;
+    public void setJobVideo(VideoEntity jobVideo) {
+        this.jobVideo = jobVideo;
     }
 
-    public int getJobWorkerId() {
-        return jobWorkerId;
+    public WorkerEntity getJobWorker() {
+        return jobWorker;
     }
 
-    public void setJobWorkerId(int jobWorkerId) {
-        this.jobWorkerId = jobWorkerId;
+    public void setJobWorker(WorkerEntity jobWorker) {
+        this.jobWorker = jobWorker;
     }
 
     public Date getJobCreationDateTime() {
