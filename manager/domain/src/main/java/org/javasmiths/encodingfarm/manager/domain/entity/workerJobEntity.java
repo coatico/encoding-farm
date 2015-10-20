@@ -8,6 +8,7 @@ package org.javasmiths.encodingfarm.manager.domain.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 /**
@@ -15,10 +16,11 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
  * @author H
  */
 @Entity
-@Table(name = "workerJob")
+@Table(name = "WORKERJOB")
 public class workerJobEntity extends BaseTrackableEntity {
 
     @Column(name = "workerJobTitle")
+    @Type(type = "text")
     private String workerJobTitle;
 
 }

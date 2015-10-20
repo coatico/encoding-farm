@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.Type;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 /**
@@ -26,7 +27,8 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 @Table(name = "JOBS")
 public class JobEntity extends BaseTrackableEntity implements Serializable {
 
-    @Column
+    @Column(name = "jobTitle")
+    @Type(type = "text")
     private String jobTitle;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<VideoEntity> jobVideo;

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 /**
@@ -18,14 +19,18 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 @Entity
 @Table(name = "VIDEOS")
 public class VideoEntity extends BaseTrackableEntity implements Serializable {
-    
-    @Column
+
+    @Column(name = "videoCode")
+    @Type(type = "text")
     private String videoCode;
-    @Column
+    @Column(name = "VideoTitle")
+    @Type(type = "text")
     private String VideoTitle;
-    @Column
+    @Column(name = "videoLink")
+    @Type(type = "text")
     private String videoLink;
-    @Column
+    @Column(name = "videoDescription")
+    @Type(type = "text")
     private String videoDescription;
 
     public String getVideoCode() {
@@ -59,6 +64,5 @@ public class VideoEntity extends BaseTrackableEntity implements Serializable {
     public void setVideoDescription(String videoDescription) {
         this.videoDescription = videoDescription;
     }
-    
-    
+
 }
