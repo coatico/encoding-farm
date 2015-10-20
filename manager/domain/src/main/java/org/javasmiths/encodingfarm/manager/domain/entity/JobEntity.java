@@ -11,7 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,16 +27,16 @@ public class JobEntity extends BaseTrackableEntity implements Serializable {
 
     @Column
     private String jobTitle;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private VideoEntity jobVideo;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private WorkerEntity jobWorker;
     @Column(name = "jobCreationDateTime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date jobCreationDateTime;
     @Temporal(TemporalType.TIMESTAMP)
     private Date jobCompletionDateTime;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private JobStatusDescriptionEntity jobStatus;
 
     public String getJobTitle() {

@@ -14,7 +14,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
@@ -31,9 +31,9 @@ public class WorkerEntity extends BaseTrackableEntity implements Serializable {
     private String workerGender;
     @Column
     private String workerBirthdate;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private workerJobEntity workerworkerJob;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private JobStatusDescriptionEntity workerJobStatusDescriptionEntity;
     @Column
     private String workerEmail;
