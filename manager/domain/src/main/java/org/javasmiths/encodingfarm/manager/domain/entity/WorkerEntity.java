@@ -10,6 +10,7 @@ package org.javasmiths.encodingfarm.manager.domain.entity;
  * @author Arne
  */
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,9 +33,9 @@ public class WorkerEntity extends BaseTrackableEntity implements Serializable {
     @Column
     private String workerBirthdate;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private workerJobEntity workerworkerJob;
+    private Collection<workerJobEntity> workerworkerJob;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private JobStatusDescriptionEntity workerJobStatusDescriptionEntity;
+    private Collection<JobStatusDescriptionEntity> workerJobStatusDescriptionEntity;
     @Column
     private String workerEmail;
 
@@ -70,28 +71,28 @@ public class WorkerEntity extends BaseTrackableEntity implements Serializable {
         this.workerBirthdate = workerBirthdate;
     }
 
-    public workerJobEntity getWorkerworkerJob() {
-        return workerworkerJob;
-    }
-
-    public void setWorkerworkerJob(workerJobEntity workerworkerJob) {
-        this.workerworkerJob = workerworkerJob;
-    }
-
-    public JobStatusDescriptionEntity getWorkerJobStatusDescriptionEntity() {
-        return workerJobStatusDescriptionEntity;
-    }
-
-    public void setWorkerJobStatusDescriptionEntity(JobStatusDescriptionEntity workerJobStatusDescriptionEntity) {
-        this.workerJobStatusDescriptionEntity = workerJobStatusDescriptionEntity;
-    }
-
     public String getWorkerEmail() {
         return workerEmail;
     }
 
     public void setWorkerEmail(String workerEmail) {
         this.workerEmail = workerEmail;
+    }
+
+    public Collection<workerJobEntity> getWorkerworkerJob() {
+        return workerworkerJob;
+    }
+
+    public void setWorkerworkerJob(Collection<workerJobEntity> workerworkerJob) {
+        this.workerworkerJob = workerworkerJob;
+    }
+
+    public Collection<JobStatusDescriptionEntity> getWorkerJobStatusDescriptionEntity() {
+        return workerJobStatusDescriptionEntity;
+    }
+
+    public void setWorkerJobStatusDescriptionEntity(Collection<JobStatusDescriptionEntity> workerJobStatusDescriptionEntity) {
+        this.workerJobStatusDescriptionEntity = workerJobStatusDescriptionEntity;
     }
 
 }

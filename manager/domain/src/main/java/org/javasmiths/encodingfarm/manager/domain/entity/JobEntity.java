@@ -6,6 +6,7 @@
 package org.javasmiths.encodingfarm.manager.domain.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,16 +29,16 @@ public class JobEntity extends BaseTrackableEntity implements Serializable {
     @Column
     private String jobTitle;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private VideoEntity jobVideo;
+    private Collection<VideoEntity> jobVideo;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private WorkerEntity jobWorker;
+    private Collection<WorkerEntity> jobWorker;
     @Column(name = "jobCreationDateTime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date jobCreationDateTime;
     @Temporal(TemporalType.TIMESTAMP)
     private Date jobCompletionDateTime;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private JobStatusDescriptionEntity jobStatus;
+    private Collection<JobStatusDescriptionEntity> jobStatus;
 
     public String getJobTitle() {
         return jobTitle;
@@ -45,22 +46,6 @@ public class JobEntity extends BaseTrackableEntity implements Serializable {
 
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
-    }
-
-    public VideoEntity getJobVideo() {
-        return jobVideo;
-    }
-
-    public void setJobVideo(VideoEntity jobVideo) {
-        this.jobVideo = jobVideo;
-    }
-
-    public WorkerEntity getJobWorker() {
-        return jobWorker;
-    }
-
-    public void setJobWorker(WorkerEntity jobWorker) {
-        this.jobWorker = jobWorker;
     }
 
     public Date getJobCreationDateTime() {
@@ -79,12 +64,28 @@ public class JobEntity extends BaseTrackableEntity implements Serializable {
         this.jobCompletionDateTime = jobCompletionDateTime;
     }
 
-    public JobStatusDescriptionEntity getJobStatus() {
+    public Collection<JobStatusDescriptionEntity> getJobStatus() {
         return jobStatus;
     }
 
-    public void setJobStatus(JobStatusDescriptionEntity jobStatus) {
+    public void setJobStatus(Collection<JobStatusDescriptionEntity> jobStatus) {
         this.jobStatus = jobStatus;
+    }
+
+    public Collection<VideoEntity> getJobVideo() {
+        return jobVideo;
+    }
+
+    public void setJobVideo(Collection<VideoEntity> jobVideo) {
+        this.jobVideo = jobVideo;
+    }
+
+    public Collection<WorkerEntity> getJobWorker() {
+        return jobWorker;
+    }
+
+    public void setJobWorker(Collection<WorkerEntity> jobWorker) {
+        this.jobWorker = jobWorker;
     }
 
 }
