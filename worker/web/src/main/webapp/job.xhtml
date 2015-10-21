@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
-    <ui:composition template="./common/template.xhtml">
+    <ui:composition template="common/template.xhtml">
         <ui:define name="title">
             Handle jobs
         </ui:define>
@@ -21,13 +21,13 @@
                         <p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
                         <p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
                         <hr/>
-                        <p:dataTable var="job" value="#{job.list}">
+                        <p:dataTable var="j" value="#{job.list}">
                             <p:column headerText="Id">
-                                <h:outputText value="#{job.id}" />
+                                <h:outputText value="#{j.id}" />
                             </p:column>
 
-                            <p:column headerText="Satus">
-                                <h:outputText value="#{job.status}" />
+                            <p:column headerText="Status">
+                                <h:outputText value="#{j.status}" />
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -37,7 +37,7 @@
             <b:row>
                 <h1>Rest Controller</h1>
                 <b:panel>
-                    <a href="rest/jobs/" target="blank" >json >> JobService</a>
+                    <a href="worker/jobs" target="blank" >json >> JobService</a>
                 </b:panel>
             </b:row>
         </ui:define>

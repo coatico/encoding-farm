@@ -15,29 +15,7 @@
         <h1>Progress</h1>
 
        test
-       <ui:define name="content">
-            <h:form>
-               <p:dataTable var="req" value="#{request.list}">
-                     <p:column headerText="Id">
-                        <h:outputText value="#{req.id}" />
-                    </p:column>
-                    <p:column headerText="Name">
-                        <h:outputText value="#{req.name}" />
-                    </p:column>
-                </p:dataTable>
-            </h:form> 
-       
-          <h:form>
-                <p:dataTable var="job" value="#{job.list}">
-                    <p:column headerText="Status">
-                        <h:outputText value="#{job.status}" />
-                    </p:column>
-                    <p:column headerText="Video_Path">
-                        <h:outputText value="#{job.video_path}" />
-                    </p:column>
-                </p:dataTable>
-            </h:form> 
-       </ui:define>
-               
+       <a href="request.xhtml">requests</a>
+       <a href="job.xhtml">jobs</a>               
     </body>
 </html>
