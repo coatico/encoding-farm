@@ -25,9 +25,11 @@
                             <p:column headerText="Id">
                                 <h:outputText value="#{req.id}" />
                             </p:column>
-
-                            <p:column headerText="Video_path">
+                            <p:column headerText="Video Path">
                                 <h:outputText value="#{req.path}" />
+                            </p:column>
+                            <p:column headerText="Jobs" width="22%">
+                                <h:outputText value="#{req.jobs}" />
                             </p:column>
                         </p:dataTable>
                     </h:form>

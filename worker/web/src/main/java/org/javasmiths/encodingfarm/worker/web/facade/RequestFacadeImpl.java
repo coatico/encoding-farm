@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import org.javasmiths.encodingfarm.worker.domain.entity.JobEntity;
 import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
 import org.javasmiths.encodingfarm.worker.domain.service.RequestService;
 import org.javasmiths.encodingfarm.worker.web.dto.RequestDto;
@@ -36,6 +37,9 @@ public class RequestFacadeImpl implements RequestFacade {
             RequestDto dto = new RequestDto();
             dto.setId(req.getId());
             dto.setPath(req.getPath());
+            for(JobEntity job: req.getJob()) {
+                dto.getJobIds().add(job.getId());
+            }
             dtos.add(dto);
         }
         return dtos;

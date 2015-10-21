@@ -37,6 +37,9 @@ public class JobFacadeImpl implements JobFacade {
             JobDto dto = new JobDto();
             dto.setId(job.getId());
             dto.setStatus(job.getStatus());
+            if (job.getRequest() != null) {
+                dto.setReqId(job.getRequest().getId());
+            }
             dtos.add(dto);
         }
         return dtos;

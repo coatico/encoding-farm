@@ -36,6 +36,10 @@ public class InitDB {
         RequestEntity re2 = new RequestEntity();
         re2.setPath("C:/videos/002.mp4");
         objectsToSave.add(re2);
+        
+        RequestEntity re3 = new RequestEntity();
+        re3.setPath("C:/videos/003.avi");
+        objectsToSave.add(re3);
 
         JobEntity je1 = new JobEntity();
         je1.setRequest(re1);
@@ -46,6 +50,15 @@ public class InitDB {
         je2.setRequest(re2);
         je2.setStatus("In Progress");
         objectsToSave.add(je2);
+        
+        JobEntity je3 = new JobEntity();
+        je3.setRequest(re2);
+        je3.setStatus("Done");
+        objectsToSave.add(je3);
+        
+        JobEntity je4 = new JobEntity();
+        je4.setStatus("Interrupted");
+        objectsToSave.add(je4);
 
         for (Object o : objectsToSave) {
             em.persist(o);
