@@ -12,10 +12,9 @@ public class RequestDto {
     private String id;
     private String path;
     private List<String> jobIds = new LinkedList<>();
-    private String jobs;
+    private String jobs = "";
 
     public String getJobs() {
-        String jobs = "";
         if (jobIds.isEmpty()) {
             jobs = "Geen jobs gestart";
         } else {
