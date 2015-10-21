@@ -22,10 +22,6 @@ public class RequestDto {
             for (int i = 0; i < jobIds.size(); i++) {
                 jobs += jobIds.get(i) + " ";
             }
-            /*jobs = jobIds.get(0);
-            for (int i = 1; i < jobIds.size(); i++) {
-                jobs +=  ", " + jobIds.get(i);
-            }*/
         }
         return jobs;
     }
