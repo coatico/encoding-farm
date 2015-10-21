@@ -5,6 +5,7 @@
  */
 package org.javasmiths.encodingfarm.manager.domain.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -17,7 +18,7 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
  */
 @Entity
 @Table(name = "JOBSTATUSDESCRIPTION")
-public class JobStatusDescriptionEntity extends BaseTrackableEntity {
+public class JobStatusDescriptionEntity extends BaseTrackableEntity implements Serializable {
 
     @Column(name = "jobStatusDescriptionDescription")
     @Type(type = "text")
