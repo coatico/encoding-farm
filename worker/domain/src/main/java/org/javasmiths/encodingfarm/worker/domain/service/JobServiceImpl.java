@@ -12,34 +12,27 @@ import org.javasmiths.encodingfarm.worker.domain.dao.JobDao;
 import org.javasmiths.encodingfarm.worker.domain.entity.JobEntity;
 import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
 
-
 /**
  *
  * @author Quintendockx
  */
 @Stateless
-public class JobServiceImpl implements JobService{
-    
-@EJB
-    private JobDao dao; 
-  
-@Override
-    public JobEntity registerJob(RequestEntity request, String status) {
-       JobEntity jobEntity = new JobEntity();
-       jobEntity.setRequest(request);
-       jobEntity.setStatus(status);
-       
-       dao.save(jobEntity);
-       return jobEntity;
+public class JobServiceImpl implements JobService {
+
+    @EJB
+    private JobDao dao;
+
+    @Override
+    public JobEntity registerJob(String status) {
+        JobEntity jobEntity = new JobEntity();
+        jobEntity.setStatus(status);
+
+        dao.save(jobEntity);
+        return jobEntity;
     }
 
-	@Override
-	public List<JobEntity> listAll() {
-		return dao.listAll();
-	}
-	
-	
-    
-    
+    @Override
+    public List<JobEntity> listAll() {
+        return dao.listAll();
+    }
 }
-

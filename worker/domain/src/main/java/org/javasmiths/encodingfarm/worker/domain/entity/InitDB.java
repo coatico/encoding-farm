@@ -30,11 +30,11 @@ public class InitDB {
         List<Object> objectsToSave = new LinkedList<>();
 
         RequestEntity re1 = new RequestEntity();
-        re1.setVideo_path("C:/videos/001.mp4");
+        re1.setPath("C:/videos/001.mp4");
         objectsToSave.add(re1);
 
         RequestEntity re2 = new RequestEntity();
-        re2.setVideo_path("C:/videos/002.mp4");
+        re2.setPath("C:/videos/002.mp4");
         objectsToSave.add(re2);
 
         JobEntity je1 = new JobEntity();

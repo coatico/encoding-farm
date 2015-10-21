@@ -1,4 +1,3 @@
-
 package org.javasmiths.encodingfarm.worker.web.dto;
 
 /**
@@ -6,15 +5,16 @@ package org.javasmiths.encodingfarm.worker.web.dto;
  * @author Quintendockx
  */
 public class RequestDto {
-    private String id;
-     private String video_path;
 
-    public String getVideo_path() {
-        return video_path;
+    private String id;
+    private String path;
+
+    public String getPath() {
+        return path;
     }
 
-    public void setVideo_path(String video_path) {
-        this.video_path = video_path;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getId() {
@@ -24,6 +24,5 @@ public class RequestDto {
     public void setId(String id) {
         this.id = id;
     }
-     
-     
+
 }

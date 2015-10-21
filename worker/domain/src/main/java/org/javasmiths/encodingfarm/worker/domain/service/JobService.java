@@ -15,7 +15,7 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
  */
 public interface JobService {
  
-        JobEntity registerJob(RequestEntity requestEntity, String videoPath);
+        JobEntity registerJob(String status);
 	
 	List<JobEntity> listAll();
 }

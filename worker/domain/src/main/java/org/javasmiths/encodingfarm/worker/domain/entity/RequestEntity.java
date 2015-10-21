@@ -13,14 +13,14 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
  * @author Pieter
  */
 @Entity
-@Table(name = "REQUEST")
+@Table(name = "REQUESTS")
 public class RequestEntity extends BaseTrackableEntity {
     
     @OneToMany(targetEntity = JobEntity.class, fetch = FetchType.LAZY, mappedBy = "request")
     private List<JobEntity> job;
     
     @Column
-    private String video_path;
+    private String path;
 
     public List<JobEntity> getJob() {
         return job;
@@ -30,12 +30,12 @@ public class RequestEntity extends BaseTrackableEntity {
         this.job = job;
     }    
 
-    public String getVideo_path() {
-        return video_path;
+    public String getPath() {
+        return path;
     }
 
-    public void setVideo_path(String video_path) {
-        this.video_path = video_path;
+    public void setPath(String path) {
+        this.path = path;
     }
 
 }

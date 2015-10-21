@@ -20,31 +20,26 @@ import org.javasmiths.encodingfarm.worker.web.dto.JobDto;
  */
 @Stateless
 public class JobFacadeImpl implements JobFacade {
-    
-        @EJB
-	private JobService jobService;
-	
-	@Override
-	public void create(RequestEntity requestEntity, String videoPath) {
-		jobService.registerJob(requestEntity,videoPath);
-	}
-	
 
-        @Override   
-	public List<JobDto> listAll() {
-		List<JobDto> dtos = new LinkedList<>();
-		List<JobEntity> JobE =  jobService.listAll();
-		for (JobEntity Job : JobE) {
-			JobDto dto = new JobDto();
-			dto.setId(Job.getId());
-			dto.setStatus(Job.getStatus());
-			dtos.add(dto);
-		}
-		return dtos;
-	}
+    @EJB
+    private JobService jobService;
 
-	
-	
-	
+    @Override
+    public void create(String status) {
+        jobService.registerJob(status);
+    }
+
+    @Override
+    public List<JobDto> listAll() {
+        List<JobDto> dtos = new LinkedList<>();
+        List<JobEntity> jobs = jobService.listAll();
+        for (JobEntity job : jobs) {
+            JobDto dto = new JobDto();
+            dto.setId(job.getId());
+            dto.setStatus(job.getStatus());
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+
 }
-

@@ -13,35 +13,32 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
 import org.javasmiths.encodingfarm.worker.domain.service.RequestService;
 import org.javasmiths.encodingfarm.worker.web.dto.RequestDto;
 
-
-
-
 /**
  *
  * @author Quintendockx
  */
 @Stateless
-public class RequestFacadeImpl implements RequestFacade{ 
+public class RequestFacadeImpl implements RequestFacade {
 
     @EJB
-	private RequestService requestService;
-	
-	@Override
-	public void create(String name) {
-		requestService.registerRequest(name);
-	}
+    private RequestService requestService;
 
-	@Override
-	public List<RequestDto> listAll() {
-		List<RequestDto> dtos = new LinkedList<>();
-		List<RequestEntity> requestsE =  requestService.listAll();
-		for (RequestEntity request : requestsE) {
-			RequestDto dto = new RequestDto();
-			dto.setId(request.getId());
-			dto.setVideo_path(request.getVideo_path());
-			dtos.add(dto);
-		}
-		return dtos;
-	}
-	
+    @Override
+    public void create(String path) {
+        requestService.registerRequest(path);
+    }
+
+    @Override
+    public List<RequestDto> listAll() {
+        List<RequestDto> dtos = new LinkedList<>();
+        List<RequestEntity> requests = requestService.listAll();
+        for (RequestEntity req : requests) {
+            RequestDto dto = new RequestDto();
+            dto.setId(req.getId());
+            dto.setPath(req.getPath());
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+
 }
