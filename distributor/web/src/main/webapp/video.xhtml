@@ -21,7 +21,7 @@
                         <p:watermark for="video_crt_txt" value="Enter videoname here" id="watermark" />
                         <p:commandButton value="Create" update="@form" actionListener="#{video.create}" />
                         <hr/>
-                        <p:dataTable var="vid" value="#{video.list}">
+                        <p:dataTable id="tabel" var="vid" value="#{video.list}">
                             <p:column headerText="Id">
                                 <h:outputText value="#{vid.id}" />
                             </p:column>
