@@ -18,29 +18,37 @@ import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerListDetailDto;
  * @author Arne
  */
 @Stateless
-public class WorkerFacadeImpl implements WorkerFacade{
+public class WorkerFacadeImpl implements WorkerFacade {
 
-	@EJB
-	private WorkerService workerService;
-	
-	@Override
-	public void create(String name) {
-		workerService.registerWorker(name);
-	}
+    @EJB
+    private WorkerService workerService;
 
-	@Override
-	public List<WorkerListDetailDto> listAll() {
-		List<WorkerListDetailDto> dtos = new LinkedList<>();
-		List<WorkerEntity> workersE =  workerService.listAll();
-		for (WorkerEntity worker : workersE) {
-			WorkerListDetailDto dto = new WorkerListDetailDto();
-			dto.setId(worker.getId());
-			dto.setFirstName(worker.getFirstName());
-			dtos.add(dto);
-		}
-		return dtos;
-	}
-	
-	
-	
+    @Override
+    public void create(String name) {
+        workerService.registerWorker(name);
+    }
+
+    @Override
+    public void delete(String name) {
+        workerService.deleteWorker(name);
+    }
+
+    @Override
+    public void status(String name) {
+        workerService.statusWorker(name);
+    }
+
+    @Override
+    public List<WorkerListDetailDto> listAll() {
+        List<WorkerListDetailDto> dtos = new LinkedList<>();
+        List<WorkerEntity> workersE = workerService.listAll();
+        for (WorkerEntity worker : workersE) {
+            WorkerListDetailDto dto = new WorkerListDetailDto();
+            dto.setId(worker.getId());
+            dto.setName(worker.getName());
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+
 }

@@ -23,76 +23,37 @@ public class WorkerEntity extends BaseTrackableEntity {
 
    //In deze File worden de Entities aangemaakt voor de tabel in de database.
 	@Column
-    private String Id;
+    private String Name;
 	@Column
-    private String firstName;
+    private String Status;
 	@Column
-    private String lastName;
-	@Column
-    private String sex;
-	@Column
-    private String birthdate;
-	@Column
-    private String email;
-    @Column
-    private String job;
+    private String URL;
 
-	
-	 public String getId() {
-        return Id;
+    public String getName() {
+        return Name;
     }
 
-    public void setId(String Id) {
-        this.Id = Id;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getStatus() {
+        return Status;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setStatus(String Status) {
+        this.Status = Status;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getURL() {
+        return URL;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
+        
 
     
     
