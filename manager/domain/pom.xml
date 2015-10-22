@@ -8,19 +8,33 @@
     </parent>
     <artifactId>encoding-manager-domain</artifactId>
     <packaging>jar</packaging>
-    <dependencies>
+     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>encoding-common-domain</artifactId>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+        </dependency>
+        <dependency> 
+            <groupId>net.bootsfaces</groupId>
+            <artifactId>bootsfaces</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.1.Final</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>encoding-manager-web-admin</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>encoding-manager-gateway</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
+            <artifactId>javaee-web-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>dot-luv</artifactId>
         </dependency>
     </dependencies>
+
 </project>

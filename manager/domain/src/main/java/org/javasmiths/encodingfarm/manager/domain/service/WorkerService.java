@@ -8,13 +8,17 @@ package org.javasmiths.encodingfarm.manager.domain.service;
 import java.util.List;
 import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
 
-
 /**
  *
  * @author Arne Polfliet
  */
 public interface WorkerService {
+
     WorkerEntity registerWorker(String name);
-	
-	List<WorkerEntity> listAll();
+
+    WorkerEntity deleteWorker(String name);
+
+    //WorkerEntity statusWorker(String name);
+
+    List<WorkerEntity> listAll();
 }

@@ -9,7 +9,6 @@ package org.javasmiths.encodingfarm.manager.webadmin.view;
  *
  * @author Arne
  */
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -29,37 +28,46 @@ import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerListDetailDto;
 @Named("location")
 public class WorkerView {
 
-	private String name;
-	private List<WorkerListDetailDto> list = new LinkedList<>();
-		
-	@EJB
-	private WorkerFacade facade;
-	
+    private String name;
+    private List<WorkerListDetailDto> list = new LinkedList<>();
 
-	@PostConstruct
-	public void init(){
-		list = facade.listAll();
-	}
-	
-	public void create(ActionEvent actionEvent){
-		facade.create(name);
-		list = facade.listAll();
-	}
+    @EJB
+    private WorkerFacade facade;
 
-	public String getName() {
-		return name;
-	}
+    @PostConstruct
+    public void init() {
+        list = facade.listAll();
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void create(ActionEvent actionEvent) {
+        facade.create(name);
+        list = facade.listAll();
+    }
 
-	public List<WorkerListDetailDto> getList() {
-		return list;
-	}
+    public void delete(ActionEvent actionEvent) {
+        facade.delete(name);
+        list = facade.listAll();
+    }
 
-	public void setList(List<WorkerListDetailDto> list) {
-		this.list = list;
-	}
-	
+    public void status(ActionEvent actionEvent) {
+        facade.status(name);
+        list = facade.listAll();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<WorkerListDetailDto> getList() {
+        return list;
+    }
+
+    public void setList(List<WorkerListDetailDto> list) {
+        this.list = list;
+    }
+
 }
