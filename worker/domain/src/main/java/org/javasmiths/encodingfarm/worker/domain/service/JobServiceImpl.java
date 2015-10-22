@@ -35,4 +35,9 @@ public class JobServiceImpl implements JobService {
     public List<JobEntity> listAll() {
         return dao.listAll();
     }
+    
+    @Override
+    public void remove(String id) {
+        dao.delete(dao.findById(id));
+    }
 }
