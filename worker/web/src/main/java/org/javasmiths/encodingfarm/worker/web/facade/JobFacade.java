@@ -18,4 +18,6 @@ public interface JobFacade {
     public void create(String status);
 
     public List<JobDto> listAll();
+    
+    public void remove(String id);
 }

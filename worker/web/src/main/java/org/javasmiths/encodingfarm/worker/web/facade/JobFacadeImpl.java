@@ -10,7 +10,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.javasmiths.encodingfarm.worker.domain.entity.JobEntity;
-import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
 import org.javasmiths.encodingfarm.worker.domain.service.JobService;
 import org.javasmiths.encodingfarm.worker.web.dto.JobDto;
 
@@ -44,5 +43,9 @@ public class JobFacadeImpl implements JobFacade {
         }
         return dtos;
     }
-
+    
+    @Override
+    public void remove(String id) {
+        jobService.remove(id);
+    }
 }
