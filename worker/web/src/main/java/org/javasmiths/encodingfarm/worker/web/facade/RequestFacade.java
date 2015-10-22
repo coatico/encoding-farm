@@ -17,4 +17,6 @@ public interface RequestFacade {
     public void create(String path);
 
     public List<RequestDto> listAll();
+    
+    public void remove(String id);
 }

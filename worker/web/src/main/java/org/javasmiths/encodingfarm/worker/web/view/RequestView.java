@@ -30,7 +30,12 @@ public class RequestView {
     private RequestFacade facade;
 
     @PostConstruct
-    public void init() {
+    private void init() {
+        list = facade.listAll();
+    }
+    
+    public void remove(String id) {
+        facade.remove(id);
         list = facade.listAll();
     }
 

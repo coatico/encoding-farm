@@ -37,12 +37,16 @@ public class RequestFacadeImpl implements RequestFacade {
             RequestDto dto = new RequestDto();
             dto.setId(req.getId());
             dto.setPath(req.getPath());
-            for(JobEntity job: req.getJob()) {
+            for(JobEntity job: req.getJobs()) {
                 dto.getJobIds().add(job.getId());
             }
             dtos.add(dto);
         }
         return dtos;
+    }
+    
+    public void remove(String id) {
+        requestService.remove(id);
     }
 
 }

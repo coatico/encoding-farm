@@ -31,6 +31,9 @@
                             <p:column headerText="Jobs" width="22%">
                                 <h:outputText value="#{req.jobs}" />
                             </p:column>
+                            <p:column headerText="Actions">
+                                <p:commandButton value="Delete" update="@form" actionListener="#{requests.remove(req.id)}"/>
+                            </p:column>
                         </p:dataTable>
                     </h:form>
                 </b:panel>
