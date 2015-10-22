@@ -13,7 +13,7 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
 @Stateless
 public class RequestDaoImpl extends BaseDaoImpl<RequestEntity> implements RequestDao {
 
-    @PersistenceContext(unitName = "requestPU")
+    @PersistenceContext(unitName = "workerPU")
     protected EntityManager em;
 
     @Override
