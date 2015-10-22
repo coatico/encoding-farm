@@ -5,6 +5,7 @@
  */
 package org.javasmiths.encodingfarm.domain.dao;
 
+import java.util.List;
 import org.javasmiths.encodingfarm.domain.entity.TaskEntity;
 
 /**
@@ -14,5 +15,7 @@ import org.javasmiths.encodingfarm.domain.entity.TaskEntity;
 public interface TaskDao {
 	
 	public void save(TaskEntity taskEntity);
+
+	public List<TaskEntity> listAll();
 	
 }

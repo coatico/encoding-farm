@@ -13,6 +13,7 @@ public class TaskDto {
 	private String id;
 	private boolean taskState;
 	private FileDto fileDto;
+	private String name;
 
 	public String getId() {
 		return id;
@@ -36,6 +37,10 @@ public class TaskDto {
 
 	public void setFileDto(FileDto fileDto) {
 		this.fileDto = fileDto;
+	}
+
+	public void setName(String fileTitle) {
+		this.name = fileTitle;
 	}
 	
 	
