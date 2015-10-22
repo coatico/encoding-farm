@@ -33,10 +33,6 @@
                             </p:column>
                             <p:column headerText="Actions">
                                 <p:commandButton value="Delete" update="@form" actionListener="#{requests.remove(req.id)}"/>
-                            
-                            <p:column exportable="false">
-                            <a href="request.xhtml?edit=#{req.id}" class=" button">Wijzig</a>
-                            <a href="request.xhtml?delete=#{req.id}" class=" button">Verwijder</a>
                             </p:column>
                         </p:dataTable>
                     </h:form>

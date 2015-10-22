@@ -34,10 +34,6 @@
                             <p:column headerText="Actions">
                                 <p:commandButton value="Delete" update="@form" actionListener="#{job.remove(j.id)}"/>
                             </p:column>
-                            <p:column>
-                                <a href="job.xhtml?edit=#{j.id}" class=" button">Edit</a>
-                                <a href="job.xhtml?delete=#{j.id}" class=" button">Delete</a>
-                            </p:column>
                         </p:dataTable>
                     </h:form>
                 </b:panel>
