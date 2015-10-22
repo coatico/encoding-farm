@@ -15,6 +15,8 @@ import org.javasmiths.encodingfarm.manager.web.dto.JobDto;
 public interface JobFacade {
 
 	public void create(String jobTitle);
+        
+        public void delete(String id);
 
 	public List<JobDto> listAll();
 	

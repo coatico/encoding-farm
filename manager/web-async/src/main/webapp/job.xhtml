@@ -21,6 +21,10 @@
 						<p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
 						<p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
 						<hr/>
+                                                Delete Job by id <p:inputText value="#{job.deleteId}"  label="Enter id here"/> 
+						<p:watermark for="job_crt_txt" value="Enter id here" id="watermark" />
+                                                <p:commandButton value="Delete" update="@form" actionListener="#{job.delete}" />
+						<hr/>
 						<p:dataTable var="jobs" value="#{job.list}">
 							<p:column headerText="Id">
 								<h:outputText value="#{jobs.id}" />

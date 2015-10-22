@@ -34,6 +34,6 @@ public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao{
 	protected Class<JobEntity> entityClass() {
 		return JobEntity.class;
 	}
-    
+
 
 }

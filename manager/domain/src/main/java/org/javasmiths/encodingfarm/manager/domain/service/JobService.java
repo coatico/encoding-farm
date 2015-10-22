@@ -14,6 +14,8 @@ import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
  */
 public interface JobService {
     JobEntity registerJob(String jobTitle);
+    
+    JobEntity deleteJob(String id);
 	
 	List<JobEntity> listAll();
 }

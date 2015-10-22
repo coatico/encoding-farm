@@ -27,6 +27,12 @@ public class JobFacadeImpl implements JobFacade{
 	public void create(String jobTitle) {
 		jobService.registerJob(jobTitle);
 	}
+        
+        @Override
+        public void delete(String id) {
+          //This creates an error.. :(  
+            //jobService.deleteJob(id);
+        }
 
 	@Override
 	public List<JobDto> listAll() {
