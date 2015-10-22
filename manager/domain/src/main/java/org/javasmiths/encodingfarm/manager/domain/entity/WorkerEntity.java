@@ -23,6 +23,8 @@ public class WorkerEntity extends BaseTrackableEntity {
 
    //In deze File worden de Entities aangemaakt voor de tabel in de database.
 	@Column
+    private String Id;
+	@Column
     private String firstName;
 	@Column
     private String lastName;
@@ -34,6 +36,15 @@ public class WorkerEntity extends BaseTrackableEntity {
     private String email;
     @Column
     private String job;
+
+	
+	 public String getId() {
+        return Id;
+    }
+
+    public void setId(String Id) {
+        this.Id = Id;
+    }
 
     public String getFirstName() {
         return firstName;
