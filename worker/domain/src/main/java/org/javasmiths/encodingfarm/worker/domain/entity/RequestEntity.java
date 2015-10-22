@@ -17,17 +17,17 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 public class RequestEntity extends BaseTrackableEntity {
     
     @OneToMany(targetEntity = JobEntity.class, fetch = FetchType.LAZY, mappedBy = "request")
-    private List<JobEntity> job;
+    private List<JobEntity> jobs;
     
     @Column
     private String path;
 
-    public List<JobEntity> getJob() {
-        return job;
+    public List<JobEntity> getJobs() {
+        return jobs;
     }
 
-    public void setJob(List<JobEntity> job) {
-        this.job = job;
+    public void setJobs(List<JobEntity> jobs) {
+        this.jobs = jobs;
     }    
 
     public String getPath() {

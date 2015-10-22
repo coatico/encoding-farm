@@ -17,5 +17,7 @@ public interface RequestService {
     RequestEntity registerRequest(String path);
 
     List<RequestEntity> listAll();
+    
+    public void remove(String id);
 
 }
