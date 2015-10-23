@@ -24,8 +24,12 @@ public abstract class BaseDaoImpl<E> {
         em().persist(dataEntity);
     }
     
-    public void delete(E e) {
-        em().remove(e);
+    public void deleteById(String id) {
+        em().remove(findById(id));
+    }
+    
+    public E findById(String id) {
+        return em().find(entityClass(), id);
     }
 
     public List<E> listAll() {

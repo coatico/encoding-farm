@@ -25,10 +25,5 @@ public class RequestDaoImpl extends BaseDaoImpl<RequestEntity> implements Reques
     protected Class<RequestEntity> entityClass() {
         return RequestEntity.class;
     }
-    
-    @Override
-    public RequestEntity findById(String id) {
-        return em.find(RequestEntity.class, id);
-    }
 
 }

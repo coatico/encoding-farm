@@ -13,7 +13,7 @@ public interface RequestDao {
 
     public List<RequestEntity> listAll();
     
-    public void delete(RequestEntity e);
-    
     public RequestEntity findById(String id);
+    
+    public void deleteById(String id);
 }
