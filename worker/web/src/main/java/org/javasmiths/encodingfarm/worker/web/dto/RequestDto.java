@@ -49,4 +49,8 @@ public class RequestDto {
         this.id = id;
     }
 
+    public void setJobs(String jobs) {
+        this.jobs = jobs;
+    }
+
 }

@@ -1,3 +1,7 @@
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +14,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.javasmiths.encodingfarm.worker.web.dto.RequestDto;
 import org.javasmiths.encodingfarm.worker.web.facade.RequestFacade;
-
+import org.primefaces.event.RowEditEvent;
+import javax.faces.application.FacesMessage;
 /**
  *
  * @author Quintendockx
@@ -22,6 +28,7 @@ import org.javasmiths.encodingfarm.worker.web.facade.RequestFacade;
 @RequestScoped
 @Named("requests")
 public class RequestView {
+
     
     private String path;
     private List<RequestDto> list = new LinkedList<>();
@@ -67,5 +74,20 @@ public class RequestView {
     public void setFacade(RequestFacade facade) {
         this.facade = facade;
     }
+    
+   
 
+    public void onEdit(RowEditEvent event) {  
+              
+        FacesMessage msg = new FacesMessage("Item Edited",((RequestDto) event.getObject()).getId());  
+        FacesContext.getCurrentInstance().addMessage(null, msg);  
+    }  
+       
+    public void onCancel(RowEditEvent event) {  
+        FacesMessage msg = new FacesMessage("Editing Cancelled");   
+        FacesContext.getCurrentInstance().addMessage(null, msg); 
+        
+    } 
 }
+
+
