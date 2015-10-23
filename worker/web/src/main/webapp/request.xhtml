@@ -22,51 +22,49 @@
                 </b:row>
                 <b:row>
                     <b:panel>
-                        <h:form>
 
-                            Add Request <p:inputText value="#{requests.path}"  label="Enter video_path here" id="request_crt_txt"/> 
-                            <p:watermark for="request_crt_txt" value="Enter request here" id="watermark" />
-                            <p:commandButton value="Create" update="@form" actionListener="#{requests.create}" />
-                            <hr/>
-                            <p:dataTable var="req" value="#{requests.list}" editable="true">
-                                <p:ajax event="rowEdit" listener="#{requests.onEdit}" update=":form1:messages" />  
-                                                    <p:ajax event="rowEditCancel" listener="#{requests.onCancel}" update=":form1:messages" /> 
-                                <p:column headerText="Id">
-                                    <p:cellEditor>  
-                                        <f:facet name="output">  
-                                            <h:outputText value="#{req.id}" />  
-                                        </f:facet>  
-                                        <f:facet name="input">  
-                                            <p:inputText value="#{req.id}" style="width:100%"/>  
-                                        </f:facet>  
-                                    </p:cellEditor> 
-                                </p:column>
-                                <p:column headerText="Video Path">
-                                    <p:cellEditor>  
-                                        <f:facet name="output">  
-                                            <h:outputText value="#{req.path}" />  
-                                        </f:facet>  
-                                        <f:facet name="input">  
-                                            <p:inputText value="#{req.path}" style="width:100%"/>  
-                                        </f:facet>  
-                                    </p:cellEditor> 
-                                </p:column>
-                                <p:column headerText="Jobs" width="22%">
-                                    <p:cellEditor>  
-                                        <f:facet name="output">  
-                                            <h:outputText value="#{req.jobs}" />  
-                                        </f:facet>  
-                                        <f:facet name="input">  
-                                            <p:inputText value="#{req.jobs}" style="width:100%"/>  
-                                        </f:facet>  
-                                    </p:cellEditor> 
-                                </p:column>
-                                <p:column style="width: 4%"><p:rowEditor />  </p:column>
-                                <p:column headerText="Actions" style="width: 7%">
-                                    <p:commandButton value="Delete" update="@form" actionListener="#{requests.remove(req.id)}"/>
-                                </p:column>
-                            </p:dataTable>
-                        </h:form>
+                        Add Request <p:inputText value="#{requests.path}"  label="Enter video_path here" id="request_crt_txt"/> 
+                        <p:watermark for="request_crt_txt" value="Enter request here" id="watermark" />
+                        <p:commandButton value="Create" update="@form" actionListener="#{requests.create}" />
+                        <hr/>
+                        <p:dataTable var="req" value="#{requests.list}" editable="true">
+                            <p:ajax event="rowEdit" listener="#{requests.onEdit}" update=":form1:messages" />  
+                                                <p:ajax event="rowEditCancel" listener="#{requests.onCancel}" update=":form1:messages" /> 
+                            <p:column headerText="Id">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{req.id}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{req.id}" style="width:100%"/>  
+                                    </f:facet>  
+                                </p:cellEditor> 
+                            </p:column>
+                            <p:column headerText="Video Path">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{req.path}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{req.path}" style="width:100%"/>  
+                                    </f:facet>  
+                                </p:cellEditor> 
+                            </p:column>
+                            <p:column headerText="Jobs" width="22%">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{req.jobs}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{req.jobs}" style="width:100%"/>  
+                                    </f:facet>  
+                                </p:cellEditor> 
+                            </p:column>
+                            <p:column style="width: 4%"><p:rowEditor />  </p:column>
+                            <p:column headerText="Actions" style="width: 7%">
+                                <p:commandButton value="Delete" update="@form" actionListener="#{requests.remove(req.id)}"/>
+                            </p:column>
+                        </p:dataTable>
                     </b:panel>
 
                 </b:row>
