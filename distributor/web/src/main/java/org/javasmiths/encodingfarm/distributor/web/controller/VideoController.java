@@ -6,15 +6,12 @@
 package org.javasmiths.encodingfarm.distributor.web.controller;
 
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import org.javasmiths.encodingfarm.distributor.web.dto.VideoDto;
-import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacadeImpl;
+import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacade;
 
 /**
  *
@@ -22,11 +19,9 @@ import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacadeImpl;
  */
 @Path("videos")
 public class VideoController {
-	
-private VideoDto dto;
 
     @EJB
-    private VideoFacadeImpl facade;
+    private VideoFacade facade;
 
     @GET
     @Produces({"application/json", "application/xml"})
@@ -34,34 +29,4 @@ private VideoDto dto;
         return facade.listAll();
     }
 
-	@PostConstruct
-    public void init() {
-
-        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        String editId = req.getParameter("edit");
-        String deleteId = req.getParameter("delete");
-        dto = VideoFacadeImpl.loadVideoOverviewPage(editId, deleteId);
-
-    }
-
-    public String add() {
-
-        VideoFacadeImpl.add(dto);
-
-        //forces page to refresh
-        return "video.xhtml?faces-redirect=true";
-      
-    }
-
-    public VideoDto getDto() {
-        return dto;
-    }
-
-    public void setDto(VideoDto dto) {
-        this.dto = dto;
-    }
-
 }
-	
-	
-
