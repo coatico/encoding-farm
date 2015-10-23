@@ -17,4 +17,6 @@ public interface VideoService {
     VideoEntity registerVideo(String name);
 
     List<VideoEntity> listAll();
+	
+	public void remove(String id);
 }

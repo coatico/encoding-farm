@@ -17,4 +17,6 @@ public interface VideoDao {
     public void save(VideoEntity dataEntity);
 
     public List<VideoEntity> listAll();
+	
+	public VideoEntity findById(String id);
 }
