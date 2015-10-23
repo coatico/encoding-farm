@@ -39,7 +39,7 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
         DateFormat parseFormat = new SimpleDateFormat("HH:mm:ss.SS");
         Date date = new Date();
         
-        if (System.getProperty("os.name").toString().startsWith("Mac")) {
+        if (System.getProperty("os.name").startsWith("Mac")) {
             ffmpeg = "../lib/ffmpeg";
         }
 
