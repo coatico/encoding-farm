@@ -31,7 +31,7 @@ public class TaskFacadeImpl implements TaskFacade {
 		List<TaskEntity> locationsE =  taskService.listAll();
 		for (TaskEntity task : locationsE) {
 			TaskDto dto = new TaskDto();
-			dto.setId(task.getId());
+			//dto.setId(task.getId());
 			dto.setName(task.getFileEntity().getFileTitle());
 			dtos.add(dto);
 		}

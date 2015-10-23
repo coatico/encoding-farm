@@ -14,15 +14,8 @@ import org.javasmiths.encodingfarm.common.domain.dao.BaseDaoImpl;
 import org.javasmiths.encodingfarm.domain.entity.TaskEntity;
 
 @Stateless
-public class TaskDaoImpl extends BaseDaoImpl<TaskEntity> implements TaskDao {
-	@PersistenceContext(unitName = "clientPU")
-	protected EntityManager em;
-
-	@Override
-	protected EntityManager em() {
-		return em;
-	} 
-
+public abstract class TaskDaoImpl extends BaseDaoImpl<TaskEntity> implements TaskDao {
+	
 	@Override
 	protected Class<TaskEntity> entityClass() {
 		return TaskEntity.class;
