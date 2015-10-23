@@ -21,7 +21,9 @@
                         <p:watermark for="request_crt_txt" value="Enter request here" id="watermark" />
                         <p:commandButton value="Create" update="@form" actionListener="#{requests.create}" />
                         <hr/>
-                        <p:dataTable var="req" value="#{requests.list}">
+                        <p:dataTable var="req" value="#{requests.list}" editable="true">
+                            <p:ajax event="rowEdit" listener="#{requests.onEdit(req, rowEdit)}" update=":form1:messages" />  
+                                                <p:ajax event="rowEditCancel" listener="#{requests.onCancel}" update=":form1:messages" /> 
                             <p:column headerText="Id">
                                 <h:outputText value="#{req.id}" />
                             </p:column>
