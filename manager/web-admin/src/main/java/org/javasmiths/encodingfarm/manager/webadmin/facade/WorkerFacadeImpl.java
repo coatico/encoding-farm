@@ -29,13 +29,11 @@ public class WorkerFacadeImpl implements WorkerFacade {
     }
 
     @Override
-    public void delete(String name) {
-        //workerService.deleteWorker(name);
+    public void delete(String id) {
+        workerService.deleteWorker(id);
     }
-
-    @Override
-    public void status(String name) {
-        //workerService.statusWorker(name);
+        public void disable(String name) {
+        workerService.disableWorker(name);
     }
 
     @Override

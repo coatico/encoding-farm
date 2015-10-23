@@ -5,7 +5,6 @@
  */
 package org.javasmiths.encodingfarm.manager.domain.entity;
 
-
 /**
  *
  * @author Arne
@@ -21,12 +20,12 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 @Table(name = "WORKERS")
 public class WorkerEntity extends BaseTrackableEntity {
 
-   //In deze File worden de Entities aangemaakt voor de tabel in de database.
-	@Column
+    //In deze File worden de Entities aangemaakt voor de tabel in de database.
+    @Column
     private String Name;
-	@Column
-    private String Status;
-	@Column
+    @Column
+    private boolean Disabled;
+    @Column
     private String URL;
 
     public String getName() {
@@ -37,12 +36,12 @@ public class WorkerEntity extends BaseTrackableEntity {
         this.Name = Name;
     }
 
-    public String getStatus() {
-        return Status;
+    public boolean isDisabled() {
+        return Disabled;
     }
 
-    public void setStatus(String Status) {
-        this.Status = Status;
+    public void setDisabled(boolean Disabled) {
+        this.Disabled = Disabled;
     }
 
     public String getURL() {
@@ -53,8 +52,4 @@ public class WorkerEntity extends BaseTrackableEntity {
         this.URL = URL;
     }
 
-        
-
-    
-    
 }

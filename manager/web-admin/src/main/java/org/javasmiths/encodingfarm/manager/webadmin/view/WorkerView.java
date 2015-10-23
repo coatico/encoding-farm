@@ -49,8 +49,8 @@ public class WorkerView {
         list = facade.listAll();
     }
 
-    public void status(ActionEvent actionEvent) {
-        facade.status(name);
+    public void disable(ActionEvent actionEvent) {
+        facade.disable(name);
         list = facade.listAll();
     }
 

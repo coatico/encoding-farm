@@ -22,7 +22,6 @@ public class WorkerServiceImpl implements WorkerService {
 
     @EJB
     private WorkerDao dao;
-    private WorkerDaoImpl daoimpl;
     private WorkerPageDto dto;
 
     @Override
@@ -34,17 +33,23 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     @Override
-    public WorkerEntity deleteWorker(String name) {
-        WorkerEntity workerEntity = new WorkerEntity();
-        String id = dto.getDetail().getId();
-        daoimpl.deleteById(id);
-        return workerEntity;
+    public WorkerEntity deleteWorker(String id) {
+        dao.deleteById(id);
+        return null;
     }
 
-   /* @Override
-    public WorkerEntity statusWorker(String name) {
+    @Override
+    public WorkerEntity disableWorker(String name) {
+        WorkerEntity workerEntity = new WorkerEntity();
+        workerEntity.setName(dto.getDetail().getName());
+        if (dto.getDetail().isDisabled() == true) 
+            return workerEntity;
+        else{
+            return null;
+        }
+       
         
-    }*/
+    }
 
     @Override
     public List<WorkerEntity> listAll() {

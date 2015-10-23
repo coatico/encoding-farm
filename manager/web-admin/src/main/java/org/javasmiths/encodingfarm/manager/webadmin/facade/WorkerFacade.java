@@ -16,7 +16,7 @@ public interface WorkerFacade {
 
     public void create(String name);
     public void delete(String name);
-    public void status(String name);
+    public void disable(String name);
 
     public List<WorkerListDetailDto> listAll();
 
