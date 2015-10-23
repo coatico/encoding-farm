@@ -5,7 +5,14 @@
  */
 package org.javasmiths.encodingfarm.domain.service;
 
+import java.util.List;
+import org.javasmiths.encodingfarm.domain.entity.TaskEntity;
+
 
 public interface TaskService {
+
+	public void registerTask();
+
+	public List<TaskEntity> listAll();
 	
 }

@@ -1,0 +1,75 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 22, 2015, 2:31:46 PM
+    Author     : thomas
+*/
+
+body {
+}
+
+.navbar{
+	border-radius: 0px;
+	background: #55acee;
+	margin-bottom: 0px;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-left: 50px;
+}
+
+.navbar-header{
+
+}
+
+.navbar-default{
+	box-shadow: none;
+}
+
+.navbar li:hover{
+	background: #78c2fa;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
+	color: white;
+}
+
+#frmFileUpload\:fileUpload{
+	width: 600px;
+	display: inline-block;
+}
+
+#frmFileUpload\:btnSubmit{
+	width: 165px;
+	display: inline-block;
+	padding: 5px;
+	background: #55acee;
+	color: white;
+	border-color: #55acee;
+}
+
+#pnlFileUpload{
+	width: 800px;
+	margin: 0 auto;
+	display: block;
+}
+
+.jumbotron{
+	text-align: center;
+	background-image: url('http://s7.postimg.org/sm9qgt9t7/project_bg.jpg');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding-top: 75px;
+}
+
+.jumbotron p{
+	margin-bottom: 50px;
+}
+
+#j_idt15{
+	margin-top: 10px;
+}
