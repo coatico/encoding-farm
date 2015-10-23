@@ -29,14 +29,14 @@ public class WorkerFacadeImpl implements WorkerFacade {
     }
 
     @Override
-    public void delete(String name) {
-        workerService.deleteWorker(name);
+    public void delete(String id) {
+        workerService.deleteWorker(id);
     }
 
-    @Override
+    /*@Override
     public void status(String name) {
-        workerService.statusWorker(name);
-    }
+        workerService.disableWorker(name);
+    }*/
 
     @Override
     public List<WorkerListDetailDto> listAll() {

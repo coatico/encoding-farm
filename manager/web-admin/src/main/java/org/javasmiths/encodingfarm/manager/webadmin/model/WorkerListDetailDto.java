@@ -10,12 +10,12 @@ package org.javasmiths.encodingfarm.manager.webadmin.model;
  * @author Arne
  */
 public class WorkerListDetailDto {
-    
+
     private String id;
 
     private String Name;
 
-    private String Status;
+    private boolean disabled;
 
     private String URL;
 
@@ -35,12 +35,12 @@ public class WorkerListDetailDto {
         this.Name = Name;
     }
 
-    public String getStatus() {
-        return Status;
+    public boolean isDisabled() {
+        return disabled;
     }
 
-    public void setStatus(String Status) {
-        this.Status = Status;
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
     }
 
     public String getURL() {
@@ -51,6 +51,4 @@ public class WorkerListDetailDto {
         this.URL = URL;
     }
 
-
-    
 }

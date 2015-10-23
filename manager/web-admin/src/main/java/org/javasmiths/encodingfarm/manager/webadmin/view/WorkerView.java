@@ -49,11 +49,6 @@ public class WorkerView {
         list = facade.listAll();
     }
 
-    public void status(ActionEvent actionEvent) {
-        facade.status(name);
-        list = facade.listAll();
-    }
-
     public String getName() {
         return name;
     }
