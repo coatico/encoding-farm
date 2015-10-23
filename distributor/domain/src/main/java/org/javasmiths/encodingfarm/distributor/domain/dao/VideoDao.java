@@ -19,4 +19,6 @@ public interface VideoDao {
     public List<VideoEntity> listAll();
 	
 	public VideoEntity findById(String id);
+	
+	public void delete(VideoEntity e);
 }
