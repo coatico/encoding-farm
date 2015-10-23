@@ -31,7 +31,7 @@ public class JobFacadeImpl implements JobFacade{
         @Override
         public void delete(String id) {
           //This creates an error.. :(  
-            //jobService.deleteJob(id);
+            jobService.deleteJob(id);
         }
 
 	@Override

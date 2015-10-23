@@ -18,29 +18,28 @@ import org.javasmiths.encodingfarm.manager.web.facade.JobFacade;
  */
 @RequestScoped
 @Named("job")
-public class JobView implements Serializable{
+public class JobView implements Serializable {
 
-	private String jobTitle;
-        private String deleteId;
-	private List<JobDto> list = new LinkedList<>();
-		
-	@EJB
-	private JobFacade facade;
-	
+    private String jobTitle;
+    private String deleteId;
+    private List<JobDto> list = new LinkedList<>();
 
-	@PostConstruct
-	public void init(){
-		list = facade.listAll();
-	}
-	
-	public void create(ActionEvent actionEvent){
-		facade.create(jobTitle);
-		list = facade.listAll();
-	}
-        
-        public void delete(ActionEvent actionEvent){
-            facade.delete(deleteId);
-        }
+    @EJB
+    private JobFacade facade;
+
+    @PostConstruct
+    public void init() {
+        list = facade.listAll();
+    }
+
+    public void create(ActionEvent actionEvent) {
+        facade.create(jobTitle);
+        list = facade.listAll();
+    }
+
+    public void delete(ActionEvent actionEvent) {
+        facade.delete(deleteId);
+    }
 
     public String getDeleteId() {
         return deleteId;
@@ -48,21 +47,26 @@ public class JobView implements Serializable{
 
     public void setDeleteId(String deleteId) {
         this.deleteId = deleteId;
-    }        
-	public String getjobTitle() {
-		return jobTitle;
-	}
+    }
 
-	public void setjobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
-	}
+    public String getjobTitle() {
+        return jobTitle;
+    }
 
-	public List<JobDto> getList() {
-		return list;
-	}
+    public void setjobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
 
-	public void setList(List<JobDto> list) {
-		this.list = list;
-	}
-	
+    public List<JobDto> getList() {
+        return list;
+    }
+
+    public void setList(List<JobDto> list) {
+        this.list = list;
+    }
+
+    public void deleteById(String id) {
+        facade.delete(id);
+    }
+
 }
