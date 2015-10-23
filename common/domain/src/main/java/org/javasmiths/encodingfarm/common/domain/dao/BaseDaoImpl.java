@@ -30,7 +30,7 @@ public abstract class BaseDaoImpl<E> {
     }
     
     //Gegevens uit de database verwijderen.
-    public void deleteById(String id) {
+    public void delete(String id) {
         em().remove(findById(id));
     }
 

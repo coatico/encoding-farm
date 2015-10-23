@@ -31,7 +31,7 @@ public class JobServiceImpl implements JobService {
     }
     
     public JobEntity deleteJob(String id) {
-        dao.deleteById(id);        
+        dao.delete(id);        
         return null;
     }
 
