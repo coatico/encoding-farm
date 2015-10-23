@@ -10,7 +10,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.javasmiths.encodingfarm.worker.domain.entity.JobEntity;
-import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
 import org.javasmiths.encodingfarm.worker.domain.service.JobService;
 import org.javasmiths.encodingfarm.worker.web.dto.JobDto;
 
@@ -20,31 +19,33 @@ import org.javasmiths.encodingfarm.worker.web.dto.JobDto;
  */
 @Stateless
 public class JobFacadeImpl implements JobFacade {
+
+    @EJB
+    private JobService jobService;
+
+    @Override
+    public void create(String status) {
+        jobService.registerJob(status);
+    }
+
+    @Override
+    public List<JobDto> listAll() {
+        List<JobDto> dtos = new LinkedList<>();
+        List<JobEntity> jobs = jobService.listAll();
+        for (JobEntity job : jobs) {
+            JobDto dto = new JobDto();
+            dto.setId(job.getId());
+            dto.setStatus(job.getStatus());
+            if (job.getRequest() != null) {
+                dto.setReqId(job.getRequest().getId());
+            }
+            dtos.add(dto);
+        }
+        return dtos;
+    }
     
-        @EJB
-	private JobService jobService;
-	
-	@Override
-	public void create(RequestEntity requestEntity, String videoPath) {
-		jobService.registerJob(requestEntity,videoPath);
-	}
-	
-
-        @Override   
-	public List<JobDto> listAll() {
-		List<JobDto> dtos = new LinkedList<>();
-		List<JobEntity> JobE =  jobService.listAll();
-		for (JobEntity Job : JobE) {
-			JobDto dto = new JobDto();
-			dto.setId(Job.getId());
-			dto.setStatus(Job.getStatus());
-			dtos.add(dto);
-		}
-		return dtos;
-	}
-
-	
-	
-	
+    @Override
+    public void remove(String id) {
+        jobService.remove(id);
+    }
 }
-

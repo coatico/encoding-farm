@@ -13,9 +13,10 @@ import org.javasmiths.encodingfarm.worker.web.dto.RequestDto;
  * @author Quintendockx
  */
 public interface RequestFacade {
-    
-    
-    public void create(String name);
 
-	public List<RequestDto> listAll();
+    public void create(String path);
+
+    public List<RequestDto> listAll();
+    
+    public void remove(String id);
 }

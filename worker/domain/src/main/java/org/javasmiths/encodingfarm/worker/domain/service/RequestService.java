@@ -13,11 +13,11 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
  * @author Quintendockx
  */
 public interface RequestService {
- 
-    RequestEntity registerRequest(String video_path);
-    
 
-	
+    RequestEntity registerRequest(String path);
+
     List<RequestEntity> listAll();
+    
+    public void remove(String id);
 
 }

@@ -12,4 +12,8 @@ public interface RequestDao {
     public void save(RequestEntity dateEntity);
 
     public List<RequestEntity> listAll();
+    
+    public void delete(RequestEntity e);
+    
+    public RequestEntity findById(String id);
 }

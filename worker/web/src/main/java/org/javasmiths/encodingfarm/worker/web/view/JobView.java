@@ -7,7 +7,6 @@ package org.javasmiths.encodingfarm.worker.web.view;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -23,22 +22,25 @@ import org.javasmiths.encodingfarm.worker.web.facade.JobFacade;
 @RequestScoped
 @Named("job")
 public class JobView {
-    
-    private String video_path;
     private String status;
     private List<JobDto> list = new LinkedList<>();
-    
+
     @EJB
     private JobFacade facade;
     
- 
-
-    public String getVideo_path() {
-        return video_path;
+    @PostConstruct
+    private void init() {
+        list = facade.listAll();
+    }
+    
+    public void remove(String id) {
+        facade.remove(id);
+        list = facade.listAll();
     }
 
-    public void setVideo_path(String video_path) {
-        this.video_path = video_path;
+    public void create(ActionEvent actionEvent) {
+        facade.create(status);
+        list = facade.listAll();
     }
 
     public String getStatus() {
@@ -64,6 +66,5 @@ public class JobView {
     public void setFacade(JobFacade facade) {
         this.facade = facade;
     }
-      
-      
+
 }

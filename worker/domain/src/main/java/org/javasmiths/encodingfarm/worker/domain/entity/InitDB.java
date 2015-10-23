@@ -30,12 +30,16 @@ public class InitDB {
         List<Object> objectsToSave = new LinkedList<>();
 
         RequestEntity re1 = new RequestEntity();
-        re1.setVideo_path("C:/videos/001.mp4");
+        re1.setPath("C:/videos/001.mp4");
         objectsToSave.add(re1);
 
         RequestEntity re2 = new RequestEntity();
-        re2.setVideo_path("C:/videos/002.mp4");
+        re2.setPath("C:/videos/002.mp4");
         objectsToSave.add(re2);
+        
+        RequestEntity re3 = new RequestEntity();
+        re3.setPath("C:/videos/003.avi");
+        objectsToSave.add(re3);
 
         JobEntity je1 = new JobEntity();
         je1.setRequest(re1);
@@ -46,6 +50,15 @@ public class InitDB {
         je2.setRequest(re2);
         je2.setStatus("In Progress");
         objectsToSave.add(je2);
+        
+        JobEntity je3 = new JobEntity();
+        je3.setRequest(re2);
+        je3.setStatus("Done");
+        objectsToSave.add(je3);
+        
+        JobEntity je4 = new JobEntity();
+        je4.setStatus("Interrupted");
+        objectsToSave.add(je4);
 
         for (Object o : objectsToSave) {
             em.persist(o);

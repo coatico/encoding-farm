@@ -19,14 +19,13 @@ import org.javasmiths.encodingfarm.worker.web.facade.RequestFacade;
  */
 @Path("requests")
 public class RequestController {
-    
-  
-	@EJB
-	private RequestFacade facade;
-	
-	@GET
-	@Produces({"application/json", "application/xml"})
-	public List<RequestDto> listAll(){
-		return facade.listAll();
-	}
+
+    @EJB
+    private RequestFacade facade;
+
+    @GET
+    @Produces({"application/json", "application/xml"})
+    public List<RequestDto> listAll() {
+        return facade.listAll();
+    }
 }

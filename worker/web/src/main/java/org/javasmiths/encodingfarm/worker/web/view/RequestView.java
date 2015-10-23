@@ -7,7 +7,6 @@ package org.javasmiths.encodingfarm.worker.web.view;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -21,42 +20,36 @@ import org.javasmiths.encodingfarm.worker.web.facade.RequestFacade;
  * @author Quintendockx
  */
 @RequestScoped
-@Named("request")
+@Named("requests")
 public class RequestView {
     
+    private String path;
+    private List<RequestDto> list = new LinkedList<>();
+
+    @EJB
+    private RequestFacade facade;
+
+    @PostConstruct
+    private void init() {
+        list = facade.listAll();
+    }
     
-     private String id;
-     private String video_path;
-     private List <RequestDto> list= new LinkedList<>();
-
-@EJB
-	private RequestFacade facade;
-	
-
-	@PostConstruct
-	public void init(){
-		list = facade.listAll();
-	}
-	
-	public void create(ActionEvent actionEvent){
-		facade.create(id);
-		list = facade.listAll();
-	}
-
-    public String getId() {
-        return id;
+    public void remove(String id) {
+        facade.remove(id);
+        list = facade.listAll();
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void create(ActionEvent actionEvent) {
+        facade.create(path);
+        list = facade.listAll();
     }
 
-    public String getVideo_path() {
-        return video_path;
+    public String getPath() {
+        return path;
     }
 
-    public void setVideo_path(String video_path) {
-        this.video_path = video_path;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public List<RequestDto> getList() {
@@ -74,8 +67,5 @@ public class RequestView {
     public void setFacade(RequestFacade facade) {
         this.facade = facade;
     }
-
-
-
 
 }
