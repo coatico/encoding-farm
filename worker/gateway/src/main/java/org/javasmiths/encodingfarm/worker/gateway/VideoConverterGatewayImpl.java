@@ -28,9 +28,9 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
  */
 public class VideoConverterGatewayImpl extends Observable implements  VideoConverterGateway {
  
-    private final String ffmpeg = "../lib/ffmpeg.exe";
     private final String input = "../lib/video.mp4";
     private final String output = "../lib/samson";
+    private String ffmpeg = "../lib/ffmpeg.exe";
 
     private double progressPercentage = 0 ;
     @Override
@@ -38,6 +38,10 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
         DateFormat parseFormat = new SimpleDateFormat("HH:mm:ss.SS");
         Date date = new Date();
+        
+        if (System.getProperty("os.name").startsWith("Mac")) {
+            ffmpeg = "../lib/ffmpeg";
+        }
 
         try {
             File ffmpegFile = new File(ffmpeg);
