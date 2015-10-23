@@ -4,16 +4,13 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:p="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
     <ui:composition template="./common/template.xhtml">
         <ui:define name="title">
             Handle Jobs
         </ui:define>
         <ui:define name="content">
-			<b:row>
-				<h1>View Component</h1>
-			</b:row>
             <b:row>
 				<b:panel>
 					<h:form>
@@ -27,7 +24,6 @@
 							<p:column headerText="Id">
 								<h:outputText value="#{jobs.id}" />
 							</p:column>
-
 							<p:column headerText="jobTitle">
                                                             <h:outputText value="#{jobs.jobTitle}" />
 							</p:column>
@@ -39,13 +35,14 @@
 					</h:form>
 				</b:panel>
 
-			</b:row>
-			<b:row>
-				<h1>Rest Controller</h1>
-				<b:panel>
-					<a href="rest/jobs/" target="blank">json >> LocationController</a>
-				</b:panel>
-			</b:row>
+
+            </b:row>
+            <b:row>
+                <h1>Rest Controller</h1>
+                <b:panel>
+                    <a href="rest/jobs/" target="blank">json >> LocationController</a>
+                </b:panel>
+            </b:row>
         </ui:define>
     </ui:composition>
 </html>
