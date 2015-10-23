@@ -5,29 +5,32 @@
  */
 package org.javasmiths.encodingfarm.distributor.web.dto;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  *
  * @author thomas
  */
 public class VideoDto {
 
-    private String id;
-    private String name;
+	private List<VideoListDetailDto> list=new LinkedList<>();
+	private VideoDetailDto detail = new VideoDetailDto();
 
-    public String getName() {
-        return name;
-    }
+	public List<VideoListDetailDto> getList() {
+		return list;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setList(List<VideoListDetailDto> list) {
+		this.list = list;
+	}
 
-    public String getId() {
-        return id;
-    }
+	public VideoDetailDto getDetail() {
+		return detail;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setDetail(VideoDetailDto detail) {
+		this.detail = detail;
+	}
 
 }

@@ -18,4 +18,6 @@ public interface VideoFacade {
 
     public List<VideoDto> listAll();
 
+	public VideoDto loadVideoOverviewPage(String editId, String deleteId);
+
 }
