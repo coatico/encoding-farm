@@ -30,12 +30,12 @@ public class WorkerFacadeImpl implements WorkerFacade {
 
     @Override
     public void delete(String name) {
-        workerService.deleteWorker(name);
+        //workerService.deleteWorker(name);
     }
 
     @Override
     public void status(String name) {
-        workerService.statusWorker(name);
+        //workerService.statusWorker(name);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class WorkerFacadeImpl implements WorkerFacade {
         for (WorkerEntity worker : workersE) {
             WorkerListDetailDto dto = new WorkerListDetailDto();
             dto.setId(worker.getId());
-            dto.setName(worker.getName());
+            //dto.setName(worker.getName());
             dtos.add(dto);
         }
         return dtos;
