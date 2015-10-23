@@ -27,7 +27,7 @@
 							<p:column headerText="jobTitle">
                                                             <h:outputText value="#{jobs.jobTitle}" />
 							</p:column>
-                                                    <p:column headerText="Delete">
+                                                    <p:column headerText="Actions">
                                                         <p:commandButton value="Delete" update="@form" actionListener="#{job.delete(jobs.id)}" />
                                                     </p:column>
                                                               
