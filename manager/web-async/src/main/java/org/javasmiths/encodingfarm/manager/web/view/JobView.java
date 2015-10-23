@@ -67,6 +67,7 @@ public class JobView implements Serializable {
 
     public void deleteById(String id) {
         facade.delete(id);
+        list = facade.listAll();
     }
 
 }
