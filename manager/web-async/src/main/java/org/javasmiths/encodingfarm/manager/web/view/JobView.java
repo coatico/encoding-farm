@@ -20,34 +20,27 @@ import org.javasmiths.encodingfarm.manager.web.facade.JobFacade;
 @Named("job")
 public class JobView implements Serializable {
 
-    private String jobTitle;
-    private String deleteId;
-    private List<JobDto> list = new LinkedList<>();
+	private String jobTitle;
+	private List<JobDto> list = new LinkedList<>();
+		
+	@EJB
+	private JobFacade facade;
+	
+	@PostConstruct
+	public void init(){
+		list = facade.listAll();
+	}
+	
+	public void create(ActionEvent actionEvent){
+		facade.create(jobTitle);
+		list = facade.listAll();
+	}
+        
+        public void delete(String id){
+            facade.delete(id);
+            list = facade.listAll();
+        }
 
-    @EJB
-    private JobFacade facade;
-
-    @PostConstruct
-    public void init() {
-        list = facade.listAll();
-    }
-
-    public void create(ActionEvent actionEvent) {
-        facade.create(jobTitle);
-        list = facade.listAll();
-    }
-
-    public void delete(ActionEvent actionEvent) {
-        facade.delete(deleteId);
-    }
-
-    public String getDeleteId() {
-        return deleteId;
-    }
-
-    public void setDeleteId(String deleteId) {
-        this.deleteId = deleteId;
-    }
 
     public String getjobTitle() {
         return jobTitle;
@@ -71,3 +64,4 @@ public class JobView implements Serializable {
     }
 
 }
+	

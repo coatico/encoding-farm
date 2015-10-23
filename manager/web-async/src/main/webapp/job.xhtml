@@ -12,29 +12,29 @@
         </ui:define>
         <ui:define name="content">
             <b:row>
-                <h1>View Component</h1>
-            </b:row>
-            <b:row>
-                <b:panel>
-                    <h:form id="jobform">
-                        Add Job <p:inputText value="#{job.jobTitle}"  label="Enter job here" id="job_crt_txt"/> 
-                        <p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
-                        <p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
-                        <hr/>
-                        <p:dataTable var="jobs" value="#{job.list}" id="jobtable">
-                            <p:column headerText="Id">
-                                <h:outputText value="#{jobs.id}" />
-                            </p:column>
+				<b:panel>
+					<h:form>
+                                            Add Job <p:inputText value="#{job.jobTitle}"  label="Enter job here" id="job_crt_txt"/> 
+						<p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
+						<p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
+						<hr/>
+                                                
+						<hr/>
+						<p:dataTable var="jobs" value="#{job.list}">
+							<p:column headerText="Id">
+								<h:outputText value="#{jobs.id}" />
+							</p:column>
+							<p:column headerText="jobTitle">
+                                                            <h:outputText value="#{jobs.jobTitle}" />
+							</p:column>
+                                                    <p:column headerText="Delete">
+                                                        <p:commandButton value="Delete" update="@form" actionListener="#{job.delete(jobs.id)}" />
+                                                    </p:column>
+                                                              
+						</p:dataTable>
+					</h:form>
+				</b:panel>
 
-                            <p:column headerText="jobTitle">
-                                <h:outputText value="#{jobs.jobTitle}" />
-                            </p:column>
-                            <p:column headerText="Action">
-                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Delete" ajax="true" update="@form" actionListener="#{job.deleteById(jobs.id)}"/>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </b:panel>
 
             </b:row>
             <b:row>

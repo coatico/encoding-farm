@@ -17,10 +17,10 @@ import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
 public interface JobDao {
     public void save(JobEntity dataEntity);
     
-    public void deleteById(String id);
+    public void delete(String id);
     
-     public JobEntity findById(String id);
+    public JobEntity findById(String id);
     
-		public List<JobEntity> listAll();
+    public List<JobEntity> listAll();
 
 }
