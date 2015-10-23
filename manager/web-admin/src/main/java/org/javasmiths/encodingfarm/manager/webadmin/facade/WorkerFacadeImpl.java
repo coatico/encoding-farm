@@ -32,11 +32,10 @@ public class WorkerFacadeImpl implements WorkerFacade {
     public void delete(String id) {
         workerService.deleteWorker(id);
     }
-
-    /*@Override
-    public void status(String name) {
+        public void disable(String name) {
         workerService.disableWorker(name);
-    }*/
+    }
+
 
     @Override
     public List<WorkerListDetailDto> listAll() {

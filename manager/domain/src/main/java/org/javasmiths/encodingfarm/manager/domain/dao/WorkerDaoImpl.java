@@ -31,12 +31,4 @@ public class WorkerDaoImpl extends BaseDaoImpl<WorkerEntity> implements WorkerDa
         return WorkerEntity.class;
     }
 
-    public WorkerEntity findById(String id) {
-        return em.find(WorkerEntity.class, id);
-    }
-
-    public void deleteById(String id) {
-        em.remove(findById(id));
-    }
-
 }

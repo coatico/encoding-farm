@@ -18,7 +18,7 @@ public interface WorkerService {
 
     WorkerEntity deleteWorker(String id);
 
-    //WorkerEntity disableWorker(boolean status);
+    WorkerEntity disableWorker(String name);
 
     List<WorkerEntity> listAll();
 }

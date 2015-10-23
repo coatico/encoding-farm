@@ -31,12 +31,12 @@ public abstract class BaseDaoImpl<E> {
     public void deleteById(String id) {
         em().remove(findById(id));
     }
-   /* public void disable(boolean disabled){
-        if(disabled == true){
-            
-        }
-        
-    }*/
+
+
+
+    public void disableWorker(String name) {
+
+    }
 
     public List<E> listAll() {
         CriteriaQuery cq = em().getCriteriaBuilder().createQuery();

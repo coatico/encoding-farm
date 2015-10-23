@@ -38,11 +38,18 @@ public class WorkerServiceImpl implements WorkerService {
         return null;
     }
 
-  /* @Override
-    public WorkerEntity disabledWorker(String name) {
+    @Override
+    public WorkerEntity disableWorker(String name) {
+        WorkerEntity workerEntity = new WorkerEntity();
+        workerEntity.setName(dto.getDetail().getName());
+        if (dto.getDetail().isDisabled() == true) 
+            return workerEntity;
+        else{
+            return null;
+        }
+       
         
-        
-    }*/
+    }
 
     @Override
     public List<WorkerEntity> listAll() {
