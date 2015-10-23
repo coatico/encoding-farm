@@ -12,5 +12,9 @@ public interface JobDao {
     public void save(JobEntity dataEntity);
 
     public List<JobEntity> listAll();
+    
+    public JobEntity findById(String id);
+    
+    public void delete(JobEntity e);
 
 }

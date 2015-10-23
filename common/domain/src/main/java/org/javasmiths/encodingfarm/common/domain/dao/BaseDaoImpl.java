@@ -15,15 +15,20 @@ import javax.persistence.criteria.CriteriaQuery;
  * @author thomas
  */
 public abstract class BaseDaoImpl<E> {
-    
+
     protected abstract EntityManager em();
-	
-	 protected abstract Class<E> entityClass();
+
+    protected abstract Class<E> entityClass();
 
     public void save(E dataEntity) {
         em().persist(dataEntity);
     }
-	public List<E> listAll() {
+    
+    public void delete(E e) {
+        em().remove(e);
+    }
+
+    public List<E> listAll() {
         CriteriaQuery cq = em().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass()));
         Query q = em().createQuery(cq);

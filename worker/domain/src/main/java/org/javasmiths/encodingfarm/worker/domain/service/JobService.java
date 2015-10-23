@@ -7,15 +7,16 @@ package org.javasmiths.encodingfarm.worker.domain.service;
 
 import java.util.List;
 import org.javasmiths.encodingfarm.worker.domain.entity.JobEntity;
-import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
 
 /**
  *
  * @author Quintendockx
  */
 public interface JobService {
- 
-        JobEntity registerJob(RequestEntity requestEntity, String videoPath);
-	
-	List<JobEntity> listAll();
+
+    JobEntity registerJob(String status);
+
+    List<JobEntity> listAll();
+    
+    public void remove(String id);
 }

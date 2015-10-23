@@ -33,5 +33,9 @@ public class VideoServiceImpl implements VideoService {
     public List<VideoEntity> listAll() {
         return dao.listAll();
     }
+	
+	public void remove(String id) {
+		dao.delete(dao.findById(id));
+	}
 
 }

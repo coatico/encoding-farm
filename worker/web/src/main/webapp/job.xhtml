@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition template="common/template.xhtml">
+        <ui:define name="title">
+            Handle jobs
+        </ui:define>
+        <ui:define name="content">
+            <b:row>
+                <h1>View Component</h1>
+            </b:row>
+            <b:row>
+                <b:panel>
+                    <h:form>
+                        Add Job <p:inputText value="#{job.status}"  label="Enter job status here" id="job_crt_txt"/> 
+                        <p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
+                        <p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
+                        <hr/>
+                        <p:dataTable var="j" value="#{job.list}">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{j.id}" />
+                            </p:column>
+                            <p:column headerText="Status">
+                                <h:outputText value="#{j.status}" />
+                            </p:column>
+                            <p:column headerText="Request">
+                                <h:outputText value="#{j.reqId}" />
+                            </p:column>
+                            <p:column headerText="Actions">
+                                <p:commandButton value="Delete" update="@form" actionListener="#{job.remove(j.id)}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </b:panel>
+
+            </b:row>
+            <b:row>
+                <h1>Rest Controller</h1>
+                <b:panel>
+                    <a href="worker/jobs" target="blank" >json >> JobController</a>
+                </b:panel>
+            </b:row>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -17,5 +17,7 @@ public interface VideoFacade {
     public void create(String name);
 
     public List<VideoDto> listAll();
+	
+	public void remove(String id);
 
 }

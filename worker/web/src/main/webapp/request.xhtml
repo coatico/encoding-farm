@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
-    <ui:composition template="./common/template.xhtml">
+    <ui:composition template="common/template.xhtml">
         <ui:define name="title">
             Handle Requests
         </ui:define>
@@ -17,17 +17,22 @@
             <b:row>
                 <b:panel>
                     <h:form>
-                        Add Request <p:inputText value="#{Request.video_path}"  label="Enter video_path here" id="request_crt_txt"/> 
+                        Add Request <p:inputText value="#{requests.path}"  label="Enter video_path here" id="request_crt_txt"/> 
                         <p:watermark for="request_crt_txt" value="Enter request here" id="watermark" />
-                        <p:commandButton value="Create" update="@form" actionListener="#{request.create}" />
+                        <p:commandButton value="Create" update="@form" actionListener="#{requests.create}" />
                         <hr/>
-                        <p:dataTable var="req" value="#{request.list}">
+                        <p:dataTable var="req" value="#{requests.list}">
                             <p:column headerText="Id">
                                 <h:outputText value="#{req.id}" />
                             </p:column>
-
-                            <p:column headerText="Video_path">
-                                <h:outputText value="#{req.video_path}" />
+                            <p:column headerText="Video Path">
+                                <h:outputText value="#{req.path}" />
+                            </p:column>
+                            <p:column headerText="Jobs" width="22%">
+                                <h:outputText value="#{req.jobs}" />
+                            </p:column>
+                            <p:column headerText="Actions">
+                                <p:commandButton value="Delete" update="@form" actionListener="#{requests.remove(req.id)}"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -37,7 +42,7 @@
             <b:row>
                 <h1>Rest Controller</h1>
                 <b:panel>
-                    <a href="rest/requests/" target="blank" >json >> RequestController</a>
+                    <a href="worker/requests" target="blank" >json >> RequestController</a>
                 </b:panel>
             </b:row>
         </ui:define>
