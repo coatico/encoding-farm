@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.javasmiths.encodingfarm.distributor.domain.entity;
 
 import javax.persistence.Column;
@@ -10,10 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
-/**
- *
- * @author thomas
- */
 @Entity
 @Table(name = "VIDEOS")
 public class VideoEntity extends BaseTrackableEntity {
@@ -23,6 +14,7 @@ public class VideoEntity extends BaseTrackableEntity {
     private String name;
     private String path;
     private String thumbnail;
+    private String description;
     
     public String getName() {
         return name;
@@ -47,5 +39,15 @@ public class VideoEntity extends BaseTrackableEntity {
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+ 
+ 
 
 }

@@ -30,12 +30,14 @@ public class InitDbStartup {
         videoEntity.setName("test");
         videoEntity.setPath("test/test");
         videoEntity.setThumbnail("thumbnails/test");
+        videoEntity.setDescription("this is a description");
         objectsToSave.add(videoEntity);
         
         VideoEntity videoEntity1 = new VideoEntity();
         videoEntity1.setName("test2");
         videoEntity1.setPath("test2/test2");
         videoEntity1.setThumbnail("thumbnails/test2");
+        videoEntity1.setDescription("this is a second description");
         objectsToSave.add(videoEntity1);
         
         for (Object objectsToSave1 : objectsToSave){
