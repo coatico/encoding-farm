@@ -8,10 +8,6 @@ import org.javasmiths.encodingfarm.distributor.domain.entity.VideoEntity;
 import org.javasmiths.encodingfarm.distributor.domain.service.VideoService;
 import org.javasmiths.encodingfarm.distributor.web.dto.VideoDto;
 
-/**
- *
- * @author thomas
- */
 @Stateless
 public class VideoFacadeImpl implements VideoFacade {
 
@@ -19,8 +15,8 @@ public class VideoFacadeImpl implements VideoFacade {
 	private VideoService videoService;
 
 	@Override
-	public void create(String name, String path, String thumbnail) {
-		videoService.registerVideo(name, path, thumbnail);
+	public void create(String name, String path, String thumbnail, String description) {
+		videoService.registerVideo(name, path, thumbnail, description);
 	}
 
 	@Override
@@ -33,6 +29,7 @@ public class VideoFacadeImpl implements VideoFacade {
 			dto.setName(video.getName());
                         dto.setPath(video.getPath());
                         dto.setThumbnail(video.getThumbnail());
+                        dto.setDescription(video.getDescription());
 			dtos.add(dto);
 		}
 		return dtos;

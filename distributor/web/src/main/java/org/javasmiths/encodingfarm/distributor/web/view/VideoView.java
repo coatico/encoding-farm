@@ -11,10 +11,6 @@ import javax.inject.Named;
 import org.javasmiths.encodingfarm.distributor.web.dto.VideoDto;
 import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacade;
 
-/**
- *
- * @author thomas
- */
 @RequestScoped
 @Named("video")
 public class VideoView {
@@ -22,6 +18,7 @@ public class VideoView {
     private String name;
     private String path;
     private String thumbnail;
+    private String description;
     
     private List<VideoDto> list = new LinkedList<>();
 
@@ -39,7 +36,7 @@ public class VideoView {
 	}
 
     public void create(ActionEvent actionEvent) {
-        facade.create(name, path, thumbnail);
+        facade.create(name, path, thumbnail, description);
         list = facade.listAll();
     }
 
@@ -74,5 +71,14 @@ public class VideoView {
     public void setThumbail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
 
 }

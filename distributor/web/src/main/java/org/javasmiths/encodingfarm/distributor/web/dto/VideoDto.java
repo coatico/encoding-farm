@@ -15,6 +15,7 @@ public class VideoDto {
     private String name;
     private String path;
     private String thumbnail;
+    private String description;
     
     public String getName() {
         return name;
@@ -47,5 +48,15 @@ public class VideoDto {
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
 
 }

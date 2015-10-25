@@ -22,7 +22,7 @@
                         <p:commandButton value="Create" update="@form" actionListener="#{video.create}" />
                         <hr/>
                         <p:dataTable id="tabel" var="vid" value="#{video.list}">
-                            <p:column headerText="Id" id="id">
+                            <p:column headerText="Id" style="visibility: hidden">
                                 <h:outputText value="#{vid.id}" />
                             </p:column>
 
@@ -34,6 +34,9 @@
                             </p:column>
                             <p:column headerText="thumbnail">
                                 <h:outputText value="#{vid.thumbnail}" />
+                            </p:column>
+                            <p:column headerText="description">
+                                <h:outputText value="#{vid.description}" />
                             </p:column>
                             <p:column headerText="Action">
 							<p:commandButton value="delete" update="@form" actionListener="#{video.remove(vid.id)}"/>
