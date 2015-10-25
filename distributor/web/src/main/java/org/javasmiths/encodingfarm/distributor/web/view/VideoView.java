@@ -16,7 +16,7 @@ import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacade;
 public class VideoView {
 
     private String name;
-    private String path;
+    private String videopath;
     private String thumbnail;
     private String description;
     
@@ -36,7 +36,7 @@ public class VideoView {
 	}
 
     public void create(ActionEvent actionEvent) {
-        facade.create(name, path, thumbnail, description);
+        facade.create(name, videopath, thumbnail, description);
         list = facade.listAll();
     }
 
@@ -56,13 +56,15 @@ public class VideoView {
         this.list = list;
     }
 
-    public String getPath() {
-        return path;
+    public String getVideopath() {
+        return videopath;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setVideopath(String videopath) {
+        this.videopath = videopath;
     }
+
+ 
 
     public String getThumbnail() {
         return thumbnail;

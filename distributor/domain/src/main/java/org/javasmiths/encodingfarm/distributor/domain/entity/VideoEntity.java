@@ -12,7 +12,7 @@ public class VideoEntity extends BaseTrackableEntity {
     //lol
     @Column
     private String name;
-    private String path;
+    private String videopath;
     private String thumbnail;
     private String description;
     
@@ -24,13 +24,14 @@ public class VideoEntity extends BaseTrackableEntity {
         this.name = name;
     }
 
-    public String getPath() {
-        return path;
+    public String getVideopath() {
+        return videopath;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setVideopath(String videopath) {
+        this.videopath = videopath;
     }
+
 
     public String getThumbnail() {
         return thumbnail;

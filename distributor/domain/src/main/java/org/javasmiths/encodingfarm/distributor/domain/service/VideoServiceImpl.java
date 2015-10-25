@@ -13,10 +13,10 @@ public class VideoServiceImpl implements VideoService {
     private VideoDao dao;
 
     @Override
-    public VideoEntity registerVideo(String name, String path, String thumbnail, String description) {
+    public VideoEntity registerVideo(String name, String videopath, String thumbnail, String description) {
         VideoEntity videoEntity = new VideoEntity();
         videoEntity.setName(name);
-        videoEntity.setPath(path);
+        videoEntity.setVideopath(videopath);
         videoEntity.setThumbnail(thumbnail);
         videoEntity.setDescription(description);
         dao.save(videoEntity);

@@ -19,12 +19,13 @@
                     <h:form>
                         Add Video 
                         <p:inputText value="#{video.name}"  label="Enter videoname here" id="video_crt_txt"/> 
-                        <!--<p:inputText value="#{video.path}"  label="Enter path here" id="video_crt_path"/> -->
-                        <!--<p:inputText value="#{video.thumbnail}"  label="Enter thumbnailpath here" id="video_crt_thumbnail"/> -->
+                        <!--<p:inputText value="#{video.videopath}"  label="Enter path here" id="video_crt_path"/>-->
+                        <!--<p:inputText value="#{video.thumbnail}"  label="Enter thumbnailpath here" id="video_crt_thumbnail"/>-->
                         <p:inputTextarea value="#{video.description}" label="Write a description" id="video_crt_desc"/>
+                        
                         <p:watermark for="video_crt_txt" value="Enter videoname here" id="watermark" />
-                        <!--<p:watermark for="video_crt_path" value="Enter path here" id="watermark2" />-->
-                       <!-- <p:watermark for="video_crt_thumbnail" value="Enter thumbnailpath here" id="watermark3" />-->
+                       <!-- <p:watermark for="video_crt_path" value="Enter path here" id="watermark2" />-->
+                      <!-- <p:watermark for="video_crt_thumbnail" value="Enter thumbnailpath here" id="watermark3" />-->
                         <p:watermark for="video_crt_desc" value="Write a description" id="watermark4" />
                         
                         <p:commandButton value="Create" update="@form" actionListener="#{video.create}" />
@@ -37,8 +38,8 @@
                             <p:column headerText="Name">
                                 <h:outputText value="#{vid.name}" />
                             </p:column>
-                            <p:column headerText="path">
-                                <h:outputText value="#{vid.path}" />
+                            <p:column headerText="videopath">
+                                <h:outputText value="#{vid.videopath}" />
                             </p:column>
                             <p:column headerText="thumbnail">
                                 <h:outputText value="#{vid.thumbnail}" />
@@ -47,7 +48,7 @@
                                 <h:outputText value="#{vid.description}" />
                             </p:column>
                             <p:column headerText="Action">
-                                <p:commandButton value="delete" update="@form" actionListener="#{video.remove(vid.id)}"/>
+                                <p:commandButton update="@form" actionListener="#{video.remove(vid.id)}" icon="ui-icon-trash"/>
         <!--<a href="video.xhtml?edit=${vid.id}"><i class="fa fa-pencil"></i></a>
         <a href="video.xhtml?delete=${vid.id}"><i class="fa fa-trash-o"></i></a>-->
                             </p:column> 

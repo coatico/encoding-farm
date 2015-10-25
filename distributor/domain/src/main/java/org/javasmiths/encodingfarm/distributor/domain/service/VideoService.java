@@ -5,7 +5,7 @@ import org.javasmiths.encodingfarm.distributor.domain.entity.VideoEntity;
 
 public interface VideoService {
 
-    VideoEntity registerVideo(String name, String path, String thumbnail, String description);
+    VideoEntity registerVideo(String name, String videopath, String thumbnail, String description);
 
     List<VideoEntity> listAll();
 	
