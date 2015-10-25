@@ -21,8 +21,8 @@
                         <p:inputText value="#{video.name}"  label="Enter videoname here" id="video_crt_name" /> 
                         <p:selectOneMenu value="#{video.videopath}">
                             <f:selectItem itemLabel="Choose a videopath"/>
-                            <f:selectItem itemLabel="Videos/1" itemValue="Videos/1"/>
-                            <f:selectItem itemLabel="Videos/1" itemValue="Videos/2"/>
+                            <f:selectItem itemLabel="Videos/1.mp4" itemValue="Videos/1.mp4"/>
+                            <f:selectItem itemLabel="Videos/2.mp4" itemValue="Videos/2.mp4"/>
                         </p:selectOneMenu>
                         <p:selectOneMenu value="#{video.thumbnail}">
                             <f:selectItem itemLabel="Choose a thumbnailpath"/>
@@ -35,6 +35,9 @@
                         <p:watermark for="video_crt_desc" value="Write a description" id="watermark4" />
                         
                         <p:commandButton value="Create" update="@form" actionListener="#{video.create}" />
+                        <!--<video width="420" height="315">Testen of het path werkte.
+                            <source src="Videos/1.mp4" type="Video/mp4"/>
+                        </video>-->
                         <hr/>
                         <p:dataTable id="tabel" var="vid" value="#{video.list}">
                             <p:column headerText="Id" style="display: none">
