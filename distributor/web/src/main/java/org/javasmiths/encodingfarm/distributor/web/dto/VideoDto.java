@@ -13,7 +13,9 @@ public class VideoDto {
 
     private String id;
     private String name;
-
+    private String path;
+    private String thumbnail;
+    
     public String getName() {
         return name;
     }
@@ -28,6 +30,22 @@ public class VideoDto {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
 }

@@ -20,6 +20,9 @@ import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacade;
 public class VideoView {
 
     private String name;
+    private String path;
+    private String thumbnail;
+    
     private List<VideoDto> list = new LinkedList<>();
 
     @EJB
@@ -36,7 +39,7 @@ public class VideoView {
 	}
 
     public void create(ActionEvent actionEvent) {
-        facade.create(name);
+        facade.create(name, path, thumbnail);
         list = facade.listAll();
     }
 
@@ -54,6 +57,22 @@ public class VideoView {
 
     public void setList(List<VideoDto> list) {
         this.list = list;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
 }

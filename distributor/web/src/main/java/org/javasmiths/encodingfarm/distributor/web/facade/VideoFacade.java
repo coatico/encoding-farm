@@ -14,7 +14,7 @@ import org.javasmiths.encodingfarm.distributor.web.dto.VideoDto;
  */
 public interface VideoFacade {
 
-    public void create(String name);
+    public void create(String name, String path, String thumbnail);
 
     public List<VideoDto> listAll();
 	

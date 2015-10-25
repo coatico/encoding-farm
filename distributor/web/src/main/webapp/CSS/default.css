@@ -27,3 +27,6 @@ a:hover{
     background-color: #121B2E;
     padding: 10px;
 }
+id{
+    display:none;
+}
