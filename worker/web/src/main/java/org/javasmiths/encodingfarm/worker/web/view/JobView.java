@@ -10,10 +10,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.javasmiths.encodingfarm.worker.web.dto.JobDto;
 import org.javasmiths.encodingfarm.worker.web.facade.JobFacade;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -66,5 +69,17 @@ public class JobView {
     public void setFacade(JobFacade facade) {
         this.facade = facade;
     }
+    
+        public void onEdit(RowEditEvent event) {  
+              
+        FacesMessage msg = new FacesMessage("Item Edited",((JobDto) event.getObject()).getId());  
+        FacesContext.getCurrentInstance().addMessage(null, msg);  
+    }  
+       
+    public void onCancel(RowEditEvent event) {  
+        FacesMessage msg = new FacesMessage("Editing Cancelled");   
+        FacesContext.getCurrentInstance().addMessage(null, msg); 
+        
+    } 
 
 }
