@@ -64,8 +64,6 @@ public class VideoView {
         this.videopath = videopath;
     }
 
- 
-
     public String getThumbnail() {
         return thumbnail;
     }
