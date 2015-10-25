@@ -22,9 +22,11 @@ public class VideoServiceImpl implements VideoService {
     private VideoDao dao;
 
     @Override
-    public VideoEntity registerVideo(String name) {
+    public VideoEntity registerVideo(String name, String path, String thumbnail) {
         VideoEntity videoEntity = new VideoEntity();
         videoEntity.setName(name);
+        videoEntity.setPath(path);
+        videoEntity.setThumbnail(thumbnail);
         dao.save(videoEntity);
         return videoEntity;
     }
