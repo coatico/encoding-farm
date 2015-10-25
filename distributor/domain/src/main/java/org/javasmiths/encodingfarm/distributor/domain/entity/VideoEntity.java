@@ -9,7 +9,6 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 @Table(name = "VIDEOS")
 public class VideoEntity extends BaseTrackableEntity {
 
-    //lol
     @Column
     private String name;
     private String videopath;
@@ -32,7 +31,6 @@ public class VideoEntity extends BaseTrackableEntity {
         this.videopath = videopath;
     }
 
-
     public String getThumbnail() {
         return thumbnail;
     }
@@ -49,6 +47,4 @@ public class VideoEntity extends BaseTrackableEntity {
         this.description = description;
     }
  
- 
-
 }

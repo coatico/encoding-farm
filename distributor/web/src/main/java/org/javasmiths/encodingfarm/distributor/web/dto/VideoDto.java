@@ -31,7 +31,7 @@ public class VideoDto {
     public void setVideopath(String videopath) {
         this.videopath = videopath;
     }
-    
+
     public String getThumbnail() {
         return thumbnail;
     }

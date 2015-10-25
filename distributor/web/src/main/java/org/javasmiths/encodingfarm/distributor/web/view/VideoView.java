@@ -19,7 +19,7 @@ public class VideoView {
     private String videopath;
     private String thumbnail;
     private String description;
-    
+
     private List<VideoDto> list = new LinkedList<>();
 
     @EJB
@@ -29,11 +29,11 @@ public class VideoView {
     public void init() {
         list = facade.listAll();
     }
-	
-	public void remove(String id) {
-		facade.remove(id);
-		list = facade.listAll();
-	}
+
+    public void remove(String id) {
+        facade.remove(id);
+        list = facade.listAll();
+    }
 
     public void create(ActionEvent actionEvent) {
         facade.create(name, videopath, thumbnail, description);
@@ -68,7 +68,7 @@ public class VideoView {
         return thumbnail;
     }
 
-    public void setThumbail(String thumbnail) {
+    public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
 
@@ -79,6 +79,5 @@ public class VideoView {
     public void setDescription(String description) {
         this.description = description;
     }
-    
 
 }
