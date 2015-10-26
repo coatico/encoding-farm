@@ -7,6 +7,7 @@ package org.javasmiths.encodingfarm.web.view;
 
 import java.util.LinkedList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.event.ActionEvent;
@@ -18,18 +19,52 @@ import org.javasmiths.encodingfarm.web.facade.TaskFacade;
 
 
 @RequestScoped
-@Named("Tasks")
+@Named("tasks")
 public class TaskView {
 	private List<TaskDto> list = new LinkedList<>();
 	private String name;
 	
+	private String title;
+	private String filePath;
+	private String description;
+	
 	@EJB
 	private TaskFacade facade;
 	
-	public void create(ActionEvent actionEvent){
-		facade.create(name);
+	//@PostConstruct
+	//public void init(){
+	//	list = facade.listAll();
+	//}
+	
+	public void createTask(ActionEvent actionEvent){
+		facade.createTask(title, filePath, description);
 		list = facade.listAll();
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	
 
 	public List<TaskDto> getList() {

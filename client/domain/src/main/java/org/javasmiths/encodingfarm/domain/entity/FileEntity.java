@@ -21,10 +21,15 @@ public class FileEntity extends BaseTrackableEntity implements Serializable {
 	
         @OneToMany(mappedBy = "fileEntity", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
         private List<TaskEntity> taskList;
-	@Column
-	private String filePath;
+		private String filePath;
         private String fileTitle;
         private String fileDescription;
+		
+	public FileEntity(String title, String filePath, String desc){
+		this.filePath = filePath;
+		this.fileDescription = desc;
+		this.fileTitle = title;
+	}	
 	
 	public String getFilePath() {
 		return filePath;
@@ -34,28 +39,28 @@ public class FileEntity extends BaseTrackableEntity implements Serializable {
 		this.filePath = filePath;
 	}
 
-        public List<TaskEntity> getTaskList() {
-            return taskList;
-        }
+    public List<TaskEntity> getTaskList() {
+        return taskList;
+    }
 
-        public void setTaskList(List<TaskEntity> taskList) {
-            this.taskList = taskList;
-        }   
+    public void setTaskList(List<TaskEntity> taskList) {
+        this.taskList = taskList;
+    }   
 
-        public String getFileTitle() {
-            return fileTitle;
-        }
+    public String getFileTitle() {
+        return fileTitle;
+    }
 
-        public void setFileTitle(String fileTitle) {
-            this.fileTitle = fileTitle;
-        }
+    public void setFileTitle(String fileTitle) {
+        this.fileTitle = fileTitle;
+    }
 
-        public String getFileDescription() {
-            return fileDescription;
-        }
+    public String getFileDescription() {
+        return fileDescription;
+    }
 
-        public void setFileDescription(String fileDescription) {
-            this.fileDescription = fileDescription;
-        }
+    public void setFileDescription(String fileDescription) {
+        this.fileDescription = fileDescription;
+    }
 	
 }

@@ -19,6 +19,11 @@ public class TaskEntity extends BaseTrackableEntity implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
         private FileEntity fileEntity;
         private boolean taskState;
+		
+	public TaskEntity(FileEntity fileEntity){
+		this.fileEntity = fileEntity;
+		this.taskState = false;
+	}
 
 	public FileEntity getFileEntity() {
 		return fileEntity;

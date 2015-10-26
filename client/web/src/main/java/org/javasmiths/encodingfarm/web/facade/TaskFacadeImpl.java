@@ -21,10 +21,10 @@ public class TaskFacadeImpl implements TaskFacade {
 	private TaskService taskService;
 
 	@Override
-	public void create(String name) {
-		taskService.registerTask();
+	public void createTask(String title, String filePath, String description) {
+		taskService.registerTask(title, filePath, description);
 	}
-
+	
 	@Override
 	public List<TaskDto> listAll() {
 		List<TaskDto> dtos = new LinkedList<>();

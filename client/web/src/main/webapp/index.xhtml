@@ -17,10 +17,8 @@
 			<b:panel>
 				<h:form >
 					<p:growl id="messages" showDetail="true" />
- 
-					<p:fileUpload value="#{taskCreationView.file}" mode="simple" />
- 
-					<p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" disabled="true" />
+					<p:inputText value="#{tasks.title}" label="Titel"/>	<p:inputText value="#{tasks.filePath}" label="filepath"/> <p:inputText value="#{tasks.description}" label="description"/>
+					<p:commandButton value="Create" update="@form" actionListener="#{tasks.createTask}" />
 				</h:form>
 			</b:panel>
 				

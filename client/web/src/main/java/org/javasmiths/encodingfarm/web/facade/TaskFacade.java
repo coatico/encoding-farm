@@ -11,7 +11,7 @@ import org.javasmiths.encodingfarm.web.dto.TaskDto;
 
 
 public interface TaskFacade {
-	public void create(String name);
+	public void createTask(String title, String filePath, String description);
 	
 	public List<TaskDto> listAll();
 }
