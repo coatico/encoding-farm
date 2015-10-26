@@ -37,9 +37,9 @@ public class VideoServiceImpl implements VideoService {
 	public void remove(String id) {
 		dao.delete(dao.findById(id));
 	}
-	
+/*	
 	public void update(String id){
 		dao.update(dao.findById(id));
 	}
-
+*/
 }
