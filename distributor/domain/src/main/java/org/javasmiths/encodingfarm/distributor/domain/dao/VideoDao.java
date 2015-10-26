@@ -21,4 +21,6 @@ public interface VideoDao {
 	public VideoEntity findById(String id);
 	
 	public void delete(VideoEntity e);
+
+	public void update(VideoEntity e);
 }

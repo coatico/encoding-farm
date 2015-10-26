@@ -27,6 +27,10 @@ public abstract class BaseDaoImpl<E> {
     public void delete(E e) {
         em().remove(e);
     }
+							 // hier verder aanpassen
+    public void update(E e) {
+        em().update(e);
+    }
 
     public List<E> listAll() {
         CriteriaQuery cq = em().getCriteriaBuilder().createQuery();

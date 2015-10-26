@@ -19,41 +19,46 @@ import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacade;
 @Named("video")
 public class VideoView {
 
-    private String name;
-    private List<VideoDto> list = new LinkedList<>();
+	private String name;
+	private List<VideoDto> list = new LinkedList<>();
 
-    @EJB
-    private VideoFacade facade;
+	@EJB
+	private VideoFacade facade;
 
-    @PostConstruct
-    public void init() {
-        list = facade.listAll();
-    }
-	
+	@PostConstruct
+	public void init() {
+		list = facade.listAll();
+	}
+
+	public void update(String id) {
+		facade.update(id);
+		list = facade.listAll();
+	}
+
 	public void remove(String id) {
 		facade.remove(id);
 		list = facade.listAll();
 	}
 
-    public void create(ActionEvent actionEvent) {
-        facade.create(name);
-        list = facade.listAll();
-    }
+	public void create(ActionEvent actionEvent) {
+		facade.create(name);
+		list = facade.listAll();
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public List<VideoDto> getList() {
-        return list;
-    }
+	public List<VideoDto> getList() {
+		return list;
+	}
 
-    public void setList(List<VideoDto> list) {
-        this.list = list;
-    }
+	public void setList(List<VideoDto> list) {
+		this.list = list;
+	}
 
 }
