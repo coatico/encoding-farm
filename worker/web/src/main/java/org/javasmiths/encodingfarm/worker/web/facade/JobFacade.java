@@ -20,4 +20,6 @@ public interface JobFacade {
     public List<JobDto> listAll();
     
     public void remove(String id);
+    
+    public void update(JobDto dto);
 }

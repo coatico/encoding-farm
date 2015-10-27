@@ -25,17 +25,18 @@ import org.primefaces.event.RowEditEvent;
 @RequestScoped
 @Named("job")
 public class JobView {
+
     private String status;
     private List<JobDto> list = new LinkedList<>();
 
     @EJB
     private JobFacade facade;
-    
+
     @PostConstruct
     private void init() {
         list = facade.listAll();
     }
-    
+
     public void remove(String id) {
         facade.remove(id);
         list = facade.listAll();
@@ -69,17 +70,18 @@ public class JobView {
     public void setFacade(JobFacade facade) {
         this.facade = facade;
     }
-    
-        public void onEdit(RowEditEvent event) {  
-              
-        FacesMessage msg = new FacesMessage("Item Edited",((JobDto) event.getObject()).getId());  
-        FacesContext.getCurrentInstance().addMessage(null, msg);  
-    }  
-       
-    public void onCancel(RowEditEvent event) {  
-        FacesMessage msg = new FacesMessage("Editing Cancelled");   
-        FacesContext.getCurrentInstance().addMessage(null, msg); 
-        
-    } 
+
+    public void onEdit(RowEditEvent event, JobDto dto) {
+        /*FacesMessage msg = new FacesMessage("Item Edited",((JobDto) event.getObject()).getId());  
+         FacesContext.getCurrentInstance().addMessage(null, msg);*/
+        facade.update(dto);
+        list = facade.listAll();
+    }
+
+    public void onCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Editing Cancelled");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+
+    }
 
 }

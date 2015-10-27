@@ -48,4 +48,9 @@ public class JobFacadeImpl implements JobFacade {
     public void remove(String id) {
         jobService.remove(id);
     }
+    
+    @Override
+    public void update(JobDto dto) {
+        jobService.update(dto.getId(), dto.getStatus());
+    }
 }

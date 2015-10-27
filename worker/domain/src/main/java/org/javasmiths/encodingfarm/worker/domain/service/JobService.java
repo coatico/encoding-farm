@@ -19,4 +19,6 @@ public interface JobService {
     List<JobEntity> listAll();
     
     public void remove(String id);
+    
+    public void update(String id, String status);
 }

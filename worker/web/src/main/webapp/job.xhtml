@@ -27,7 +27,7 @@
                         <p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
                         <hr/>
                         <p:dataTable var="j" value="#{job.list}" editable="true">
-                                    <p:ajax event="rowEdit" listener="#{job.onEdit}" update=":form1:messages" />  
+                                    <p:ajax event="rowEdit" listener="#{job.onEdit(rowEdit, j)}" update=":form1:messages" />  
                                                 <p:ajax event="rowEditCancel" listener="#{job.onCancel}" update=":form1:messages" /> 
                             <p:column headerText="Id">
                                 <p:cellEditor>  
