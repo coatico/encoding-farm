@@ -29,7 +29,7 @@ public abstract class BaseDaoImpl<E> {
     }
 							 // hier verder aanpassen
     public void update(E e) {
-        em().update(e);
+        em().merge(e);
     }
 
     public List<E> listAll() {

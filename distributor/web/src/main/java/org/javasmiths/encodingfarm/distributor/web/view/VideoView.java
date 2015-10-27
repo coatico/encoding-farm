@@ -29,12 +29,12 @@ public class VideoView {
 	public void init() {
 		list = facade.listAll();
 	}
-/*
+
 	public void update(String id) {
 		facade.update(id);
 		list = facade.listAll();
 	}
-*/
+
 	public void remove(String id) {
 		facade.remove(id);
 		list = facade.listAll();

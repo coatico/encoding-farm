@@ -20,5 +20,5 @@ public interface VideoService {
 
 	public void remove(String id);
 
-	// public void update(String id);
+	public void update(String id);
 }
