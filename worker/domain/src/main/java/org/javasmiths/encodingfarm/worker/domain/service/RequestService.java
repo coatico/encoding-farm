@@ -19,5 +19,7 @@ public interface RequestService {
     List<RequestEntity> listAll();
     
     public void remove(String id);
+    
+    public void update(String id, String path);
 
 }

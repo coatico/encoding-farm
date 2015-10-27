@@ -77,10 +77,11 @@ public class RequestView {
     
    
 
-    public void onEdit(RowEditEvent event) {  
-              
-        FacesMessage msg = new FacesMessage("Item Edited",((RequestDto) event.getObject()).getId());  
-        FacesContext.getCurrentInstance().addMessage(null, msg);  
+    public void onEdit(RowEditEvent event, RequestDto dto) {              
+        /*FacesMessage msg = new FacesMessage("Item Edited",((RequestDto) event.getObject()).getId());  
+        FacesContext.getCurrentInstance().addMessage(null, msg);*/
+        facade.update(dto);
+        list = facade.listAll();
     }  
        
     public void onCancel(RowEditEvent event) {  

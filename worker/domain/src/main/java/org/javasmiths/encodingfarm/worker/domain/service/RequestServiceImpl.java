@@ -50,5 +50,12 @@ public class RequestServiceImpl implements RequestService {
         }
         dao.deleteById(request.getId());
     }
+    
+    @Override
+    public void update(String id, String path) {
+        RequestEntity request = dao.findById(id);
+        request.setPath(path);
+        dao.save(request);
+    }
 
 }
