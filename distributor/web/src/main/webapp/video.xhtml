@@ -39,7 +39,7 @@
                             <source src="Videos/1.mp4" type="Video/mp4"/>
                         </video>-->
                         <hr/>
-                        <p:dataTable id="tabel" var="vid" value="#{video.list}">
+                        <p:dataTable id="tabel" var="vid" value="#{video.list}" editable="true">
                             <p:column headerText="Id" style="display: none">
                                 <h:outputText value="#{vid.id}" />
                             </p:column>
@@ -47,18 +47,18 @@
                                 <img src="#{vid.thumbnail}" height="102" width="180"/>
                             </p:column>
                             <p:column headerText="Name">
-                                <h:outputText value="#{vid.name}" />
+                                <h:outputText value="#{vid.name}"/>
                             </p:column>
                             <p:column headerText="videopath" style="display: none">
                                 <h:outputText value="#{vid.videopath}" />
                             </p:column>
                             
                             <p:column headerText="description">
-                                <h:outputText value="#{vid.description}" />
+                                <h:inputText value="#{vid.description}"/>
                             </p:column>
                             <p:column headerText="">
                                 <p:commandButton update="@form" actionListener="#{video.remove(vid.id)}" icon="ui-icon-trash"/>
-       
+								<p:commandButton update="@form" actionListener="#{video.update(vid.id)}" icon="ui-icon-pencil"/>
                             </p:column> 
 
                         </p:dataTable>

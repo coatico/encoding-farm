@@ -35,6 +35,10 @@ public class VideoView {
         list = facade.listAll();
     }
 
+    public void update(String id) {
+        facade.update(id);
+        list = facade.listAll();
+    }
     public void create(ActionEvent actionEvent) {
         facade.create(name, videopath, thumbnail, description);
         list = facade.listAll();
