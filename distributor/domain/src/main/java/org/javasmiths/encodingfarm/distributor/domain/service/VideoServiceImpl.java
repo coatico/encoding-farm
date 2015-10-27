@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.javasmiths.encodingfarm.distributor.domain.service;
 
 import java.util.List;
@@ -11,10 +6,6 @@ import javax.ejb.Stateless;
 import org.javasmiths.encodingfarm.distributor.domain.dao.VideoDao;
 import org.javasmiths.encodingfarm.distributor.domain.entity.VideoEntity;
 
-/**
- *
- * @author thomas
- */
 @Stateless
 public class VideoServiceImpl implements VideoService {
 
@@ -22,9 +13,12 @@ public class VideoServiceImpl implements VideoService {
     private VideoDao dao;
 
     @Override
-    public VideoEntity registerVideo(String name) {
+    public VideoEntity registerVideo(String name, String videopath, String thumbnail, String description) {
         VideoEntity videoEntity = new VideoEntity();
         videoEntity.setName(name);
+        videoEntity.setVideopath(videopath);
+        videoEntity.setThumbnail(thumbnail);
+        videoEntity.setDescription(description);
         dao.save(videoEntity);
         return videoEntity;
     }

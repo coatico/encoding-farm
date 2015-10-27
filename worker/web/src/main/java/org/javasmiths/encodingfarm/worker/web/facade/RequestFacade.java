@@ -19,4 +19,6 @@ public interface RequestFacade {
     public List<RequestDto> listAll();
     
     public void remove(String id);
+    
+    public void save(RequestDto dto);
 }

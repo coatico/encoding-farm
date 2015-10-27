@@ -45,8 +45,14 @@ public class RequestFacadeImpl implements RequestFacade {
         return dtos;
     }
     
+    @Override
     public void remove(String id) {
         requestService.remove(id);
     }
-
+    
+    @Override
+    public void save(RequestDto dto)
+    {
+        //requestService.save(dto);
+    }
 }
