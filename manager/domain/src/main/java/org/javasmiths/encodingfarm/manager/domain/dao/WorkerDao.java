@@ -18,7 +18,6 @@ public interface WorkerDao {
 
     public void deleteById(String id);
 
-    public void disableByName(String name);
 
     public List<WorkerEntity> listAll();
 

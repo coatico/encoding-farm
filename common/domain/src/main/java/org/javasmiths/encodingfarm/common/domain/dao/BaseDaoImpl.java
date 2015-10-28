@@ -32,12 +32,6 @@ public abstract class BaseDaoImpl<E> {
         em().remove(findById(id));
     }
 
-
-
-    public void disableWorker(String name) {
-
-    }
-
     public List<E> listAll() {
         CriteriaQuery cq = em().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass()));

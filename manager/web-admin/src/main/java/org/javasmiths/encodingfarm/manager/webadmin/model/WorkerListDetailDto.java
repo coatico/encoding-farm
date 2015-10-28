@@ -50,5 +50,6 @@ public class WorkerListDetailDto {
     public void setURL(String URL) {
         this.URL = URL;
     }
+    
 
 }

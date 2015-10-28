@@ -27,6 +27,7 @@ public class WorkerServiceImpl implements WorkerService {
     public WorkerEntity registerWorker(String name) {
         WorkerEntity workerEntity = new WorkerEntity();
         workerEntity.setName(name);
+        workerEntity.setDisabled(false);
         dao.save(workerEntity);
         return workerEntity;
     }
@@ -39,10 +40,15 @@ public class WorkerServiceImpl implements WorkerService {
 
     @Override
     public WorkerEntity disableWorker(String name) {
-        dao.disableByName(we.getName());
+        we.setDisabled(true);
         return we;
-       
-        
+
+    }
+    @Override
+    public WorkerEntity enableWorker(String name) {
+        we.setDisabled(false);
+        return we;
+
     }
 
     @Override

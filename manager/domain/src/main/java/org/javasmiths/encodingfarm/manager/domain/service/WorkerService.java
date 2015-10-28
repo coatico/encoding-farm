@@ -20,5 +20,7 @@ public interface WorkerService {
 
     WorkerEntity disableWorker(String name);
 
+    WorkerEntity enableWorker(String name);
+
     List<WorkerEntity> listAll();
 }
