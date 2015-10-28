@@ -30,6 +30,7 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
  
     private final String input = "../lib/video.mp4";
     private final String output = "../lib/samson";
+    private final String sub = "../lib/test.srt";
     private String ffmpeg = "../lib/ffmpeg.exe";
 
     private double progressPercentage = 0 ;
@@ -47,7 +48,8 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
             File ffmpegFile = new File(ffmpeg);
             File inputFile = new File(input);
             File outputFile = new File(output + dateFormat.format(date) + ".avi");
-            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(), outputFile.getCanonicalPath()};
+            File subFile = new File(sub);
+            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(),(sub.length()>0) ? "-vf subtitles=\"" + subFile.getCanonicalPath() + "\"" : "", outputFile.getCanonicalPath()};
             ProcessBuilder pb = new ProcessBuilder(args);
             pb.redirectOutput();
             pb.redirectError();
@@ -73,6 +75,7 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
                         setChanged();
                         notifyObservers(progressPercentage);
                     }
+                    System.out.println(line);
                 }
                 System.out.println("DONE");
             } catch (ParseException ex) {
