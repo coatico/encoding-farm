@@ -49,7 +49,7 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
             File inputFile = new File(input);
             File outputFile = new File(output + dateFormat.format(date) + ".avi");
             File subFile = new File(sub);
-            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(),(sub.length()>0) ? "-vf" : "",(sub.length()>0) ? "subtitles=\"" + subFile.getCanonicalPath() + "\"" : "", outputFile.getCanonicalPath()};
+            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(),(sub.length()>0) ? "-vf" : "",(sub.length()>0) ? "subtitles=" + subFile.getCanonicalPath() + "" : "", outputFile.getCanonicalPath()};
             ProcessBuilder pb = new ProcessBuilder(args);
             pb.redirectOutput();
             pb.redirectError();
