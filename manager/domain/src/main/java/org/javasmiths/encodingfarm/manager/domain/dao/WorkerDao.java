@@ -18,7 +18,7 @@ public interface WorkerDao {
 
     public void deleteById(String id);
 
-    public void disableWorker(String name);
+    public void disableByName(String name);
 
     public List<WorkerEntity> listAll();
 

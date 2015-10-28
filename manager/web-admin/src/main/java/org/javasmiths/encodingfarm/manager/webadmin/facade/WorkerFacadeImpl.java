@@ -32,7 +32,8 @@ public class WorkerFacadeImpl implements WorkerFacade {
     public void delete(String id) {
         workerService.deleteWorker(id);
     }
-        public void disable(String name) {
+
+    public void disable(String name) {
         workerService.disableWorker(name);
     }
 
@@ -43,7 +44,7 @@ public class WorkerFacadeImpl implements WorkerFacade {
         for (WorkerEntity worker : workersE) {
             WorkerListDetailDto dto = new WorkerListDetailDto();
             dto.setId(worker.getId());
-            //dto.setName(worker.getName());
+            dto.setName(worker.getName());
             dtos.add(dto);
         }
         return dtos;

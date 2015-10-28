@@ -11,7 +11,6 @@ import javax.ejb.Stateless;
 import org.javasmiths.encodingfarm.manager.domain.dao.WorkerDao;
 import org.javasmiths.encodingfarm.manager.domain.dao.WorkerDaoImpl;
 import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
-import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerPageDto;
 
 /**
  *
@@ -22,7 +21,7 @@ public class WorkerServiceImpl implements WorkerService {
 
     @EJB
     private WorkerDao dao;
-    private WorkerPageDto dto;
+    private WorkerEntity we;
 
     @Override
     public WorkerEntity registerWorker(String name) {
@@ -40,13 +39,8 @@ public class WorkerServiceImpl implements WorkerService {
 
     @Override
     public WorkerEntity disableWorker(String name) {
-        WorkerEntity workerEntity = new WorkerEntity();
-        workerEntity.setName(dto.getDetail().getName());
-        if (dto.getDetail().isDisabled() == true) 
-            return workerEntity;
-        else{
-            return null;
-        }
+        dao.disableByName(we.getName());
+        return we;
        
         
     }

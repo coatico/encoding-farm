@@ -19,6 +19,7 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.javasmiths.encodingfarm.manager.webadmin.facade.WorkerFacade;
 import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerListDetailDto;
+import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerPageDto;
 
 /**
  *
