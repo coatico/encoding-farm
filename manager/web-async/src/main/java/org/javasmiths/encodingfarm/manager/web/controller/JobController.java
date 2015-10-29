@@ -19,15 +19,14 @@ import org.javasmiths.encodingfarm.manager.web.facade.JobFacade;
  */
 @Path("jobs")
 public class JobController {
-	
-	@EJB
-	private JobFacade facade;
-	
-	@GET
-	@Produces({"application/json", "application/xml"})
-	public List<JobDto> listAll(){
-		return facade.listAll();
-	}
-	
-	
+
+    @EJB
+    private JobFacade facade;
+
+    @GET
+    @Produces({"application/json", "application/xml"})
+    public List<JobDto> listAll() {
+        return facade.listAll();
+    }
+
 }

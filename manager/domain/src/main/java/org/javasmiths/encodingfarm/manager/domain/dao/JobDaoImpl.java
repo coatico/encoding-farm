@@ -40,5 +40,10 @@ public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao{
             return em.find(JobEntity.class, id);
         }
 
+    @Override
+    public void update(JobEntity dataEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }

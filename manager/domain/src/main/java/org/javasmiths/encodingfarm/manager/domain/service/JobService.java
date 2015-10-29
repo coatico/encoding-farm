@@ -13,11 +13,12 @@ import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
  * @author Elias Serneels
  */
 public interface JobService {
+
     JobEntity registerJob(String jobTitle);
-    
+
     JobEntity deleteJob(String id);
-    
+
     JobEntity updateJob(String id, String jobTitle);
-	
-	List<JobEntity> listAll();
+
+    List<JobEntity> listAll();
 }
