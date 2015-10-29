@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.javasmiths.encodingfarm.domain.service.TaskService;
 import org.javasmiths.encodingfarm.domain.entity.TaskEntity;
+import org.javasmiths.encodingfarm.web.dto.FileDto;
 import org.javasmiths.encodingfarm.web.dto.TaskDto;
 
 @Stateless
@@ -28,10 +29,17 @@ public class TaskFacadeImpl implements TaskFacade {
 	@Override
 	public List<TaskDto> listAll() {
 		List<TaskDto> dtos = new LinkedList<>();
-		List<TaskEntity> locationsE =  taskService.listAll();
-		for (TaskEntity task : locationsE) {
+		List<TaskEntity> tasks =  taskService.listAll();
+		for (TaskEntity task : tasks) {
 			TaskDto dto = new TaskDto();
-			//dto.setId(task.getId());
+			dto.setId(task.getId());
+                        dto.setFileDto(null);
+                        dto.setFileDto(new FileDto());
+                        dto.getFileDto().setFileDescription(task.getFileEntity().getFileDescription());
+                        dto.getFileDto().setFilePath(task.getFileEntity().getFilePath());
+                        dto.getFileDto().setFileTitle(task.getFileEntity().getFileTitle());
+                        dto.getFileDto().setId(task.getFileEntity().getId());
+                        dto.setTaskState(task.getTaskState());
 			dto.setName(task.getFileEntity().getFileTitle());
 			dtos.add(dto);
 		}

@@ -14,28 +14,27 @@
             </ui:define>
 
             <ui:define name="content">
+               
 			<b:panel>
-				<h:form >
+				 <h:form >
 					<p:growl id="messages" showDetail="true" />
-					<p:inputText value="#{tasks.title}" label="Titel"/>	<p:inputText value="#{tasks.filePath}" label="filepath"/> <p:inputText value="#{tasks.description}" label="description"/>
+                                        <p:inputText value="#{tasks.title}" placeholder="Titel" label="Titel"/>	<p:inputText value="#{tasks.filePath}" placeholder="filepath" label="filepath"/> <p:inputText value="#{tasks.description}" placeholder="description" label="description"/>
 					<p:commandButton value="Create" update="@form" actionListener="#{tasks.createTask}" />
-				</h:form>
-			</b:panel>
-				
-			<b:panel>
-				<p:dataTable var="task" value="#{tasks.list}">
+                                        <hr/>
+                                    <p:dataTable var="task" value="#{tasks.list}">
 					<p:column headerText="Id">
 						<h:outputText value="#{task.id}" />
 					</p:column>
 
 					<p:column headerText="Title">
-						<h:outputText value="#{task.title}" />
+                                            <h:outputText value="#{task.fileDto.fileTitle}" />
 					</p:column>
 					
 					<p:column headerText="Filepath">
-						<h:outputText value="#{task.filePath}" />
+                                            <h:outputText value="#{task.fileDto.filePath}" />
 					</p:column>
 				</p:dataTable>
+                            </h:form>
 			</b:panel>
 				
 			</ui:define>

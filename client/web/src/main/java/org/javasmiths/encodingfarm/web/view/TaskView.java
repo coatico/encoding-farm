@@ -31,13 +31,16 @@ public class TaskView {
 	@EJB
 	private TaskFacade facade;
 	
-	//@PostConstruct
-	//public void init(){
-	//	list = facade.listAll();
-	//}
+	@PostConstruct
+	public void init(){
+		list = facade.listAll();
+	}
 	
 	public void createTask(ActionEvent actionEvent){
 		facade.createTask(title, filePath, description);
+                title="";
+                filePath="";
+                description="";
 		list = facade.listAll();
 	}
 

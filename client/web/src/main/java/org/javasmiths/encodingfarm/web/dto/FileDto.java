@@ -9,7 +9,7 @@ package org.javasmiths.encodingfarm.web.dto;
  *
  * @author thomas
  */
-class FileDto {
+public class FileDto {
 	private String id;
 	private String filePath;
 	private String fileDescription;
