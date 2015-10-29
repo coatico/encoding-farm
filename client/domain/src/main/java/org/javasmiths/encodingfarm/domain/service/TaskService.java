@@ -11,7 +11,7 @@ import org.javasmiths.encodingfarm.domain.entity.TaskEntity;
 
 public interface TaskService {
 
-	public void registerTask(String title, String filePath, String description);
+	public TaskEntity registerTask(String title, String filePath, String description);
 
 	public List<TaskEntity> listAll();
 		

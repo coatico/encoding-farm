@@ -21,10 +21,14 @@ public class FileEntity extends BaseTrackableEntity implements Serializable {
 	
         @OneToMany(mappedBy = "fileEntity", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
         private List<TaskEntity> taskList;
-		private String filePath;
+	private String filePath;
         private String fileTitle;
         private String fileDescription;
 		
+        public FileEntity(){
+            
+        }
+        
 	public FileEntity(String title, String filePath, String desc){
 		this.filePath = filePath;
 		this.fileDescription = desc;

@@ -19,7 +19,11 @@ public class TaskEntity extends BaseTrackableEntity implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
         private FileEntity fileEntity;
         private boolean taskState;
-		
+	
+        public TaskEntity(){
+            this.taskState=false;
+        }
+        
 	public TaskEntity(FileEntity fileEntity){
 		this.fileEntity = fileEntity;
 		this.taskState = false;
@@ -33,11 +37,11 @@ public class TaskEntity extends BaseTrackableEntity implements Serializable {
 		this.fileEntity = fileEntity;
 	}
 
-	public boolean isState() {
+	public boolean getTaskState() {
 		return taskState;
 	}
 
-	public void setState(boolean state) {
+	public void setTaskState(boolean state) {
 		this.taskState = state;
 	}
 	

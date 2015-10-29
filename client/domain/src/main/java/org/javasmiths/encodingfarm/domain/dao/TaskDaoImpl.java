@@ -29,7 +29,7 @@ public class TaskDaoImpl extends BaseDaoImpl<TaskEntity> implements TaskDao {
 	
 	@Override
 	protected Class<TaskEntity> entityClass() {
-		return TaskEntity.class;
+            return TaskEntity.class;
 	}
 	
 }

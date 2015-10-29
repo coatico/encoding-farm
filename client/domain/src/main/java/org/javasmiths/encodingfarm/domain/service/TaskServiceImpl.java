@@ -23,15 +23,16 @@ public class TaskServiceImpl implements TaskService {
 	private FileDao fileDao;
 
 	@Override
-	public void registerTask(String title, String filePath, String description) {
+	public TaskEntity registerTask(String title, String filePath, String description) {
 		FileEntity fileEntity = new FileEntity(title, filePath, description);
 		TaskEntity taskEntity = new TaskEntity(fileEntity);
 		save(taskEntity, fileEntity);
+                return taskEntity;
 	}
 
 	private void save(TaskEntity taskEntity, FileEntity fileEntity) {
-		taskDao.save(taskEntity);
-		fileDao.save(fileEntity);
+            fileDao.save(fileEntity);
+            taskDao.save(taskEntity);
 	}
 	
 	@Override
