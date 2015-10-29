@@ -46,6 +46,7 @@ public class JobView implements Serializable {
         
         public void update(String id, String jobTitle){
             facade.update(id, jobTitle);
+            list = facade.listAll();
         }
         
         public void onRowCancel(RowEditEvent event) {

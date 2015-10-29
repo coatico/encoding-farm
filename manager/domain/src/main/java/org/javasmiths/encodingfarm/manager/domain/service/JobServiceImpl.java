@@ -40,7 +40,7 @@ public class JobServiceImpl implements JobService {
         JobEntity je = dao.findById(id);
 
         je.setJobTitle(title);
-        dao.update(je);
+        dao.save(je);
         return je;
     }
 

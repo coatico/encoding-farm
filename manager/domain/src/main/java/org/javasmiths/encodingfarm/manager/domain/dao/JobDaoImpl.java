@@ -1,6 +1,5 @@
 package org.javasmiths.encodingfarm.manager.domain.dao;
 
-
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -13,37 +12,29 @@ import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Elias Serneels
  */
 @Stateless
-public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao{
+public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao {
 
-	@PersistenceContext(unitName = "managerPU")
-	protected EntityManager em;
-	
-	
-	@Override
-	protected EntityManager em() {
-		return em;
-	}
-
-	@Override
-	protected Class<JobEntity> entityClass() {
-		return JobEntity.class;
-	}
-        
-        @Override
-        public JobEntity findById(String id){
-            return em.find(JobEntity.class, id);
-        }
+    @PersistenceContext(unitName = "managerPU")
+    protected EntityManager em;
 
     @Override
-    public void update(JobEntity dataEntity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected EntityManager em() {
+        return em;
     }
 
+    @Override
+    protected Class<JobEntity> entityClass() {
+        return JobEntity.class;
+    }
+
+    @Override
+    public JobEntity findById(String id) {
+        return em.find(JobEntity.class, id);
+    }
 
 }
