@@ -25,9 +25,24 @@ public class WorkerServiceImpl implements WorkerService {
     @Override
     public WorkerEntity registerWorker(String name) {
         WorkerEntity workerEntity = new WorkerEntity();
-        workerEntity.setWorkerFirstName(name);
+        workerEntity.setWorkerName(name);
         dao.save(workerEntity);
         return workerEntity;
+    }
+	
+    @Override
+    public WorkerEntity deleteWorker(String id) {
+        dao.delete(id);
+        return null;
+    }
+
+    @Override
+    public WorkerEntity updateWorker(String id, String title) {
+        WorkerEntity je = dao.findById(id);
+
+        je.setWorkerName(title);
+        dao.update(je);
+        return je;
     }
 
     @Override

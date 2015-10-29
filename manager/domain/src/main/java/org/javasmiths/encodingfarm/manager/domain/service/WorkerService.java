@@ -16,5 +16,10 @@ import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
 public interface WorkerService {
     WorkerEntity registerWorker(String name);
 	
+    WorkerEntity deleteWorker(String id);
+
+    WorkerEntity updateWorker(String id, String workerName);
+
+	
 	List<WorkerEntity> listAll();
 }

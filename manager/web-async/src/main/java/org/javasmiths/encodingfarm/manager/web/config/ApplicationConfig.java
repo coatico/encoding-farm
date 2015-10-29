@@ -22,6 +22,8 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(org.javasmiths.encodingfarm.manager.web.controller.JobController.class);
         resources.add(org.javasmiths.encodingfarm.manager.web.controller.VideoController.class);
+	    resources.add(org.javasmiths.encodingfarm.manager.web.controller.WorkerController.class);
+
     }
 
 }

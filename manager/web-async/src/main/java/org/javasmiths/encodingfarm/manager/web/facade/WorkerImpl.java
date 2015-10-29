@@ -5,10 +5,49 @@
  */
 package org.javasmiths.encodingfarm.manager.web.facade;
 
-/**
- *
- * @author Alexander Hermans
- */
-public class WorkerImpl {
+import java.util.LinkedList;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
+
+import org.javasmiths.encodingfarm.manager.domain.service.WorkerService;
+import org.javasmiths.encodingfarm.manager.web.dto.WorkerDto;
+
+
+@Stateless
+public class WorkerImpl implements WorkerFacade{
+	
+	 @EJB
+    private WorkerService workerService;
+
+    @Override
+    public void create(String workerName) {
+        workerService.registerWorker(workerName);
+    }
+
+    @Override
+    public void delete(String id) {
+
+        workerService.deleteWorker(id);
+    }
+
+    @Override
+    public void update(String id, String title) {
+        workerService.updateWorker(id, title);
+    }
+
+    @Override
+    public List<WorkerDto> listAll() {
+        List<WorkerDto> dtos = new LinkedList<>();
+        List<WorkerEntity> workerE = workerService.listAll();
+        for (WorkerEntity worker : workerE) {
+            WorkerDto dto = new WorkerDto();
+            dto.setId(worker.getId());
+            dto.setWorkerName(worker.getWorkerName());
+            dtos.add(dto);
+        }
+        return dtos;
+    }
     
 }

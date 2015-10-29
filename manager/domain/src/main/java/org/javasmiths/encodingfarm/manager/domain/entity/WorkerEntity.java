@@ -25,60 +25,23 @@ public class WorkerEntity extends BaseTrackableEntity implements Serializable {
 
     //In deze File worden de Entities aangemaakt voor de tabel in de database.
     @Column
-    private String workerFirstName;
-    @Column
-    private String workerLastName;
-    @Column
-    private String workerGender;
-    @Column
-    private String workerBirthdate;
+    private String workerName;
+    
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<workerJobEntity> workerworkerJob;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<JobStatusDescriptionEntity> workerJobStatusDescriptionEntity;
-    @Column
-    private String workerEmail;
 
-    public String getWorkerFirstName() {
-        return workerFirstName;
+
+    public String getWorkerName() {
+        return workerName;
     }
 
-    public void setWorkerFirstName(String workerFirstName) {
-        this.workerFirstName = workerFirstName;
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
     }
 
-    public String getWorkerLastName() {
-        return workerLastName;
-    }
-
-    public void setWorkerLastName(String workerLastName) {
-        this.workerLastName = workerLastName;
-    }
-
-    public String getWorkerGender() {
-        return workerGender;
-    }
-
-    public void setWorkerGender(String workerGender) {
-        this.workerGender = workerGender;
-    }
-
-    public String getWorkerBirthdate() {
-        return workerBirthdate;
-    }
-
-    public void setWorkerBirthdate(String workerBirthdate) {
-        this.workerBirthdate = workerBirthdate;
-    }
-
-    public String getWorkerEmail() {
-        return workerEmail;
-    }
-
-    public void setWorkerEmail(String workerEmail) {
-        this.workerEmail = workerEmail;
-    }
-
+    
     public Collection<workerJobEntity> getWorkerworkerJob() {
         return workerworkerJob;
     }
