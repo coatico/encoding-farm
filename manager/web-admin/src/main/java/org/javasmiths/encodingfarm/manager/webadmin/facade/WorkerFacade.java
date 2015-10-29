@@ -15,11 +15,13 @@ import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerListDetailDto;
 public interface WorkerFacade {
 
     public void create(String name);
+
     public void delete(String name);
+
     public void disable(String name);
 
+    public void enable(String name);
+
     public List<WorkerListDetailDto> listAll();
-
-
 
 }

@@ -37,6 +37,10 @@ public class WorkerFacadeImpl implements WorkerFacade {
         workerService.disableWorker(name);
     }
 
+    public void enable(String name) {
+        workerService.enableWorker(name);
+    }
+
     @Override
     public List<WorkerListDetailDto> listAll() {
         List<WorkerListDetailDto> dtos = new LinkedList<>();
@@ -45,8 +49,9 @@ public class WorkerFacadeImpl implements WorkerFacade {
             WorkerListDetailDto dto = new WorkerListDetailDto();
             dto.setId(worker.getId());
             dto.setName(worker.getName());
-            if(!dto.isDisabled())
-            dtos.add(dto);
+            if (!dto.isDisabled()) {
+                dtos.add(dto);
+            }
         }
         return dtos;
     }
