@@ -48,5 +48,9 @@ public class RequestFacadeImpl implements RequestFacade {
     public void remove(String id) {
         requestService.remove(id);
     }
+    
+    public void update(RequestDto dto) {
+        requestService.update(dto.getId(), dto.getPath());
+    }
 
 }

@@ -10,32 +10,61 @@
         <ui:define name="title">
             Handle jobs
         </ui:define>
+        
+        
         <ui:define name="content">
+            
+             <h:form id="form1"> 
+                <p:growl id="messages" showDetail="true"/>
             <b:row>
                 <h1>View Component</h1>
             </b:row>
             <b:row>
                 <b:panel>
-                    <h:form>
+                    
                         Add Job <p:inputText value="#{job.status}"  label="Enter job status here" id="job_crt_txt"/> 
                         <p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
                         <p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
                         <hr/>
-                        <p:dataTable var="j" value="#{job.list}">
+                        <p:dataTable var="j" value="#{job.list}" editable="true">
+                                    <p:ajax event="rowEdit" listener="#{job.onEdit(rowEdit, j)}" update=":form1:messages" />  
+                                                <p:ajax event="rowEditCancel" listener="#{job.onCancel}" update=":form1:messages" /> 
                             <p:column headerText="Id">
-                                <h:outputText value="#{j.id}" />
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{j.id}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <h:outputText value="#{j.id}" style="width:100%; margin-left: 10px"/>  
+                                    </f:facet>  
+                                </p:cellEditor> 
                             </p:column>
                             <p:column headerText="Status">
-                                <h:outputText value="#{j.status}" />
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{j.status}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">
+                                        <p:inputText value="#{j.status}" style="width:100%"/>  
+                                    </f:facet>  
+                                </p:cellEditor> 
                             </p:column>
-                            <p:column headerText="Request">
-                                <h:outputText value="#{j.reqId}" />
+                            <p:column headerText="Request" width="22%">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{j.reqId}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <h:outputText value="#{j.reqId}" style="width:100%; margin-left: 10px"/>   
+                                    </f:facet>  
+                                </p:cellEditor> 
                             </p:column>
-                            <p:column headerText="Actions">
+                            <p:column style="width: 4%"><p:rowEditor />  </p:column>
+                            <p:column headerText="Actions" style="width: 7%">
                                 <p:commandButton value="Delete" update="@form" actionListener="#{job.remove(j.id)}"/>
                             </p:column>
+                            
                         </p:dataTable>
-                    </h:form>
                 </b:panel>
 
             </b:row>
@@ -45,6 +74,7 @@
                     <a href="worker/jobs" target="blank" >json >> JobController</a>
                 </b:panel>
             </b:row>
+             </h:form>
         </ui:define>
     </ui:composition>
 </html>

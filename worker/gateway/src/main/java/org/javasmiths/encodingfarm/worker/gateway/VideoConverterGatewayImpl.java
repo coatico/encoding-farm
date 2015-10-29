@@ -28,9 +28,10 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
  */
 public class VideoConverterGatewayImpl extends Observable implements  VideoConverterGateway {
  
-    private final String ffmpeg = "../lib/ffmpeg.exe";
     private final String input = "../lib/video.mp4";
     private final String output = "../lib/samson";
+    private final String sub = "../lib/test.srt";
+    private String ffmpeg = "../lib/ffmpeg.exe";
 
     private double progressPercentage = 0 ;
     @Override
@@ -38,12 +39,17 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
         DateFormat parseFormat = new SimpleDateFormat("HH:mm:ss.SS");
         Date date = new Date();
+        
+        if (System.getProperty("os.name").startsWith("Mac")) {
+            ffmpeg = "../lib/ffmpeg";
+        }
 
         try {
             File ffmpegFile = new File(ffmpeg);
             File inputFile = new File(input);
             File outputFile = new File(output + dateFormat.format(date) + ".avi");
-            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(), outputFile.getCanonicalPath()};
+            File subFile = new File(sub);
+            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(),(sub.length()>0) ? "-vf" : "",(sub.length()>0) ? "subtitles=" + subFile.getCanonicalPath() + "" : "", outputFile.getCanonicalPath()};
             ProcessBuilder pb = new ProcessBuilder(args);
             pb.redirectOutput();
             pb.redirectError();
@@ -69,6 +75,7 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
                         setChanged();
                         notifyObservers(progressPercentage);
                     }
+                    System.out.println(line);
                 }
                 System.out.println("DONE");
             } catch (ParseException ex) {

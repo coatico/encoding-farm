@@ -38,6 +38,13 @@ public class JobServiceImpl implements JobService {
     
     @Override
     public void remove(String id) {
-        dao.delete(dao.findById(id));
+        dao.deleteById(id);
+    }
+    
+    @Override
+    public void update(String id, String status) {
+        JobEntity job = dao.findById(id);
+        job.setStatus(status);
+        dao.save(job);
     }
 }

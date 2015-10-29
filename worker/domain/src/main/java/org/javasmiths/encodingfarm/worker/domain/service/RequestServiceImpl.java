@@ -45,10 +45,17 @@ public class RequestServiceImpl implements RequestService {
         RequestEntity request = dao.findById(id);
         if(!request.getJobs().isEmpty()) {
             for(JobEntity job: request.getJobs()) {
-                jDao.delete(job);
+                jDao.deleteById(job.getId());
             }
         }
-        dao.delete(request);
+        dao.deleteById(request.getId());
+    }
+    
+    @Override
+    public void update(String id, String path) {
+        RequestEntity request = dao.findById(id);
+        request.setPath(path);
+        dao.save(request);
     }
 
 }
