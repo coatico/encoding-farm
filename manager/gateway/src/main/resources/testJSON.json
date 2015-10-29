@@ -1,3 +1,16 @@
-{
-    "name": "Elias Serneels"
-}
+[{
+        "id": "2f2f4be6-31a7-447c-ac9a-fc0c73c59506",
+        "jobTitle": "TestJob3"
+    }, {
+        "id": "4de30de5-33df-475e-b54f-5c00e5ca10e6",
+        "jobTitle": "TestJob2"
+    }, {
+        "id": "6b02cbda-e27b-4fae-8e0d-c1ce3ce4575e",
+        "jobTitle": "TestJob5"
+    }, {
+        "id": "7a9c1a9c-f6a0-4af7-9cb5-451d664b50cd",
+        "jobTitle": "TestJob1"
+    }, {
+        "id": "dc0d4d94-7712-41ff-825f-668c6adc1763",
+        "jobTitle": "TestJob4"
+    }]

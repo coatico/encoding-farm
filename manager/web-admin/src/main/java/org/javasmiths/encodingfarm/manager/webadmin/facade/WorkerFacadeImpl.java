@@ -35,7 +35,7 @@ public class WorkerFacadeImpl implements WorkerFacade {
         for (WorkerEntity worker : workersE) {
             WorkerListDetailDto dto = new WorkerListDetailDto();
             dto.setId(worker.getId());
-            dto.setFirstName(worker.getWorkerFirstName());
+            dto.setFirstName(worker.getWorkerName());
             dtos.add(dto);
         }
         return dtos;
