@@ -17,6 +17,8 @@ public interface JobFacade {
 	public void create(String jobTitle);
         
         public void delete(String id);
+        
+        public void update(String id, String title);
 
 	public List<JobDto> listAll();
 	

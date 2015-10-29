@@ -11,14 +11,13 @@ import javax.ejb.Stateless;
 import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
 import org.javasmiths.encodingfarm.manager.domain.dao.JobDao;
 
-
 /**
  *
  * @author Elias Serneels
  */
 @Stateless
 public class JobServiceImpl implements JobService {
-        
+
     @EJB
     private JobDao dao;
 
@@ -29,10 +28,20 @@ public class JobServiceImpl implements JobService {
         dao.save(jobEntity);
         return jobEntity;
     }
-    
+
+    @Override
     public JobEntity deleteJob(String id) {
-        dao.delete(id);        
+        dao.delete(id);
         return null;
+    }
+
+    @Override
+    public JobEntity updateJob(String id, String title) {
+        JobEntity je = dao.findById(id);
+
+        je.setJobTitle(title);
+        dao.update(je);
+        return je;
     }
 
     @Override

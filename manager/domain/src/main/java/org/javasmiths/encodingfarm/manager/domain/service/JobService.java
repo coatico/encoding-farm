@@ -16,6 +16,8 @@ public interface JobService {
     JobEntity registerJob(String jobTitle);
     
     JobEntity deleteJob(String id);
+    
+    JobEntity updateJob(String id, String jobTitle);
 	
 	List<JobEntity> listAll();
 }

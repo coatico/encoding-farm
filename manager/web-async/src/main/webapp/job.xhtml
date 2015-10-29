@@ -12,44 +12,51 @@
         </ui:define>
         <ui:define name="content">
             <b:row>
-				<b:panel>
-					<h:form>
-                                            Add Job <p:inputText value="#{job.jobTitle}"  label="Enter job here" id="job_crt_txt"/> 
-						<p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
-						<p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
-						<hr/>
-                                                
-						<hr/>
-                                                
-                                                <p:contextMenu for="jobdatatable" widgetVar="cMenu">   
-       <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
-       <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
-   </p:contextMenu> 
-                                                
-						<p:dataTable id="jobdatatable" var="jobs" value="#{job.list}" editable="true" editMode="cell" rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                                                    <f:facet name="header">
-        List of Jobs
-    </f:facet>
-							<p:column headerText="Id">
-								<h:outputText value="#{jobs.id}" />
-							</p:column>
-							<p:column headerText="jobTitle">
-                                                            <p:cellEditor>
-                                                                <f:facet name="output"><h:outputText value="#{jobs.jobTitle}" /></f:facet>
-                                                                <f:facet name="input"><h:inputText value="#{jobs.jobTitle}" style="width:96%" label="Title" /></f:facet>
-                                                            </p:cellEditor>
-							</p:column>
-                                                    <p:column headerText="Actions">
-                                                        <p:commandButton value="Delete" update="@form" actionListener="#{job.delete(jobs.id)}" />
-                                                    </p:column>
-                                                              
-                                                    
-						</p:dataTable>
-					</h:form>
-				</b:panel>
+                <b:panel>
+                    <h:form>
+                        Add Job <p:inputText value="#{job.jobTitle}"  label="Enter job here" id="job_crt_txt"/> 
+                        <p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
+                        <p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
+                        <hr/>
+
+
+                        <hr/>
+
+                        <p:growl id="msgs" showDetail="true"/>
+
+                        <p:dataTable id="jobdatatable" var="jobs" value="#{job.list}" editable="true" rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <f:facet name="header">
+                                List of Jobs
+                            </f:facet>
+
+                            <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle)}"/>
+                           <!-- <p:ajax event="rowEditCancel" listener="#{job.onRowCancel}" update=":form:msgs" />-->
+
+
+                            <p:column headerText="Id">
+                                <h:outputText value="#{jobs.id}" />
+                            </p:column>
+                            <p:column headerText="jobTitle">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{jobs.jobTitle}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{jobs.jobTitle}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Actions">
+                                <p:commandButton value="Delete" update="@form" actionListener="#{job.delete(jobs.id)}" />
+
+                            </p:column>
+                            <p:column style="width:32px">
+                                <p:rowEditor />
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </h:form>
+                </b:panel>
 
 
             </b:row>

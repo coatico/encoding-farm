@@ -21,6 +21,8 @@ public interface JobDao {
     
     public JobEntity findById(String id);
     
+    public void update(JobEntity dataEntity);
+    
     public List<JobEntity> listAll();
 
 }

@@ -40,4 +40,5 @@ public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao{
             return em.find(JobEntity.class, id);
         }
 
+
 }

@@ -7,10 +7,13 @@ import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.javasmiths.encodingfarm.manager.web.dto.JobDto;
 import org.javasmiths.encodingfarm.manager.web.facade.JobFacade;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -40,6 +43,15 @@ public class JobView implements Serializable {
             facade.delete(id);
             list = facade.listAll();
         }
+        
+        public void update(String id, String jobTitle){
+            facade.update(id, jobTitle);
+        }
+        
+        public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
 
     public String getjobTitle() {
