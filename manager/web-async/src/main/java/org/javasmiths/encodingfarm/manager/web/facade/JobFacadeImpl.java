@@ -20,7 +20,7 @@ import org.javasmiths.encodingfarm.manager.web.dto.JobDto;
 @Stateless
 public class JobFacadeImpl implements JobFacade{
 
-	@EJB
+    
 	private JobService jobService;
 	
 	@Override
