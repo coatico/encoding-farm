@@ -33,10 +33,12 @@ public class WorkerFacadeImpl implements WorkerFacade {
         workerService.deleteWorker(id);
     }
 
+	@Override
     public void disable(String name) {
         workerService.disableWorker(name);
     }
 
+	@Override
     public void enable(String name) {
         workerService.enableWorker(name);
     }

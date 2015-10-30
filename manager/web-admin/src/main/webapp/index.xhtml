@@ -18,7 +18,7 @@ and open the template in the editor.
        <b:row>
 				<b:panel>
 					<h:form>
-						Add Worker <p:inputText value="#{worker.naam}"  label="Enter name here" id="worker_crt_txt"/> 
+						Add Worker <p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
 						<p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
 						Status  <p:selectBooleanCheckbox value="#{worker.status}" />
 						<p:commandButton value="Create" update="@form" actionListener="#{worker.create}" />
