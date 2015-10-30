@@ -5,6 +5,7 @@
  */
 package org.javasmiths.encodingfarm.manager.domain.service;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -22,9 +23,10 @@ public class JobServiceImpl implements JobService {
     private JobDao dao;
 
     @Override
-    public JobEntity registerJob(String title) {
+    public JobEntity registerJob(String title, Date creationdate) {
         JobEntity jobEntity = new JobEntity();
         jobEntity.setJobTitle(title);
+        jobEntity.setJobCreationDateTime(creationdate);
         dao.save(jobEntity);
         return jobEntity;
     }
@@ -36,10 +38,11 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public JobEntity updateJob(String id, String title) {
+    public JobEntity updateJob(String id, String title, Date creationdate) {
         JobEntity je = dao.findById(id);
 
         je.setJobTitle(title);
+        je.setJobCreationDateTime(creationdate);
         dao.save(je);
         return je;
     }

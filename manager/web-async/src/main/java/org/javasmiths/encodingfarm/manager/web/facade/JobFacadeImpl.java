@@ -5,6 +5,7 @@
  */
 package org.javasmiths.encodingfarm.manager.web.facade;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -24,8 +25,8 @@ public class JobFacadeImpl implements JobFacade{
 	private JobService jobService;
 	
 	@Override
-	public void create(String jobTitle) {
-		jobService.registerJob(jobTitle);
+	public void create(String jobTitle, Date creationdate) {
+		jobService.registerJob(jobTitle, creationdate);
 	}
         
         @Override
@@ -35,8 +36,8 @@ public class JobFacadeImpl implements JobFacade{
         }
         
         @Override
-        public void update(String id, String title){
-            jobService.updateJob(id, title);
+        public void update(String id, String title, Date creationdate){
+            jobService.updateJob(id, title, creationdate);
         }
 
 	@Override
@@ -47,6 +48,7 @@ public class JobFacadeImpl implements JobFacade{
 			JobDto dto = new JobDto();
 			dto.setId(job.getId());
 			dto.setjobTitle(job.getJobTitle());
+                        dto.setJobCreationDateTime(job.getJobCreationDateTime());
 			dtos.add(dto);
 		}
 		return dtos;

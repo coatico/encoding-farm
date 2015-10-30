@@ -14,11 +14,15 @@
             <b:row>
                 <b:panel>
                     <h:form>
-                        Add Job <p:inputText value="#{job.jobTitle}"  label="Enter job here" id="job_crt_txt"/> 
+                        Job Title <p:inputText value="#{job.jobTitle}"  label="Enter job title here" id="job_crt_txt"/> 
                         <p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
+                        <hr/>
+                        Job starttime <p:calendar id="starttime" value="#{job.jobCreationDateTime}" locale="nl" pattern="dd/MM/yyyy"  />
+                        <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{job.jobCreationDateTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
+                            <f:convertDateTime pattern="HH:mm" />
+                        </p:inputMask>
                         <p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
                         <hr/>
-
 
                         <hr/>
 
@@ -32,7 +36,7 @@
                                 List of Jobs
                             </f:facet>
 
-                            <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle)}"/>
+                            <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle, jobs.jobCreationDateTime)}"/>
                            <!-- <p:ajax event="rowEditCancel" listener="#{job.onRowCancel}" update=":form:msgs" />-->
 
 
@@ -43,6 +47,12 @@
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{jobs.jobTitle}" /></f:facet>
                                     <f:facet name="input"><h:inputText value="#{jobs.jobTitle}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="jobStartTime">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{jobs.jobCreationDateTime}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{jobs.jobCreationDateTime}" style="width:96%" label="Title" /></f:facet>
                                 </p:cellEditor>
                             </p:column>
                             <p:column headerText="Actions">
@@ -63,7 +73,7 @@
             <b:row>
                 <h1>Rest Controller</h1>
                 <b:panel>
-                    <a href="rest/jobs/" target="blank">json >> LocationController</a>
+                    <a href="rest/jobs/" target="blank">json >> JobController</a>
                 </b:panel>
             </b:row>
         </ui:define>
