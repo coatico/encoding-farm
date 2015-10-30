@@ -9,7 +9,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.javasmiths.encodingfarm.manager.domain.dao.WorkerDao;
-import org.javasmiths.encodingfarm.manager.domain.dao.WorkerDaoImpl;
 import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
 
 /**
@@ -24,10 +23,10 @@ public class WorkerServiceImpl implements WorkerService {
     private WorkerEntity we;
 
     @Override
-    public WorkerEntity registerWorker(String name) {
+    public WorkerEntity registerWorker(String name, Boolean status) {
         WorkerEntity workerEntity = new WorkerEntity();
         workerEntity.setName(name);
-        workerEntity.setDisabled(false);
+        workerEntity.setStatus(status);
         dao.save(workerEntity);
         return workerEntity;
     }
@@ -40,13 +39,13 @@ public class WorkerServiceImpl implements WorkerService {
 
     @Override
     public WorkerEntity disableWorker(String name) {
-        we.setDisabled(true);
+        we.setStatus(false);
         return we;
 
     }
     @Override
     public WorkerEntity enableWorker(String name) {
-        we.setDisabled(false);
+        we.setStatus(true);
         return we;
 
     }

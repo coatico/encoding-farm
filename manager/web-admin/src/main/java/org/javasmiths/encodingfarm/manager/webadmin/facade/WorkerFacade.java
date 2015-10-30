@@ -14,7 +14,7 @@ import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerListDetailDto;
  */
 public interface WorkerFacade {
 
-    public void create(String name);
+    public void create(String name, Boolean status);
 
     public void delete(String name);
 

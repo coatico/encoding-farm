@@ -38,11 +38,11 @@ public class WorkerEntity extends BaseTrackableEntity {
         this.Name = Name;
     }
 
-    public boolean isDisabled() {
+    public boolean isStatus() {
         return Status;
     }
 
-    public void setDisabled(boolean Status) {
+    public void setStatus(boolean Status) {
         this.Status = Status;
     }
 

@@ -24,8 +24,8 @@ public class WorkerFacadeImpl implements WorkerFacade {
     private WorkerService workerService;
 
     @Override
-    public void create(String name) {
-        workerService.registerWorker(name);
+    public void create(String name,Boolean status) {
+        workerService.registerWorker(name, status);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class WorkerFacadeImpl implements WorkerFacade {
             WorkerListDetailDto dto = new WorkerListDetailDto();
             dto.setId(worker.getId());
             dto.setName(worker.getName());
-			dto.setURL(worker.getURL());
-			dto.setStatus(worker.isDisabled());
+			//dto.setURL(worker.getURL());
+			dto.setStatus(worker.isStatus());
             if (!dto.isStatus()) {
                 dtos.add(dto);
             }

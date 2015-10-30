@@ -40,7 +40,7 @@ public class WorkerView {
     }
 
     public void create(ActionEvent actionEvent) {
-        facade.create(name);
+        facade.create(name, status);
         list = facade.listAll();
     }
 
