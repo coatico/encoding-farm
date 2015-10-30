@@ -14,4 +14,6 @@ public interface TaskFacade {
 	public void createTask(String title, String filePath, String description);
 	
 	public List<TaskDto> listAll();
+
+	public void deleteTask(String id);
 }

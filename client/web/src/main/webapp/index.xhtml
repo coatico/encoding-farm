@@ -33,6 +33,9 @@
 					<p:column headerText="Filepath">
                                             <h:outputText value="#{task.fileDto.filePath}" />
 					</p:column>
+					<p:column headerText="Delete">
+						<p:commandButton value="Delete" update="@form" actionListener="#{tasks.deleteTask(task.id)}" />
+					</p:column>
 				</p:dataTable>
                             </h:form>
 			</b:panel>

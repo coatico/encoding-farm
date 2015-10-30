@@ -36,11 +36,16 @@ public class TaskView {
 		list = facade.listAll();
 	}
 	
-	public void createTask(ActionEvent actionEvent){
+	public void createTask(ActionEvent actionEvent) {
 		facade.createTask(title, filePath, description);
                 title="";
                 filePath="";
                 description="";
+		list = facade.listAll();
+	}
+	
+	public void deleteTask(String id) {
+		facade.deleteTask(id);
 		list = facade.listAll();
 	}
 

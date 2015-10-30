@@ -45,4 +45,9 @@ public class TaskFacadeImpl implements TaskFacade {
 		}
 		return dtos;
 	}
+
+	@Override
+	public void deleteTask(String id) {
+		taskService.deleteTask(id);
+	}
 }

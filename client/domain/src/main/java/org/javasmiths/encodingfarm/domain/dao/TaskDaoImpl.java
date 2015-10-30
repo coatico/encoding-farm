@@ -25,11 +25,15 @@ public class TaskDaoImpl extends BaseDaoImpl<TaskEntity> implements TaskDao {
 		return em;
 	} 
 	
-	
-	
 	@Override
 	protected Class<TaskEntity> entityClass() {
             return TaskEntity.class;
+	}
+
+	@Override
+	public void delete(String id) {
+		TaskEntity task = em.getReference(TaskEntity.class, id);
+		em.remove(task);
 	}
 	
 }

@@ -14,5 +14,7 @@ public interface TaskService {
 	public TaskEntity registerTask(String title, String filePath, String description);
 
 	public List<TaskEntity> listAll();
+
+	public void deleteTask(String id);
 		
 }

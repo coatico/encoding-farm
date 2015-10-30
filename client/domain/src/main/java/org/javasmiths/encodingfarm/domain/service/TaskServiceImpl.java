@@ -39,5 +39,9 @@ public class TaskServiceImpl implements TaskService {
 	public List<TaskEntity> listAll() {
 		return taskDao.listAll();
 	}
-
+	
+	@Override
+	public void deleteTask(String id) {
+		taskDao.delete(id);
+	}
 }

@@ -15,6 +15,8 @@ import org.javasmiths.encodingfarm.domain.entity.TaskEntity;
 public interface TaskDao {
 	
 	public void save(TaskEntity taskEntity);
+	
+	public void delete(String id);
 
 	public List<TaskEntity> listAll();
 	
