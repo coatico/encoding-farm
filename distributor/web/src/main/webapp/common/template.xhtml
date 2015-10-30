@@ -8,35 +8,35 @@
     <h:head>
         <title><ui:insert name="title">Home</ui:insert></title>
         <!--<link href="https://bootswatch.com/cyborg/bootstrap.min.css" type="text/css" rel="stylesheet"/>-->
-            <link href="https://bootswatch.com/darkly/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        <link href="https://bootswatch.com/darkly/bootstrap.min.css" type="text/css" rel="stylesheet"/>
 
         <link rel="icon" href="http://localhost:8080/web/Images/favicon_dilbert.ico"/><!--dilbert favicon-->
-         <link href="./CSS/default.css" type="text/css" rel="stylesheet"/>
-         <!--<link rel="icon" href="http://localhost:8080/web/Images/favicon_official.ico"/>official favicon-->
+        <link href="./CSS/default.css" type="text/css" rel="stylesheet"/>
+        <!--<link rel="icon" href="http://localhost:8080/web/Images/favicon_official.ico"/>official favicon-->
     </h:head>
     <h:body>
         <b:container fluid="true" id="header">
             <b:row>
                 <b:jumbotron>
-                    <h2>Hello Video App</h2>
-                    
+                    <h2 style="text-align: center">Video App</h2>
+
                 </b:jumbotron>
             </b:row>
             <b:row>
-                <b:column col-sm="3">
-                    <b:panel look="primary" collapsible="false">
-                        <f:facet name="heading" >Components</f:facet>   
-
-                        <b:listLinks>
-                            <b:navLink header="Home" />
-                            <b:navLink href="#" value="Homepage" icon="home" iconAlign="left"/>
-
-                            <b:navLink header="Video's" />
-                            <b:navLink href="video.xhtml" value="Show videos" icon="resize-small" iconAlign="left"/>
-
-                        </b:listLinks>
-                    </b:panel>
-                </b:column>
+                <!--                <b:column col-sm="3">
+                                    <b:panel look="primary" collapsible="false">
+                                        <f:facet name="heading" >Components</f:facet>   
+                
+                                        <b:listLinks>
+                                            <b:navLink header="Home" />
+                                            <b:navLink href="#" value="Homepage" icon="home" iconAlign="left"/>
+                
+                                            <b:navLink header="Video's" />
+                                            <b:navLink href="video.xhtml" value="Show videos" icon="resize-small" iconAlign="left"/>
+                
+                                        </b:listLinks>
+                                    </b:panel>
+                                </b:column>-->
                 <b:column col-sm="9">
                     <b:column>
                         <ui:insert name="content"></ui:insert>
@@ -44,10 +44,10 @@
                 </b:column>
             </b:row>
         </b:container>
-<!--        <b:container fluid="true">
-            <b:row>
-            </b:row>
-        </b:container>-->
+        <!--        <b:container fluid="true">
+                    <b:row>
+                    </b:row>
+                </b:container>-->
     </h:body>
 </html>
 
