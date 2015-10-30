@@ -24,9 +24,11 @@ public class WorkerEntity extends BaseTrackableEntity {
     @Column
     private String Name;
     @Column
-    private boolean Disabled;
+    private boolean Status;
     @Column
     private String URL;
+	
+	
 
     public String getName() {
         return Name;
@@ -37,11 +39,11 @@ public class WorkerEntity extends BaseTrackableEntity {
     }
 
     public boolean isDisabled() {
-        return Disabled;
+        return Status;
     }
 
-    public void setDisabled(boolean Disabled) {
-        this.Disabled = Disabled;
+    public void setDisabled(boolean Status) {
+        this.Status = Status;
     }
 
     public String getURL() {

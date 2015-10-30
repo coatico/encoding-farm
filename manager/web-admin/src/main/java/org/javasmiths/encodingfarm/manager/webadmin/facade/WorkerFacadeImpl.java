@@ -49,7 +49,9 @@ public class WorkerFacadeImpl implements WorkerFacade {
             WorkerListDetailDto dto = new WorkerListDetailDto();
             dto.setId(worker.getId());
             dto.setName(worker.getName());
-            if (!dto.isDisabled()) {
+			dto.setURL(worker.getURL());
+			dto.setStatus(worker.isDisabled());
+            if (!dto.isStatus()) {
                 dtos.add(dto);
             }
         }

@@ -15,7 +15,7 @@ public class WorkerListDetailDto {
 
     private String Name;
 
-    private boolean disabled;
+    private boolean status;
 
     private String URL;
 
@@ -35,12 +35,12 @@ public class WorkerListDetailDto {
         this.Name = Name;
     }
 
-    public boolean isDisabled() {
-        return disabled;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setDisabled(boolean disabled) {
-        this.disabled = disabled;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getURL() {

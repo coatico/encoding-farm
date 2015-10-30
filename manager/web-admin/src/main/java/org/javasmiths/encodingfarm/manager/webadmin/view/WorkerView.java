@@ -11,7 +11,6 @@ package org.javasmiths.encodingfarm.manager.webadmin.view;
  */
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -19,18 +18,18 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.javasmiths.encodingfarm.manager.webadmin.facade.WorkerFacade;
 import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerListDetailDto;
-import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerPageDto;
 
 /**
  *
  * @author thomas
  */
 @RequestScoped
-@Named("location")
+@Named("worker")
 public class WorkerView {
 
     private String name;
     private List<WorkerListDetailDto> list = new LinkedList<>();
+	private boolean status;  
 
     @EJB
     private WorkerFacade facade;
@@ -55,8 +54,8 @@ public class WorkerView {
         list = facade.listAll();
     }
 
-        public void enable(ActionEvent actionEvent) {
-        facade.enable(name);
+    public void enable(ActionEvent actionEvent) {
+		facade.enable(name);
         list = facade.listAll();
     }
     public String getName() {
@@ -66,6 +65,14 @@ public class WorkerView {
     public void setName(String name) {
         this.name = name;
     }
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
     public List<WorkerListDetailDto> getList() {
         return list;
