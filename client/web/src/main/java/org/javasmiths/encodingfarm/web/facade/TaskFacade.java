@@ -16,4 +16,6 @@ public interface TaskFacade {
 	public List<TaskDto> listAll();
 
 	public void deleteTask(String id);
+
+	public void updateTask(String id, String title, String filePath, String description);
 }

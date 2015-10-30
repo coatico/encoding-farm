@@ -48,6 +48,11 @@ public class TaskView {
 		facade.deleteTask(id);
 		list = facade.listAll();
 	}
+	
+	public void updateTask(String id, String title, String filePath, String description) {
+		facade.updateTask(id, title, filePath, description);
+		list = facade.listAll();
+	}
 
 	public String getTitle() {
 		return title;

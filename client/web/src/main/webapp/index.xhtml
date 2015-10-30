@@ -17,26 +17,46 @@
                
 			<b:panel>
 				 <h:form >
-					<p:growl id="messages" showDetail="true" />
+				<p:growl id="messages" showDetail="true" />
                                         <p:inputText value="#{tasks.title}" placeholder="Titel" label="Titel"/>	<p:inputText value="#{tasks.filePath}" placeholder="filepath" label="filepath"/> <p:inputText value="#{tasks.description}" placeholder="description" label="description"/>
-					<p:commandButton value="Create" update="@form" actionListener="#{tasks.createTask}" />
-                                        <hr/>
-                                    <p:dataTable var="task" value="#{tasks.list}">
+				<p:commandButton value="Create" update="@form" actionListener="#{tasks.createTask}" />
+                <hr/>
+                <p:dataTable var="task" value="#{tasks.list}">
 					<p:column headerText="Id">
 						<h:outputText value="#{task.id}" />
 					</p:column>
-
 					<p:column headerText="Title">
-                                            <h:outputText value="#{task.fileDto.fileTitle}" />
+						<p:inplace editor="true">
+							<p:inputText value="#{task.fileDto.fileTitle}" required="true" label="text" />
+						</p:inplace>
 					</p:column>
-					
 					<p:column headerText="Filepath">
-                                            <h:outputText value="#{task.fileDto.filePath}" />
+						<p:inplace editor="true">
+							<p:inputText value="#{task.fileDto.filePath}" required="true" label="text" />
+						</p:inplace>
+					</p:column>
+					<p:column headerText="Description">
+						<p:inplace editor="true">
+							<p:inputText value="#{task.fileDto.fileDescription}" onchange="" required="true" label="text" />
+						</p:inplace>
+					</p:column>
+					<p:column headerText="Ready?">
+						<h:outputText value="#{task.taskState}" />
+					</p:column>
+					<p:column headerText="Update">
+						<p:commandButton value="Update" update="@form" actionListener="#{tasks.updateTask(task.id,task.fileDto.fileTitle,task.fileDto.filePath,task.fileDto.fileDescription)}" />
 					</p:column>
 					<p:column headerText="Delete">
-						<p:commandButton value="Delete" update="@form" actionListener="#{tasks.deleteTask(task.id)}" />
+						<p:commandButton value="Delete" update="@form" actionListener="#{tasks.deleteTask(task.id)}" >
+							<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+						</p:commandButton>
 					</p:column>
 				</p:dataTable>
+				
+							<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+								<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
                             </h:form>
 			</b:panel>
 				

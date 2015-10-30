@@ -19,5 +19,7 @@ public interface TaskDao {
 	public void delete(String id);
 
 	public List<TaskEntity> listAll();
+
+	public void update(String id, String title, String filePath, String description);
 	
 }

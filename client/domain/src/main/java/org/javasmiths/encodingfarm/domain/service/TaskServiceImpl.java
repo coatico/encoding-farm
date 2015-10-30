@@ -44,4 +44,11 @@ public class TaskServiceImpl implements TaskService {
 	public void deleteTask(String id) {
 		taskDao.delete(id);
 	}
+
+	@Override
+	public void updateTask(String id, String title, String filePath, String description) {
+		taskDao.update(id, title, filePath, description);
+	}
+	
+	
 }

@@ -50,4 +50,10 @@ public class TaskFacadeImpl implements TaskFacade {
 	public void deleteTask(String id) {
 		taskService.deleteTask(id);
 	}
+
+	@Override
+	public void updateTask(String id, String title, String filePath, String description) {
+		taskService.updateTask(id, title, filePath, description);
+	}
+	
 }

@@ -34,6 +34,16 @@ public class TaskDaoImpl extends BaseDaoImpl<TaskEntity> implements TaskDao {
 	public void delete(String id) {
 		TaskEntity task = em.getReference(TaskEntity.class, id);
 		em.remove(task);
+		em.flush();
+	}
+
+	@Override
+	public void update(String id, String title, String filePath, String description) {
+		TaskEntity task = em.getReference(TaskEntity.class, id);
+		task.getFileEntity().setFilePath(filePath);
+		task.getFileEntity().setFileTitle(title);
+		task.getFileEntity().setFileDescription(description);
+		em.flush();
 	}
 	
 }
