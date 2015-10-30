@@ -13,6 +13,6 @@ public interface VideoDao {
 	
 	public void delete(VideoEntity e);
 
-	public void update(VideoEntity e);
+	//public void update(VideoEntity e);
 	
 }

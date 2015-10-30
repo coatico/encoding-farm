@@ -16,7 +16,9 @@
             </b:row>
             <b:row>
                 <b:panel>
-                    <h:form>
+                    <h:form id="form">
+                <p:growl id="messages" showDetail="true"/>
+						
                         Add Video 
                         <p:inputText value="#{video.name}"  label="Enter videoname here" id="video_crt_name" /> 
                         <p:selectOneMenu value="#{video.videopath}">
@@ -33,13 +35,13 @@
 
                         <p:watermark for="video_crt_name" value="Enter videoname here" id="watermark" />                        
                         <p:watermark for="video_crt_desc" value="Write a description" id="watermark4" />
-                        
+
                         <p:commandButton value="Create" update="@form" actionListener="#{video.create}" />
                         <!--<video width="420" height="315">Testen of het path werkte.
                             <source src="Videos/1.mp4" type="Video/mp4"/>
                         </video>-->
                         <hr/>
-                        <p:dataTable id="tabel" var="vid" value="#{video.list}" editable="true">
+                    <!--    <p:dataTable id="tabel" var="vid" value="#{video.list}" editable="true">
                             <p:column headerText="Id" style="display: none">
                                 <h:outputText value="#{vid.id}" />
                             </p:column>
@@ -52,7 +54,7 @@
                             <p:column headerText="videopath" style="display: none">
                                 <h:outputText value="#{vid.videopath}" />
                             </p:column>
-                            
+							
                             <p:column headerText="description">
                                 <h:inputText value="#{vid.description}"/>
                             </p:column>
@@ -61,7 +63,70 @@
 								<p:commandButton update="@form" actionListener="#{video.update(vid.id)}" icon="ui-icon-pencil"/>
                             </p:column> 
 
-                        </p:dataTable>
+                        </p:dataTable>  -->
+
+						<p:dataTable var="vid" value="#{video.list}" editable="true">
+							<p:ajax event="rowEdit" listener="#{video.onEdit(rowEdit, vid)}" update=":form:messages" />  
+                                                <p:ajax event="rowEditCancel" listener="#{video.onCancel}" update=":form:messages" /> 
+                            <p:column headerText="Id">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{vid.id}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <h:outputText value="#{vid.id}" style="width:100%; margin-left: 10px"/>  
+                                    </f:facet>  
+                                </p:cellEditor> 
+                            </p:column>
+                            <p:column headerText="Status">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{vid.thumbnail}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">
+                                        <p:inputText value="#{vid.thumbnail}" style="width:100%"/>  
+                                    </f:facet>  
+                                </p:cellEditor> 
+                            </p:column>
+                            <p:column headerText="Request" width="22%">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{vid.name}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <h:outputText value="#{vid.name}" style="width:100%; margin-left: 10px"/>   
+                                    </f:facet>  
+                                </p:cellEditor> 
+								<p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{vid.videopath}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <h:outputText value="#{vid.videopath}" style="width:100%; margin-left: 10px"/>   
+                                    </f:facet>  
+                                </p:cellEditor>
+								<p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{vid.description}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <h:outputText value="#{vid.description}" style="width:100%; margin-left: 10px"/>   
+                                    </f:facet>  
+                                </p:cellEditor>
+
+                            </p:column>
+                            <p:column style="width: 4%"><p:rowEditor />  </p:column>
+                            <p:column headerText="Actions" style="width: 7%">
+                                <p:commandButton value="Delete" update="@form" actionListener="#{video.remove(vid.id)}"/>
+                            </p:column>
+
+                        </p:dataTable>	
+
+
+
+
+
+
                     </h:form>
                 </b:panel>
 

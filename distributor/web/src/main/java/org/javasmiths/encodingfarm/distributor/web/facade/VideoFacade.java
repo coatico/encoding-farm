@@ -11,6 +11,8 @@ public interface VideoFacade {
 
 	public void remove(String id);
 
-	public void update(String id);
+	//public void update(String id);
+	
+    public void update(VideoDto dto);
 
 }

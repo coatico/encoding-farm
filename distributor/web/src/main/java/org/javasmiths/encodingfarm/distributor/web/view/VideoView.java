@@ -6,10 +6,13 @@ import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.javasmiths.encodingfarm.distributor.web.dto.VideoDto;
 import org.javasmiths.encodingfarm.distributor.web.facade.VideoFacade;
+import org.primefaces.event.RowEditEvent;
 
 @RequestScoped
 @Named("video")
@@ -34,11 +37,11 @@ public class VideoView {
         facade.remove(id);
         list = facade.listAll();
     }
-
+/*
     public void update(String id) {
         facade.update(id);
         list = facade.listAll();
-    }
+    }*/
     public void create(ActionEvent actionEvent) {
         facade.create(name, videopath, thumbnail, description);
         list = facade.listAll();
@@ -84,4 +87,18 @@ public class VideoView {
         this.description = description;
     }
 
+	    public void onEdit(RowEditEvent event, VideoDto dto) {
+        facade.update(dto);
+        list = facade.listAll();
+    }
+
+    public void onCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Editing Cancelled");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+
+    }
+
+	
+	
+	
 }
