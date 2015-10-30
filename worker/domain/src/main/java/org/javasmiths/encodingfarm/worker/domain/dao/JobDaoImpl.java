@@ -25,9 +25,4 @@ public class JobDaoImpl extends BaseDaoImpl<JobEntity> implements JobDao {
     protected Class<JobEntity> entityClass() {
         return JobEntity.class;
     }
-    
-    @Override
-    public JobEntity findById(String id) {
-        return em.find(JobEntity.class, id);
-    }
 }
