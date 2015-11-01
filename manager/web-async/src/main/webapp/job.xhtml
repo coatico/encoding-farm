@@ -21,7 +21,7 @@
                         <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{job.jobCreationDateTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
                             <f:convertDateTime pattern="HH:mm" />
                         </p:inputMask>
-                        <p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
+                        <p:commandButton value="Create" update=":form:jobdatatable" actionListener="#{job.create}" />
                         <hr/>
 
                         <hr/>
@@ -37,7 +37,7 @@
                             </f:facet>
 
                             <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle, jobs.jobCreationDateTime)}" update=":form:msgs,:form:jobdatatable" />
-                           <p:ajax event="rowEditCancel" listener="#{job.onRowCancel}" update=":form:msgs" />
+                            <p:ajax event="rowEditCancel" listener="#{job.onRowCancel}" update=":form:msgs" />
 
 
                             <p:column headerText="Id">
@@ -55,11 +55,10 @@
                                     <f:facet name="input"><h:inputText value="#{jobs.jobCreationDateTime}" style="width:96%" label="Title"><f:convertDateTime pattern="yyyy-MM-dd hh:mm:ss" /></h:inputText></f:facet>
                                 </p:cellEditor>
                             </p:column>
-                            <p:column headerText="Actions">
-                                <p:commandButton value="Delete" update="@form" actionListener="#{job.delete(jobs.id)}" />
-
+                            <p:column style="width: 3%;margin-left: auto; margin-right: auto;">                                    
+                                <p:commandLink styleClass="ui-icon ui-icon-trash" style="width: 16px;height: 16px;" update=":form:jobdatatable" actionListener="#{job.delete(jobs.id)}" type="image" />
                             </p:column>
-                            <p:column style="width:32px">
+                            <p:column style="width: 3%;margin-left: auto; margin-right: auto;">
                                 <p:rowEditor />
                             </p:column>
 
