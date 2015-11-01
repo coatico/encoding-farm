@@ -32,13 +32,13 @@
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                      rowsPerPageTemplate="5,10,15">
+
                             <f:facet name="header">
                                 List of Jobs
                             </f:facet>
 
                             <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle, jobs.jobCreationDateTime)}" update=":form:msgs,:form:jobdatatable" />
                             <p:ajax event="rowEditCancel" listener="#{job.onRowCancel}" update=":form:msgs" />
-
 
                             <p:column headerText="Id">
                                 <h:outputText value="#{jobs.id}" />
@@ -61,7 +61,6 @@
                             <p:column style="width: 3%;margin-left: auto; margin-right: auto;">
                                 <p:rowEditor />
                             </p:column>
-
 
                         </p:dataTable>
                     </h:form>
