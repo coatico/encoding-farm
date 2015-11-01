@@ -14,11 +14,11 @@ import org.javasmiths.encodingfarm.manager.domain.entity.VideoEntity;
  */
 public interface VideoService {
 
-    VideoEntity registerVideo(String videoTitle);
+    VideoEntity registerVideo(String videoTitle, String videoLink, String videoCode, String videoDescription);
 
     VideoEntity deleteVideo(String id);
 
-    VideoEntity updateVideo(String id, String videoTitle);
+    VideoEntity updateVideo(String id, String videoTitle, String videoLink, String videoCode, String videoDescription);
 
     List<VideoEntity> listAll();
 }

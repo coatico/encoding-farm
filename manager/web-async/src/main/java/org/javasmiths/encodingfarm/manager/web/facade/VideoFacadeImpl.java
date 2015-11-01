@@ -24,8 +24,8 @@ public class VideoFacadeImpl implements VideoFacade {
     private VideoService videoService;
 
     @Override
-    public void create(String videoTitle) {
-        videoService.registerVideo(videoTitle);
+    public void create(String videoTitle, String videoLink, String videoCode, String videoDescription) {
+        videoService.registerVideo(videoTitle, videoLink, videoCode, videoDescription);
     }
 
     @Override
@@ -35,8 +35,8 @@ public class VideoFacadeImpl implements VideoFacade {
     }
 
     @Override
-    public void update(String id, String title) {
-        videoService.updateVideo(id, title);
+    public void update(String id, String title, String videoLink, String videoCode, String videoDescription) {
+        videoService.updateVideo(id, title, videoLink, videoCode, videoDescription);
     }
 
     @Override
@@ -47,6 +47,9 @@ public class VideoFacadeImpl implements VideoFacade {
             VideoDto dto = new VideoDto();
             dto.setId(video.getId());
             dto.setVideoTitle(video.getVideoTitle());
+            dto.setVideoCode(video.getVideoCode());
+            dto.setVideoDescription(video.getVideoDescription());
+            dto.setVideoLink(video.getVideoLink());
             dtos.add(dto);
         }
         return dtos;

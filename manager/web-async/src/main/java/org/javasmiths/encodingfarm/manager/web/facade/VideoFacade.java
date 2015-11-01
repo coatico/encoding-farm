@@ -10,11 +10,11 @@ import org.javasmiths.encodingfarm.manager.web.dto.VideoDto;
  */
 public interface VideoFacade {
 
-    public void create(String videoTitle);
+    public void create(String videoTitle, String videoLink, String videoCode, String videoDescription);
 
     public void delete(String id);
 
-    public void update(String id, String title);
+    public void update(String id, String title, String videoLink, String videoCode, String videoDescription);
 
     public List<VideoDto> listAll();
 
