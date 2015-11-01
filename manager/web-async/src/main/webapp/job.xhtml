@@ -13,7 +13,7 @@
         <ui:define name="content">
             <b:row>
                 <b:panel>
-                    <h:form>
+                    <h:form id="form">
                         Job Title <p:inputText value="#{job.jobTitle}"  label="Enter job title here" id="job_crt_txt"/> 
                         <p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
                         <hr/>
@@ -36,8 +36,8 @@
                                 List of Jobs
                             </f:facet>
 
-                            <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle, jobs.jobCreationDateTime)}"/>
-                           <!-- <p:ajax event="rowEditCancel" listener="#{job.onRowCancel}" update=":form:msgs" />-->
+                            <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle, jobs.jobCreationDateTime)}" update=":form:msgs,:form:jobdatatable" />
+                           <p:ajax event="rowEditCancel" listener="#{job.onRowCancel}" update=":form:msgs" />
 
 
                             <p:column headerText="Id">
@@ -51,8 +51,8 @@
                             </p:column>
                             <p:column headerText="jobStartTime">
                                 <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{jobs.jobCreationDateTime}" /></f:facet>
-                                    <f:facet name="input"><h:inputText value="#{jobs.jobCreationDateTime}" style="width:96%" label="Title" /></f:facet>
+                                    <f:facet name="output"><h:outputText value="#{jobs.jobCreationDateTime}"><f:convertDateTime pattern="yyyy-MM-dd hh:mm:ss" /></h:outputText></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{jobs.jobCreationDateTime}" style="width:96%" label="Title"><f:convertDateTime pattern="yyyy-MM-dd hh:mm:ss" /></h:inputText></f:facet>
                                 </p:cellEditor>
                             </p:column>
                             <p:column headerText="Actions">
