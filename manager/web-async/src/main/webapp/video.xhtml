@@ -16,6 +16,12 @@
                     <h:form>
                         Add Video <p:inputText value="#{video.videoTitle}"  label="Enter video here" id="video_crt_txt"/> 
                         <p:watermark for="video_crt_txt" value="Enter video here" id="watermark" />
+                        Add Video <p:inputText value="#{video.videoCode}"  label="Enter videocode here" id="videocode_crt_txt"/> 
+                        <p:watermark for="videocode_crt_txt" value="Enter videocode here" id="watermark2" />
+                        Add Video <p:inputText value="#{video.videoDescription}"  label="Enter videodescription here" id="videodescr_crt_txt"/> 
+                        <p:watermark for="videodescr_crt_txt" value="Enter videodescription here" id="watermark3" />
+                        Add Video <p:inputText value="#{video.videoLink}"  label="Enter videolink here" id="videolink_crt_txt"/> 
+                        <p:watermark for="videolink_crt_txt" value="Enter videolink here" id="watermark4" />
                         <p:commandButton value="Create" update="@form" actionListener="#{video.create}" />
                         <hr/>
 
@@ -43,6 +49,24 @@
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{videos.videoTitle}" /></f:facet>
                                     <f:facet name="input"><h:inputText value="#{videos.videoTitle}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="videoCode">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{videos.videoCode}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{videos.videoCode}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="videoDescr">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{videos.videoDescription}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{videos.videoDescription}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="videoLink">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{videos.videoLink}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{videos.videoLink}" style="width:96%" label="Title" /></f:facet>
                                 </p:cellEditor>
                             </p:column>
                             <p:column headerText="Actions">

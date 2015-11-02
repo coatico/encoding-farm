@@ -9,6 +9,9 @@ public class VideoDto {
 
     private String id;
     private String videoTitle;
+    private String videoCode;
+    private String videoLink;
+    private String videoDescription;
 
     public String getId() {
         return id;
@@ -26,4 +29,28 @@ public class VideoDto {
         this.videoTitle = videoTitle;
     }
 
+    public String getVideoCode() {
+        return videoCode;
+    }
+
+    public void setVideoCode(String videoCode) {
+        this.videoCode = videoCode;
+    }
+
+    public String getVideoLink() {
+        return videoLink;
+    }
+
+    public void setVideoLink(String videoLink) {
+        this.videoLink = videoLink;
+    }
+
+    public String getVideoDescription() {
+        return videoDescription;
+    }
+
+    public void setVideoDescription(String videoDescription) {
+        this.videoDescription = videoDescription;
+    }
+    
 }

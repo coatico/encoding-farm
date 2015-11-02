@@ -29,7 +29,9 @@ public class VideoView implements Serializable {
 
     private String videoTitle;
     private List<VideoDto> list = new LinkedList<>();
-
+    private String videoCode;
+    private String videoLink;
+    private String videoDescription;
     @EJB
     private VideoFacade facade;
 
@@ -39,7 +41,7 @@ public class VideoView implements Serializable {
     }
 
     public void create(ActionEvent actionEvent) {
-        facade.create(videoTitle);
+        facade.create(videoTitle, videoCode, videoDescription, videoLink);
         list = facade.listAll();
     }
 
@@ -49,7 +51,7 @@ public class VideoView implements Serializable {
     }
 
     public void update(String id, String videoTitle) {
-        facade.update(id, videoTitle);
+        facade.update(id, videoTitle, videoCode, videoDescription, videoLink);
     }
 
     public void onRowCancel(RowEditEvent event) {
@@ -78,4 +80,44 @@ public class VideoView implements Serializable {
         list = facade.listAll();
     }
 
+    public String getVideoTitle() {
+        return videoTitle;
+    }
+
+    public void setVideoTitle(String videoTitle) {
+        this.videoTitle = videoTitle;
+    }
+
+    public String getVideoCode() {
+        return videoCode;
+    }
+
+    public void setVideoCode(String videoCode) {
+        this.videoCode = videoCode;
+    }
+
+    public String getVideoLink() {
+        return videoLink;
+    }
+
+    public void setVideoLink(String videoLink) {
+        this.videoLink = videoLink;
+    }
+
+    public String getVideoDescription() {
+        return videoDescription;
+    }
+
+    public void setVideoDescription(String videoDescription) {
+        this.videoDescription = videoDescription;
+    }
+
+    public VideoFacade getFacade() {
+        return facade;
+    }
+
+    public void setFacade(VideoFacade facade) {
+        this.facade = facade;
+    }
+    
 }
