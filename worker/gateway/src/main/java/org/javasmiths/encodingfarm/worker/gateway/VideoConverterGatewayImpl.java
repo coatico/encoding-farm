@@ -31,56 +31,22 @@ public class VideoConverterGatewayImpl extends Observable implements VideoConver
     private final String working = "../lib/";
     private final String input = "video.mp4";
     private final String output = "samson";
-    private final String sub =  "test.srt";
+    private final String sub = "test.srt";
     private String ffmpeg = working + "ffmpeg.exe";
 
     private double progressPercentage = 0;
 
     @Override
     public void convert(RequestEntity request) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
         DateFormat parseFormat = new SimpleDateFormat("HH:mm:ss.SS");
-        Date date = new Date();
 
-        if (System.getProperty("os.name").startsWith("Mac")) {
-            ffmpeg = working + "ffmpeg";
-        }
+        setOSDependantFFmpeg();
 
         try {
-            File ffmpegFile = new File(ffmpeg);
-            /*File inputFile = new File(input);
-            File outputFile = new File(output + dateFormat.format(date) + ".avi");
-            File subFile = new File(sub);*/
-            String outputFile = output + dateFormat.format(date) + ".avi";
-            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", input, (sub.length() > 0) ? "-vf" : "", (sub.length() > 0) ? "subtitles=" + sub + "" : "", outputFile};
-            ProcessBuilder pb = new ProcessBuilder(args);
-            pb.directory(new File(working));
-            pb.redirectOutput();
-            pb.redirectError();
-            Process proc;
-            proc = pb.start();
+            ProcessBuilder pb = getProcessBuilder();
+            Process proc = pb.start();
             try (BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getErrorStream()))) {
-                String line;
-                String movieDuration = null;
-                while ((line = stdInput.readLine()) != null) {
-                    if (line.contains("Duration:")) {
-                        String[] duration = line.split("Duration=");
-                        movieDuration = duration[0].split(", start:")[0].split("Duration:")[1];
-                        System.out.println("TIJD IS " + movieDuration);
-                    }
-                    if (line.startsWith("frame=")) {
-                        String progress = line.split("time=")[1].split(" bitrate=")[0];
-                        // System.out.println(progress.trim() + " /" + (movieDuration == null ? "hh:mm:ss.ff": movieDuration.trim()));
-                        Date progressTime = parseFormat.parse(progress);
-                        Date totalTime = parseFormat.parse(movieDuration);
-                        double test = round((100.0 / getTime(totalTime)) * getTime(progressTime), 2);
-                        System.out.println(test + "%");
-                        progressPercentage = test;
-                        setChanged();
-                        notifyObservers(progressPercentage);
-                    }
-                    System.out.println(line);
-                }
+                parseOutput(stdInput, parseFormat);
                 System.out.println("DONE");
             } catch (ParseException ex) {
                 Logger.getLogger(VideoConverterGatewayImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,6 +56,52 @@ public class VideoConverterGatewayImpl extends Observable implements VideoConver
             Logger.getLogger(VideoConverterGatewayImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private void parseOutput(final BufferedReader stdInput, DateFormat parseFormat) throws IOException, ParseException {
+        String line = null;
+        String movieDuration = null;
+        while ((line = stdInput.readLine()) != null) {
+            if (line.contains("Duration:")) {
+                String[] duration = line.split("Duration=");
+                movieDuration = duration[0].split(", start:")[0].split("Duration:")[1];
+                System.out.println("TIJD IS " + movieDuration);
+            }
+            if (line.startsWith("frame=")) {
+                String progress = line.split("time=")[1].split(" bitrate=")[0];
+                // System.out.println(progress.trim() + " /" + (movieDuration == null ? "hh:mm:ss.ff": movieDuration.trim()));
+                Date progressTime = parseFormat.parse(progress);
+                Date totalTime = parseFormat.parse(movieDuration);
+                double test = round((100.0 / getTime(totalTime)) * getTime(progressTime), 2);
+                System.out.println(test + "%");
+                progressPercentage = test;
+                setChanged();
+                notifyObservers(progressPercentage);
+            }
+            System.out.println(line);
+        }
+    }
+
+    public void setOSDependantFFmpeg() {
+        if (System.getProperty("os.name").startsWith("Mac")) {
+            ffmpeg = working + "ffmpeg";
+        }
+    }
+
+    public ProcessBuilder getProcessBuilder() throws IOException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        Date date = new Date();
+        File ffmpegFile = new File(ffmpeg);
+        /*File inputFile = new File(input);
+         File outputFile = new File(output + dateFormat.format(date) + ".avi");
+         File subFile = new File(sub);*/
+        String outputFile = output + dateFormat.format(date) + ".avi";
+        String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", input, (sub.length() > 0) ? "-vf" : "", (sub.length() > 0) ? "subtitles=" + sub + "" : "", outputFile};
+        ProcessBuilder pb = new ProcessBuilder(args);
+        pb.directory(new File(working));
+        pb.redirectOutput();
+        pb.redirectError();
+        return pb;
     }
 
     public static double round(double value, int places) {
