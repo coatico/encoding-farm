@@ -12,5 +12,6 @@ package org.javasmiths.encodingfarm.worker.gateway;
 public enum Status {
     ERROR,
     INPROGRESS, 
-    COMPLETED
+    COMPLETED,
+    UNKNOWN
 }

@@ -22,6 +22,7 @@ public class ConversionResult {
     }
 
     public ConversionResult() {
+        status = Status.UNKNOWN;
     }
 
     public Status getStatus() {

@@ -52,6 +52,7 @@ public class VideoConverterGatewayImpl extends Observable implements VideoConver
                 if(parseResult) {
                     print("DONE", false);
                     updateProgress(info, Status.COMPLETED);
+                    return;
                 }
             } catch (ParseException ex) {
                 Logger.getLogger(VideoConverterGatewayImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,6 +63,7 @@ public class VideoConverterGatewayImpl extends Observable implements VideoConver
             Logger.getLogger(VideoConverterGatewayImpl.class.getName()).log(Level.SEVERE, null, ex);
             updateProgress(info, Status.ERROR, ex.getMessage());
         }
+        updateProgress(null, Status.UNKNOWN);
 
     }
 
