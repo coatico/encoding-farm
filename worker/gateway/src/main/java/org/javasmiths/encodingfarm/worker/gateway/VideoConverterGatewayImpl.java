@@ -26,20 +26,22 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
  *
  * @author joris
  */
-public class VideoConverterGatewayImpl extends Observable implements  VideoConverterGateway {
- 
-    private final String input = "../lib/video.mp4";
-    private final String output = "../lib/samson";
-    private final String sub = "../lib/test.srt";
-    private String ffmpeg = "../lib/ffmpeg.exe";
+public class VideoConverterGatewayImpl extends Observable implements VideoConverterGateway {
 
-    private double progressPercentage = 0 ;
+    private final String working = "../lib/";
+    private final String input = working + "video.mp4";
+    private final String output = working + "samson";
+    private final String sub = working + "test.srt";
+    private String ffmpeg = working + "ffmpeg.exe";
+
+    private double progressPercentage = 0;
+
     @Override
     public void convert(RequestEntity request) {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
         DateFormat parseFormat = new SimpleDateFormat("HH:mm:ss.SS");
         Date date = new Date();
-        
+
         if (System.getProperty("os.name").startsWith("Mac")) {
             ffmpeg = "../lib/ffmpeg";
         }
@@ -49,8 +51,9 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
             File inputFile = new File(input);
             File outputFile = new File(output + dateFormat.format(date) + ".avi");
             File subFile = new File(sub);
-            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(),(sub.length()>0) ? "-vf" : "",(sub.length()>0) ? "subtitles=" + subFile.getCanonicalPath() + "" : "", outputFile.getCanonicalPath()};
+            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(), (sub.length() > 0) ? "-vf" : "", (sub.length() > 0) ? "subtitles=" + subFile.getCanonicalPath() + "" : "", outputFile.getCanonicalPath()};
             ProcessBuilder pb = new ProcessBuilder(args);
+            pb.directory(new File(working));
             pb.redirectOutput();
             pb.redirectError();
             Process proc;
@@ -87,14 +90,16 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
         }
 
     }
-    
-    public static double round(double value, int places) {
-    if (places < 0) throw new IllegalArgumentException();
 
-    BigDecimal bd = new BigDecimal(value);
-    bd = bd.setScale(places, RoundingMode.HALF_UP);
-    return bd.doubleValue();
-}
+    public static double round(double value, int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
 
     private Double getTime(Date date) {
         Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
