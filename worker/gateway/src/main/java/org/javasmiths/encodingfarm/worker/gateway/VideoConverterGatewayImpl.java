@@ -29,9 +29,9 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
 public class VideoConverterGatewayImpl extends Observable implements VideoConverterGateway {
 
     private final String working = "../lib/";
-    private final String input = working + "video.mp4";
-    private final String output = working + "samson";
-    private final String sub = working + "test.srt";
+    private final String input = "video.mp4";
+    private final String output = "samson";
+    private final String sub =  "test.srt";
     private String ffmpeg = working + "ffmpeg.exe";
 
     private double progressPercentage = 0;
@@ -43,15 +43,16 @@ public class VideoConverterGatewayImpl extends Observable implements VideoConver
         Date date = new Date();
 
         if (System.getProperty("os.name").startsWith("Mac")) {
-            ffmpeg = "../lib/ffmpeg";
+            ffmpeg = working + "ffmpeg";
         }
 
         try {
             File ffmpegFile = new File(ffmpeg);
-            File inputFile = new File(input);
+            /*File inputFile = new File(input);
             File outputFile = new File(output + dateFormat.format(date) + ".avi");
-            File subFile = new File(sub);
-            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(), (sub.length() > 0) ? "-vf" : "", (sub.length() > 0) ? "subtitles=" + subFile.getCanonicalPath() + "" : "", outputFile.getCanonicalPath()};
+            File subFile = new File(sub);*/
+            String outputFile = output + dateFormat.format(date) + ".avi";
+            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", input, (sub.length() > 0) ? "-vf" : "", (sub.length() > 0) ? "subtitles=" + sub + "" : "", outputFile};
             ProcessBuilder pb = new ProcessBuilder(args);
             pb.directory(new File(working));
             pb.redirectOutput();
