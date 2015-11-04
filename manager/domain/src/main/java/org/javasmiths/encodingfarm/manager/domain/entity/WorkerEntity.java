@@ -9,11 +9,9 @@ package org.javasmiths.encodingfarm.manager.domain.entity;
  *
  * @author Arne
  */
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 @Entity

@@ -14,7 +14,7 @@ import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
  */
 public interface WorkerService {
 
-    WorkerEntity registerWorker(String name, Boolean status);
+    WorkerEntity registerWorker(String name, Boolean status, String URL);
 
     WorkerEntity deleteWorker(String id);
 

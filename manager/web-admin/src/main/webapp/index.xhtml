@@ -21,8 +21,10 @@ and open the template in the editor.
 						Add Worker <p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
 						<p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
 						Status  <p:selectBooleanCheckbox value="#{worker.status}" />
+						URL		   <p:inputText value="#{worker.URL}"  label="Enter name here"/> 
 						<p:commandButton value="Create" update="@form" actionListener="#{worker.create}" />
 						<hr/>
+						
 						<p:dataTable var="wor" value="#{worker.list}">
 							<p:column headerText="Id">
 								<h:outputText value="#{wor.id}" />
@@ -37,9 +39,35 @@ and open the template in the editor.
 								<h:outputText value="#{wor.status}" />
 							</p:column>
 						</p:dataTable>
+						
+						 
+						<p:dataScroller value="#{worker.list}" var="workers" chunkSize="10">
+       
+ 
+					<h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+						<p:graphicImage name="/encoding-farm.jpg" /> 
+ 
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="Id:" />
+								<h:outputText value="#{workers.id}" style="font-weight: bold"/>
+
+								<h:outputText value="Name:" />
+								<h:outputText value="#{workers.name}" style="font-weight: bold"/>
+
+								<h:outputText value="Status:" />
+								<h:outputText value="#{workers.status}" style="font-weight: bold"/>
+								
+								<h:outputText value="URL:" />
+								<h:outputText value="#{workers.URL}" style="font-weight: bold"/>
+								</h:panelGrid>
+							</p:outputPanel>
+						</h:panelGrid>
+						
+					</p:dataScroller>
+						
 					</h:form>
 				</b:panel>
-
 			</b:row>
         </ui:define>
     </ui:composition>

@@ -23,10 +23,11 @@ public class WorkerServiceImpl implements WorkerService {
     private WorkerEntity we;
 
     @Override
-    public WorkerEntity registerWorker(String name, Boolean status) {
+    public WorkerEntity registerWorker(String name, Boolean status, String URL) {
         WorkerEntity workerEntity = new WorkerEntity();
         workerEntity.setName(name);
         workerEntity.setStatus(status);
+		workerEntity.setURL(URL);
         dao.save(workerEntity);
         return workerEntity;
     }

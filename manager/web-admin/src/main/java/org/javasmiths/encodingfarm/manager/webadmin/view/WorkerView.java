@@ -30,6 +30,7 @@ public class WorkerView {
     private String name;
     private List<WorkerListDetailDto> list = new LinkedList<>();
 	private boolean status;  
+	private String URL;
 
     @EJB
     private WorkerFacade facade;
@@ -40,7 +41,7 @@ public class WorkerView {
     }
 
     public void create(ActionEvent actionEvent) {
-        facade.create(name, status);
+        facade.create(name, status, URL);
         list = facade.listAll();
     }
 
@@ -74,6 +75,14 @@ public class WorkerView {
 		this.status = status;
 	}
 
+	public String getURL() {
+		return URL;
+	}
+
+	public void setURL(String URL) {
+		this.URL = URL;
+	}
+
     public List<WorkerListDetailDto> getList() {
         return list;
     }
@@ -82,4 +91,6 @@ public class WorkerView {
         this.list = list;
     }
 
+	
+	
 }
