@@ -13,18 +13,18 @@ import javax.persistence.Table;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 @Entity
-@Table(name="TASKS")
+@Table(name = "TASKS")
 public class TaskEntity extends BaseTrackableEntity implements Serializable {
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-        private FileEntity fileEntity;
-        private boolean taskState;
-	
-        public TaskEntity(){
-            this.taskState=false;
-        }
-        
-	public TaskEntity(FileEntity fileEntity){
+	private FileEntity fileEntity;
+	private boolean taskState;
+
+	public TaskEntity() {
+		this.taskState = false;
+	}
+
+	public TaskEntity(FileEntity fileEntity) {
 		this.fileEntity = fileEntity;
 		this.taskState = false;
 	}
@@ -44,6 +44,5 @@ public class TaskEntity extends BaseTrackableEntity implements Serializable {
 	public void setTaskState(boolean state) {
 		this.taskState = state;
 	}
-	
-	
+
 }
