@@ -12,7 +12,6 @@ package org.javasmiths.encodingfarm.manager.webadmin.view;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -54,15 +53,14 @@ public class WorkerView implements Serializable{
     }
 	
 	 
-	public void test(org.primefaces.event.CellEditEvent Event){
-		Object oldValue = Event.getOldValue();
-        Object newValue = Event.getNewValue();
-		
-		System.out.println(oldValue);
-		System.out.println(newValue);
-		
-		//facade.edit();
-		//list= facade.listAll();
+	public void edit(org.primefaces.event.CellEditEvent Event){
+		int rowIndex = Event.getRowIndex();
+		String Id = list.get(rowIndex).getId();
+		String Name = list.get(rowIndex).getName();
+		Boolean Status = list.get(rowIndex).isStatus();
+		String URl = list.get(rowIndex).getURL();
+		facade.edit(Id, Name, Status, URL);
+		list = facade.listAll();
 	}
 
     public void delete(ActionEvent actionEvent) {

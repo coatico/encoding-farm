@@ -29,8 +29,8 @@ public class WorkerFacadeImpl implements WorkerFacade {
     }
 	
 	@Override
-	public void edit(){
-		workerService.editWorker();
+	public void edit(String Id, String Name, Boolean Status, String URL){
+		workerService.editWorker(Id, Name, Status, URL);
 	}
 
     @Override

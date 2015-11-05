@@ -18,7 +18,11 @@ public interface WorkerDao {
 
     public void deleteById(String id);
 
+	public WorkerEntity findById(String id);
+	
+	public void update(WorkerEntity workerEntity);
 
+	
     public List<WorkerEntity> listAll();
 
 }

@@ -43,8 +43,24 @@ public class WorkerServiceImpl implements WorkerService {
     }
 	
 	@Override
-	public WorkerEntity editWorker(){
-		return null;
+	public WorkerEntity editWorker(String id, String name, Boolean status, String URL){
+		WorkerEntity workerEntity = null;
+        
+        if(id != null) {
+            workerEntity = dao.findById(id);
+            
+        }
+        
+        if(workerEntity == null){
+            workerEntity = new WorkerEntity();
+        }
+		
+        workerEntity.setName(name);
+        workerEntity.setStatus(status);
+        workerEntity.setURL(URL);
+        dao.update(workerEntity);
+			
+        return workerEntity;
 	}
 
     @Override

@@ -25,6 +25,15 @@ public class WorkerDaoImpl extends BaseDaoImpl<WorkerEntity> implements WorkerDa
     protected EntityManager em() {
         return em;
     }
+	
+	@Override
+	public WorkerEntity findById(String id) {
+        return em.find(WorkerEntity.class, id);
+    }
+	
+	 public void update(WorkerEntity workerEntity) {
+        em.merge(workerEntity);
+    }
 
     @Override
     protected Class<WorkerEntity> entityClass() {

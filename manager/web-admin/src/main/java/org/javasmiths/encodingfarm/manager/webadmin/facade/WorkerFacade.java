@@ -24,6 +24,6 @@ public interface WorkerFacade {
 
     public List<WorkerListDetailDto> listAll();
 
-	public void edit();
+	public void edit(String Id, String name, Boolean status, String URL);
 
 }
