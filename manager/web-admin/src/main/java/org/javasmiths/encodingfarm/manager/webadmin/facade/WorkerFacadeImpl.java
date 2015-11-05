@@ -27,6 +27,11 @@ public class WorkerFacadeImpl implements WorkerFacade {
     public void create(String name,Boolean status, String URL) {
         workerService.registerWorker(name, status, URL);
     }
+	
+	@Override
+	public void edit(){
+		workerService.editWorker();
+	}
 
     @Override
     public void delete(String id) {

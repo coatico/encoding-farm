@@ -47,7 +47,7 @@ and open the template in the editor.
 						 
 					<p:dataScroller value="#{worker.list}" var="workers" chunkSize="10">
 					<h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-						<p:graphicImage name="/encoding-farm.jpg" /> 
+						<p:graphicImage /> 
  
 						<p:outputPanel>
 							<h:panelGrid columns="2" cellpadding="5">
@@ -72,7 +72,7 @@ and open the template in the editor.
 							Cell Editing with Click and RightClick
 						</f:facet>
 
-								<p:ajax event="cellEdit" listener="#{worker.onCellEdit}" update=":form:msgs" />
+							<p:ajax event="cellEdit" listener="#{worker.test}" update=":form:msgs" />
 
 						<p:column headerText="Id">
 							   <p:cellEditor>
@@ -97,7 +97,7 @@ and open the template in the editor.
 
 						<p:column headerText="Status">
 							<p:cellEditor>
-								<f:facet name="output"><h:outputText value="#{workeredit.URL}" /></f:facet>
+								<f:facet name="output"><h:outputText value="#{workeredit.status}" /></f:facet>
 								<f:facet name="input">
 									<h:selectOneMenu value="#{workeredit.URL}" style="width:100%">
 										<f:selectItems value="#{worker.picker}" var="picker" itemLabel="#{picker}" itemValue="#{picker}" />
@@ -105,6 +105,7 @@ and open the template in the editor.
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
+							
 						</p:dataTable>
 						
 					</h:form>

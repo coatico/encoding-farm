@@ -41,6 +41,11 @@ public class WorkerServiceImpl implements WorkerService {
         dao.save(workerEntity);
         return workerEntity;
     }
+	
+	@Override
+	public WorkerEntity editWorker(){
+		return null;
+	}
 
     @Override
     public WorkerEntity deleteWorker(String id) {

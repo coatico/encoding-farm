@@ -24,4 +24,6 @@ public interface WorkerFacade {
 
     public List<WorkerListDetailDto> listAll();
 
+	public void edit();
+
 }

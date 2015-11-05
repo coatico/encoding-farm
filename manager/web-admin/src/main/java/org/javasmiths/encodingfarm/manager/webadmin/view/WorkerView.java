@@ -16,9 +16,7 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.javasmiths.encodingfarm.manager.domain.service.WorkerServiceImpl;
@@ -38,6 +36,7 @@ public class WorkerView implements Serializable{
 	private boolean status;  
 	private String URL;
 	
+	
 	@ManagedProperty("#{workerServiceImpl}")
     private WorkerServiceImpl service;
 
@@ -54,15 +53,17 @@ public class WorkerView implements Serializable{
         list = facade.listAll();
     }
 	
-	 public void onCellEdit(CellEditEvent event) {
-        Object oldValue = event.getOldValue();
-        Object newValue = event.getNewValue();
-         
-        if(newValue != null && !newValue.equals(oldValue)) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }
-    }
+	 
+	public void test(org.primefaces.event.CellEditEvent Event){
+		Object oldValue = Event.getOldValue();
+        Object newValue = Event.getNewValue();
+		
+		System.out.println(oldValue);
+		System.out.println(newValue);
+		
+		//facade.edit();
+		//list= facade.listAll();
+	}
 
     public void delete(ActionEvent actionEvent) {
         facade.delete(name);
