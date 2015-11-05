@@ -18,7 +18,10 @@ and open the template in the editor.
         <ui:define name="content">
        <b:row>
 				<b:panel>
-					<h:form>
+					<h:form id="form">
+						
+						<p:growl id="msgs" showDetail="true"/>
+						
 						Add Worker <p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
 						<p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
 						Status  <p:selectBooleanCheckbox value="#{worker.status}" />
@@ -69,7 +72,7 @@ and open the template in the editor.
 							Cell Editing with Click and RightClick
 						</f:facet>
 
-								<!--<p:ajax event="cellEdit" listener="#{worker.onCellEdit}" update=":form:msgs" />-->
+								<p:ajax event="cellEdit" listener="#{worker.onCellEdit}" update=":form:msgs" />
 
 						<p:column headerText="Id">
 							   <p:cellEditor>
