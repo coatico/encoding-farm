@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:p="http://primefaces.org/ui">
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="./common/template.xhtml">
         <ui:define name="title">
             Worker
@@ -41,9 +42,7 @@ and open the template in the editor.
 						</p:dataTable>
 						
 						 
-						<p:dataScroller value="#{worker.list}" var="workers" chunkSize="10">
-       
- 
+					<p:dataScroller value="#{worker.list}" var="workers" chunkSize="10">
 					<h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
 						<p:graphicImage name="/encoding-farm.jpg" /> 
  
@@ -63,8 +62,47 @@ and open the template in the editor.
 								</h:panelGrid>
 							</p:outputPanel>
 						</h:panelGrid>
-						
 					</p:dataScroller>
+						
+						<p:dataTable id="workeredit" var="workeredit" value="#{worker.list}" editable="true" editMode="cell" widgetVar="cellCars">
+						<f:facet name="header">
+							Cell Editing with Click and RightClick
+						</f:facet>
+
+								<!--<p:ajax event="cellEdit" listener="#{worker.onCellEdit}" update=":form:msgs" />-->
+
+						<p:column headerText="Id">
+							   <p:cellEditor>
+								   <f:facet name="output"><h:outputText value="#{workeredit.id}" /></f:facet>
+								   <f:facet name="input"><p:inputText id="modelInput" value="#{workeredit.id}" style="width:96%"/></f:facet>
+							   </p:cellEditor>
+						   </p:column>
+
+						   <p:column headerText="Name">
+							<p:cellEditor>
+								<f:facet name="output"><h:outputText value="#{workeredit.name}" /></f:facet>
+								<f:facet name="input"><p:inputText value="#{workeredit.name}" style="width:96%" label="Name"/></f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="URL">
+							<p:cellEditor>
+								<f:facet name="output"><h:outputText value="#{workeredit.URL}" /></f:facet>
+								<f:facet name="input"><p:inputText value="#{workeredit.URL}" style="width:96%" label="Status"/></f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Status">
+							<p:cellEditor>
+								<f:facet name="output"><h:outputText value="#{workeredit.URL}" /></f:facet>
+								<f:facet name="input">
+									<h:selectOneMenu value="#{workeredit.URL}" style="width:100%">
+										<f:selectItems value="#{worker.picker}" var="picker" itemLabel="#{picker}" itemValue="#{picker}" />
+									</h:selectOneMenu>
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						</p:dataTable>
 						
 					</h:form>
 				</b:panel>

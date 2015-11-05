@@ -8,6 +8,7 @@ package org.javasmiths.encodingfarm.manager.domain.service;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.faces.bean.ManagedBean;
 import org.javasmiths.encodingfarm.manager.domain.dao.WorkerDao;
 import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
 
@@ -15,12 +16,21 @@ import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
  *
  * @author Arne Polfliet
  */
+@ManagedBean(name = "workerServiceImpl")
 @Stateless
 public class WorkerServiceImpl implements WorkerService {
 
     @EJB
     private WorkerDao dao;
     private WorkerEntity we;
+	
+	private final static String[] picker;
+	
+	   static {
+        picker = new String[2];
+        picker[0] = "false";
+        picker[1] = "true";
+    }
 
     @Override
     public WorkerEntity registerWorker(String name, Boolean status, String URL) {
@@ -55,5 +65,9 @@ public class WorkerServiceImpl implements WorkerService {
     public List<WorkerEntity> listAll() {
         return dao.listAll();
     }
+
+	public static String[] getPicker() {
+		return picker;
+	}
 
 }
