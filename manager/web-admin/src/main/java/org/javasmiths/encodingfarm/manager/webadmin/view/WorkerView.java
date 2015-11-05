@@ -58,7 +58,7 @@ public class WorkerView implements Serializable{
 		String Id = list.get(rowIndex).getId();
 		String Name = list.get(rowIndex).getName();
 		Boolean Status = list.get(rowIndex).isStatus();
-		String URl = list.get(rowIndex).getURL();
+		String URL = list.get(rowIndex).getURL();
 		facade.edit(Id, Name, Status, URL);
 		list = facade.listAll();
 	}
