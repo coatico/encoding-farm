@@ -22,6 +22,8 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 public class UserEntity extends BaseTrackableEntity implements Serializable {
 
 	//@OneToMany(mappedBy = "userEntity", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	private UserEntity userEntity;
+	
 	
 	private String firstName;
 
@@ -37,8 +39,16 @@ public class UserEntity extends BaseTrackableEntity implements Serializable {
 
 	private String email;
 
-		public UserEntity() {
+	public UserEntity() {
 
+	}
+
+	public UserEntity getUserEntity() {
+		return userEntity;
+	}
+
+	public void setUserEntity(UserEntity userEntity) {
+		this.userEntity = userEntity;
 	}
 	
 	

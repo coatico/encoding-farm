@@ -39,8 +39,17 @@ public class UserDaoImpl extends BaseDaoImpl<UserEntity> implements UserDao {
 		em.flush();
 	}
 
-	
-	//update nog toeveogen, is al voorgeprogrammeerd in de userDAO
-	
+	@Override
+	public void update(String id, String firstName, String lastName, String sex, String birthdate, String password, String username, String email) {
+		UserEntity user = em.getReference(UserEntity.class, id);
+		user.getUserEntity().setFirstName(firstName);
+		user.getUserEntity().setLastName(lastName);
+		user.getUserEntity().setSex(sex);
+		user.getUserEntity().setBirthdate(birthdate);
+		user.getUserEntity().setPassword(password);
+		user.getUserEntity().setUsername(username);
+		user.getUserEntity().setEmail(email);
+		em.flush();
+	}
 
 }

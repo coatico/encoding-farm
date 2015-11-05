@@ -16,5 +16,5 @@ public interface UserDao {
 
 	public void delete(String id);
 	
-	//public void update( String firstName,String lastName,String sex, String birthdate, String password,String username,String email);
+	public void update(String id,String firstName, String lastName, String sex, String birthdate, String password, String username, String email);
 }
