@@ -16,7 +16,7 @@ public interface WorkerFacade {
 
     public void create(String name, Boolean status, String URL);
 
-    public void delete(String name);
+    public void delete(String id);
 
     public void disable(String name);
 
