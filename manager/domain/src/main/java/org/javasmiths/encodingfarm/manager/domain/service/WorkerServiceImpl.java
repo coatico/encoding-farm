@@ -42,8 +42,7 @@ public class WorkerServiceImpl implements WorkerService {
         return workerEntity;
     }
 	
-	@Override
-	public WorkerEntity editWorker(String id, String name, Boolean status, String URL){
+	public String editWorker(String id, String name, Boolean status, String URL){
 		WorkerEntity workerEntity = null;
         
         if(id != null) {
@@ -60,7 +59,7 @@ public class WorkerServiceImpl implements WorkerService {
         workerEntity.setURL(URL);
         dao.update(workerEntity);
 			
-        return workerEntity;
+        return "index.xhtml??faces-redirect=true";
 	}
 
     @Override

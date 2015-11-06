@@ -22,30 +22,36 @@ and open the template in the editor.
 						
 						<p:growl id="msgs" showDetail="true"/>
 						
-						Add Worker <p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
-						<p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
-						Status  <p:selectBooleanCheckbox value="#{worker.status}" />
-						URL		   <p:inputText value="#{worker.URL}"  label="Enter name here"/> 
-						<p:commandButton value="Create" update="@form" actionListener="#{worker.create}" />
+						
+						Add Worker : 
+							<p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
+							<p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
+						  <!--<p:selectBooleanCheckbox value="#{worker.status}" />-->
+						
+						<br/><br/>
+	
+							
+						Status :  
+							<p:selectOneButton value="#{worker.status}">
+								<f:selectItem itemLabel="Enabled" itemValue="true" />
+								<f:selectItem itemLabel="Disabled" itemValue="false" />
+							</p:selectOneButton>
+					
+						
+						<br/><br/>
+						 
+						URL	 : 	  
+							<p:inputText value="#{worker.URL}"  label="Enter name here"/> 
+						
+						<br/><br/>
+						
+							<p:commandButton value="Create" update="@form" actionListener="#{worker.create}" />
+							
+						
 						<hr/>
 						
-						<p:dataTable var="wor" value="#{worker.list}">
-							<p:column headerText="Id">
-								<h:outputText value="#{wor.id}" />
-							</p:column>
-							<p:column headerText="Name">
-								<h:outputText value="#{wor.name}" />
-							</p:column>
-							<p:column headerText="URL">
-								<h:outputText value="#{wor.URL}" />
-							</p:column>
-							<p:column headerText="Status">
-								<h:outputText value="#{wor.status}" />
-							</p:column>
-						</p:dataTable>
 						
-						 
-					<p:dataScroller value="#{worker.list}" var="workers" chunkSize="10">
+					<p:dataScroller id="ds" value="#{worker.list}" var="workers" chunkSize="10">
 					<h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
 						<p:graphicImage /> 
  
@@ -67,12 +73,14 @@ and open the template in the editor.
 						</h:panelGrid>
 					</p:dataScroller>
 						
+						<hr/><hr/>
+						
 						<p:dataTable id="workeredit" var="workeredit" value="#{worker.list}" editable="true" editMode="cell" widgetVar="cellCars">
 						<f:facet name="header">
 							Cell Editing with Click and RightClick
 						</f:facet>
 
-							<p:ajax event="cellEdit" listener="#{worker.edit}" update=":form:msgs" />
+							<p:ajax event="cellEdit" listener="#{worker.edit}" update=":form:ds" />
 
 						<p:column headerText="Id">
 							   <p:cellEditor>

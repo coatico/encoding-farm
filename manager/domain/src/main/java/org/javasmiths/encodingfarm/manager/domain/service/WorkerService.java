@@ -22,7 +22,7 @@ public interface WorkerService {
 
     WorkerEntity enableWorker(String name);
 	
-	WorkerEntity editWorker(String Id, String name, Boolean status, String URL);
+	String editWorker(String Id, String name, Boolean status, String URL);
 
     List<WorkerEntity> listAll();
 

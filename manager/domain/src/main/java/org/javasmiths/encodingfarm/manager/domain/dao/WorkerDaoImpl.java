@@ -31,6 +31,7 @@ public class WorkerDaoImpl extends BaseDaoImpl<WorkerEntity> implements WorkerDa
         return em.find(WorkerEntity.class, id);
     }
 	
+	@Override
 	 public void update(WorkerEntity workerEntity) {
         em.merge(workerEntity);
     }
