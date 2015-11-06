@@ -63,8 +63,8 @@ public class WorkerView implements Serializable{
 		list = facade.listAll();
 	}
 
-    public void delete(ActionEvent actionEvent) {
-        facade.delete(name);
+    public void delete(String id) {
+        facade.delete(id);
         list = facade.listAll();
     }
 
