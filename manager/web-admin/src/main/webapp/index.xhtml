@@ -9,116 +9,95 @@ and open the template in the editor.
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="./common/template.xhtml">
         <ui:define name="title">
             Worker
         </ui:define>
         <ui:define name="content">
-       <b:row>
-				<b:panel>
-					<h:form id="form">
-						
-						<p:growl id="msgs" showDetail="true"/>
-						
-						
-						Add Worker : 
-							<p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
-							<p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
-						  <!--<p:selectBooleanCheckbox value="#{worker.status}" />-->
-						
-						<br/><br/>
-	
-							
-						Status :  
-							<p:selectOneButton value="#{worker.status}">
-								<f:selectItem itemLabel="Enabled" itemValue="true" />
-								<f:selectItem itemLabel="Disabled" itemValue="false" />
-							</p:selectOneButton>
-					
-						
-						<br/><br/>
-						 
-						URL	 : 	  
-							<p:inputText value="#{worker.URL}"  label="Enter name here"/> 
-						
-						<br/><br/>
-						
-							<p:commandButton value="Create" update="@form" actionListener="#{worker.create}" />
-							
-						
-						<hr/>
-						
-						
-					<p:dataScroller id="ds" value="#{worker.list}" var="workers" chunkSize="10">
-					<h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-						<p:graphicImage /> 
- 
-						<p:outputPanel>
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Id:" />
-								<h:outputText value="#{workers.id}" style="font-weight: bold"/>
+            <b:row>
+                <b:panel>
+                    <h:form id="form">
+                        <p:growl id="msgs" showDetail="true"/>
+                        Add Worker: 
+                        <p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
+                        <p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
+                        <br/><br/>
+                        Status:  
+                        <p:selectOneButton value="#{worker.status}">
+                            <f:selectItem itemLabel="Enabled" itemValue="true" />
+                            <f:selectItem itemLabel="Disabled" itemValue="false" />
+                        </p:selectOneButton>
+                        <br/><br/>
+                        URL: 	  
+                        <p:inputText value="#{worker.URL}"  label="Enter name here"/> 
+                        <br/><br/>
+                        <p:commandButton value="Create" update="@form" actionListener="#{worker.create}" />
+                        <hr/>
+                        <p:dataScroller id="ds" value="#{worker.list}" var="workers" chunkSize="10">
+                            <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                                <p:graphicImage /> 
+                                <p:outputPanel>
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputText value="Id:" />
+                                        <h:outputText value="#{workers.id}" style="font-weight: bold"/>
 
-								<h:outputText value="Name:" />
-								<h:outputText value="#{workers.name}" style="font-weight: bold"/>
+                                        <h:outputText value="Name:" />
+                                        <h:outputText value="#{workers.name}" style="font-weight: bold"/>
 
-								<h:outputText value="Status:" />
-								<h:outputText value="#{workers.status}" style="font-weight: bold"/>
-								
-								<h:outputText value="URL:" />
-								<h:outputText value="#{workers.URL}" style="font-weight: bold"/>
-								</h:panelGrid>
-							</p:outputPanel>
-						</h:panelGrid>
-					</p:dataScroller>
-						
-						<hr/><hr/>
-						
-						<p:dataTable id="workeredit" var="workeredit" value="#{worker.list}" editable="true" editMode="cell" widgetVar="cellCars">
-						<f:facet name="header">
-							Cell Editing with Click and RightClick
-						</f:facet>
+                                        <h:outputText value="Status:" />
+                                        <h:outputText value="#{workers.status}" style="font-weight: bold"/>
 
-							<p:ajax event="cellEdit" listener="#{worker.edit}" update=":form:ds" />
+                                        <h:outputText value="URL:" />
+                                        <h:outputText value="#{workers.URL}" style="font-weight: bold"/>
+                                    </h:panelGrid>
+                                </p:outputPanel>
+                            </h:panelGrid>
+                        </p:dataScroller>
+                        <hr/><hr/>
+                        <p:dataTable id="workeredit" var="workeredit" value="#{worker.list}" editable="true" editMode="cell" widgetVar="cellCars">
+                            <f:facet name="header">Cell Editing with Click</f:facet>
+                            
+                            <p:ajax event="cellEdit" listener="#{worker.edit}" update=":form:ds" />
+                            <p:column headerText="Id">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{workeredit.id}"/></f:facet>
+                                    <f:facet name="input"><h:outputText id="modelInput" value="#{workeredit.id}" style="width:96%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
 
-						<p:column headerText="Id">
-							   <p:cellEditor>
-								   <f:facet name="output"><h:outputText value="#{workeredit.id}" /></f:facet>
-								   <f:facet name="input"><p:inputText id="modelInput" value="#{workeredit.id}" style="width:96%"/></f:facet>
-							   </p:cellEditor>
-						   </p:column>
+                            <p:column headerText="Name">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{workeredit.name}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{workeredit.name}" style="width:96%" label="Name"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
 
-						   <p:column headerText="Name">
-							<p:cellEditor>
-								<f:facet name="output"><h:outputText value="#{workeredit.name}" /></f:facet>
-								<f:facet name="input"><p:inputText value="#{workeredit.name}" style="width:96%" label="Name"/></f:facet>
-							</p:cellEditor>
-						</p:column>
+                            <p:column headerText="URL">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{workeredit.URL}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{workeredit.URL}" style="width:96%" label="Status"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
 
-						<p:column headerText="URL">
-							<p:cellEditor>
-								<f:facet name="output"><h:outputText value="#{workeredit.URL}" /></f:facet>
-								<f:facet name="input"><p:inputText value="#{workeredit.URL}" style="width:96%" label="Status"/></f:facet>
-							</p:cellEditor>
-						</p:column>
+                            <p:column headerText="Status">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{workeredit.status}" /></f:facet>
+                                    <f:facet name="input">
+                                        <h:selectOneMenu value="#{workeredit.status}" style="width:100%">
+                                            <f:selectItems value="#{worker.picker}" var="picker" itemLabel="#{picker}" itemValue="#{picker}" />
+                                            <f:validateRegex pattern="^(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\.(?:jpg|gif|png))(?:\?([^#]*))?(?:#(.*))?$"/>
+                                        </h:selectOneMenu>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
 
-						<p:column headerText="Status">
-							<p:cellEditor>
-								<f:facet name="output"><h:outputText value="#{workeredit.status}" /></f:facet>
-								<f:facet name="input">
-									<h:selectOneMenu value="#{workeredit.URL}" style="width:100%">
-										<f:selectItems value="#{worker.picker}" var="picker" itemLabel="#{picker}" itemValue="#{picker}" />
-									</h:selectOneMenu>
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-							
-						</p:dataTable>
-						
-					</h:form>
-				</b:panel>
-			</b:row>
+                        </p:dataTable>
+
+                    </h:form>
+                </b:panel>
+            </b:row>
         </ui:define>
     </ui:composition>
 </html>
