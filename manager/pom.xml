@@ -12,6 +12,7 @@
     <modules>
         <module>domain</module>
         <module>gateway</module>
-    <module>web-admin</module>
-  </modules>
+        <module>web-admin</module>
+        <module>web-async</module>
+    </modules>
 </project>

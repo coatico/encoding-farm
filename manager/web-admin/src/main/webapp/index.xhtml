@@ -19,33 +19,16 @@ and open the template in the editor.
             <b:row>
                 <b:panel>
                     <h:form id="form">
-<<<<<<< HEAD
-
-                        <p:growl id="msgs" showDetail="true"/>
-
-
-                        Add Worker : 
-                        <p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
-                        <p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
-                  <!--<p:selectBooleanCheckbox value="#{worker.status}" />-->
-
-                        <br/><br/>
-
-
-                        Status :  
-=======
                         <p:growl id="msgs" showDetail="true"/>
                         Add Worker: 
                         <p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
                         <p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
                         <br/><br/>
                         Status:  
->>>>>>> origin/Manager
                         <p:selectOneButton value="#{worker.status}">
                             <f:selectItem itemLabel="Enabled" itemValue="true" />
                             <f:selectItem itemLabel="Disabled" itemValue="false" />
                         </p:selectOneButton>
-<<<<<<< HEAD
 
 
                         <br/><br/>
@@ -64,18 +47,6 @@ and open the template in the editor.
                         <p:dataScroller id="ds" value="#{worker.list}" var="workers" chunkSize="10">
                             <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
                                 <p:graphicImage /> 
-
-=======
-                        <br/><br/>
-                        URL: 	  
-                        <p:inputText value="#{worker.URL}"  label="Enter name here"/> 
-                        <br/><br/>
-                        <p:commandButton value="Create" update="@form" actionListener="#{worker.create}" />
-                        <hr/>
-                        <p:dataScroller id="ds" value="#{worker.list}" var="workers" chunkSize="10">
-                            <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                                <p:graphicImage /> 
->>>>>>> origin/Manager
                                 <p:outputPanel>
                                     <h:panelGrid columns="2" cellpadding="5">
                                         <h:outputText value="Id:" />
@@ -93,32 +64,16 @@ and open the template in the editor.
                                 </p:outputPanel>
                             </h:panelGrid>
                         </p:dataScroller>
-<<<<<<< HEAD
 
-                        <hr/><hr/>
-
-                        <p:dataTable id="workeredit" var="workeredit" value="#{worker.list}" editable="true" editMode="cell" widgetVar="cellCars">
-                            <f:facet name="header">
-                                Cell Editing with Click and RightClick
-                            </f:facet>
-
-                            <p:ajax event="cellEdit" listener="#{worker.edit}" update=":form:ds" />
-
-                            <p:column headerText="Id">
-                                <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{workeredit.id}" /></f:facet>
-                                    <f:facet name="input"><p:inputText id="modelInput" value="#{workeredit.id}" style="width:96%"/></f:facet>
-=======
                         <hr/><hr/>
                         <p:dataTable id="workeredit" var="workeredit" value="#{worker.list}" editable="true" editMode="cell" widgetVar="cellCars">
                             <f:facet name="header">Cell Editing with Click</f:facet>
-                            
+
                             <p:ajax event="cellEdit" listener="#{worker.edit}" update=":form:ds" />
                             <p:column headerText="Id">
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{workeredit.id}"/></f:facet>
                                     <f:facet name="input"><h:outputText id="modelInput" value="#{workeredit.id}" style="width:96%"/></f:facet>
->>>>>>> origin/Manager
                                 </p:cellEditor>
                             </p:column>
 
@@ -140,25 +95,20 @@ and open the template in the editor.
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{workeredit.status}" /></f:facet>
                                     <f:facet name="input">
-<<<<<<< HEAD
-                                        <h:selectOneMenu value="#{workeredit.URL}" style="width:100%">
-                                            <f:selectItems value="#{worker.picker}" var="picker" itemLabel="#{picker}" itemValue="#{picker}" />
-=======
                                         <h:selectOneMenu value="#{workeredit.status}" style="width:100%">
                                             <f:selectItems value="#{worker.picker}" var="picker" itemLabel="#{picker}" itemValue="#{picker}" />
                                             <f:validateRegex pattern="^(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\.(?:jpg|gif|png))(?:\?([^#]*))?(?:#(.*))?$"/>
->>>>>>> origin/Manager
                                         </h:selectOneMenu>
                                     </f:facet>
                                 </p:cellEditor>
                             </p:column>
-<<<<<<< HEAD
+
                             <p:column>
                                 <p:commandButton value="Delete" update="@form" actionListener="#{worker.delete(workers.id)}"/>
                             </p:column>
-=======
 
->>>>>>> origin/Manager
+
+
                         </p:dataTable>
 
                     </h:form>
