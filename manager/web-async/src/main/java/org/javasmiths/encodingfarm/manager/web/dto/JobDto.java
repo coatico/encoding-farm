@@ -28,6 +28,33 @@ public class JobDto {
     @Temporal(TemporalType.TIMESTAMP)
     private Date jobCompletionDateTime;
     private Collection<JobStatusDescriptionEntity> jobStatus;
+    private String WorkerID;
+    private String VideoID;
+    private String status;
+
+    public String getVideoID() {
+        return VideoID;
+    }
+
+    public void setVideoID(String VideoID) {
+        this.VideoID = VideoID;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getWorkerID() {
+        return WorkerID;
+    }
+
+    public void setWorkerID(String WorkerID) {
+        this.WorkerID = WorkerID;
+    }
 
     public String getjobTitle() {
         return jobTitle;
@@ -92,5 +119,5 @@ public class JobDto {
     public void setJobStatus(Collection<JobStatusDescriptionEntity> jobStatus) {
         this.jobStatus = jobStatus;
     }
-    
+
 }

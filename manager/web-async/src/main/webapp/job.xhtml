@@ -24,6 +24,8 @@
                         <p:commandButton value="Create" update=":form:jobdatatable" actionListener="#{job.create}" />
                         <hr/>
 
+
+
                         <hr/>
 
                         <p:growl id="msgs" showDetail="true"/>
@@ -38,12 +40,19 @@
                                 List of Jobs
                             </f:facet>
 
-                            <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle, jobs.jobCreationDateTime)}" update=":form:msgs,:form:jobdatatable" />
+                            <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle, jobs.jobCreationDateTime, jobs.WorkerID, jobs.videoID)}" update=":form:msgs,:form:jobdatatable" />
                             <p:ajax event="rowEditCancel" listener="#{job.onRowCancel}" update=":form:msgs" />
 
                             <p:column headerText="Id">
                                 <h:outputText value="#{jobs.id}" />
                             </p:column>
+                            <p:column headerText="WorkerID">
+                                <h:outputText value="#{jobs.WorkerID}" />
+                            </p:column>
+                            <p:column headerText="VideoID">
+                                <h:outputText value="#{jobs.VideoID}" />
+                            </p:column>
+
                             <p:column headerText="jobTitle">
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{jobs.jobTitle}" /></f:facet>

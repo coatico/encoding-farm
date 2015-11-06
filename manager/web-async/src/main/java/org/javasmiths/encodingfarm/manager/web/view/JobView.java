@@ -29,121 +29,139 @@ import org.primefaces.event.RowEditEvent;
 @Named("job")
 public class JobView implements Serializable {
 
-	private String jobTitle;
-	private Collection<VideoEntity> jobVideo;
-	private Collection<WorkerEntity> jobWorker;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date jobCreationDateTime;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date jobCompletionDateTime;
-	private Collection<JobStatusDescriptionEntity> jobStatus;
-	private List<JobDto> list = new LinkedList<>();
+    private String jobTitle;
+    private Collection<VideoEntity> jobVideo;
+    private Collection<WorkerEntity> jobWorker;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date jobCreationDateTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date jobCompletionDateTime;
+    private Collection<JobStatusDescriptionEntity> jobStatus;
+    private List<JobDto> list = new LinkedList<>();
+    private String WorkerID;
+    private String VideoID;
 
-	@EJB
-	private JobFacade facade;
+    public String getWorkerID() {
+        return WorkerID;
+    }
 
-	@PostConstruct
-	public void init() {
-		list = facade.listAll();
-	}
+    public void setWorkerID(String WorkerID) {
+        this.WorkerID = WorkerID;
+    }
 
-	public void create(ActionEvent actionEvent) {
-		facade.create(jobTitle, jobCreationDateTime);
-		list = facade.listAll();
-	}
+    public String getVideoID() {
+        return VideoID;
+    }
 
-	public void delete(String id) {
-		facade.delete(id);
-		list = facade.listAll();
-	}
+    public void setVideoID(String VideoID) {
+        this.VideoID = VideoID;
+    }
 
-	public void update(String id, String jobTitle, Date jobCreationDateTime) {
-		facade.update(id, jobTitle, jobCreationDateTime);
-		list = facade.listAll();
-		FacesMessage msg = new FacesMessage("Edited");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
+    @EJB
+    private JobFacade facade;
 
-	public void onRowCancel(RowEditEvent event) {
-		FacesMessage msg = new FacesMessage("Edit Cancelled");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
+    @PostConstruct
+    public void init() {
+        list = facade.listAll();
+    }
 
-	public String getjobTitle() {
-		return jobTitle;
-	}
+    public void create(ActionEvent actionEvent) {
+        facade.create(jobTitle, jobCreationDateTime);
+        list = facade.listAll();
+    }
 
-	public void setjobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
-	}
+    public void delete(String id) {
+        facade.delete(id);
+        list = facade.listAll();
+    }
 
-	public List<JobDto> getList() {
-		return list;
-	}
+    public void update(String id, String jobTitle, Date jobCreationDateTime, String WorkerID, String VideoID) {
+        facade.update(id, jobTitle, jobCreationDateTime, WorkerID, VideoID);
+        list = facade.listAll();
+        FacesMessage msg = new FacesMessage("Edited");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
-	public void setList(List<JobDto> list) {
-		this.list = list;
-	}
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
-	public void deleteById(String id) {
-		facade.delete(id);
-		list = facade.listAll();
-	}
+    public String getjobTitle() {
+        return jobTitle;
+    }
 
-	public String getJobTitle() {
-		return jobTitle;
-	}
+    public void setjobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
 
-	public void setJobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
-	}
+    public List<JobDto> getList() {
+        return list;
+    }
 
-	public Collection<VideoEntity> getJobVideo() {
-		return jobVideo;
-	}
+    public void setList(List<JobDto> list) {
+        this.list = list;
+    }
 
-	public void setJobVideo(Collection<VideoEntity> jobVideo) {
-		this.jobVideo = jobVideo;
-	}
+    public void deleteById(String id) {
+        facade.delete(id);
+        list = facade.listAll();
+    }
 
-	public Collection<WorkerEntity> getJobWorker() {
-		return jobWorker;
-	}
+    public String getJobTitle() {
+        return jobTitle;
+    }
 
-	public void setJobWorker(Collection<WorkerEntity> jobWorker) {
-		this.jobWorker = jobWorker;
-	}
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
 
-	public Date getJobCreationDateTime() {
-		return jobCreationDateTime;
-	}
+    public Collection<VideoEntity> getJobVideo() {
+        return jobVideo;
+    }
 
-	public void setJobCreationDateTime(Date jobCreationDateTime) {
-		this.jobCreationDateTime = jobCreationDateTime;
-	}
+    public void setJobVideo(Collection<VideoEntity> jobVideo) {
+        this.jobVideo = jobVideo;
+    }
 
-	public Date getJobCompletionDateTime() {
-		return jobCompletionDateTime;
-	}
+    public Collection<WorkerEntity> getJobWorker() {
+        return jobWorker;
+    }
 
-	public void setJobCompletionDateTime(Date jobCompletionDateTime) {
-		this.jobCompletionDateTime = jobCompletionDateTime;
-	}
+    public void setJobWorker(Collection<WorkerEntity> jobWorker) {
+        this.jobWorker = jobWorker;
+    }
 
-	public Collection<JobStatusDescriptionEntity> getJobStatus() {
-		return jobStatus;
-	}
+    public Date getJobCreationDateTime() {
+        return jobCreationDateTime;
+    }
 
-	public void setJobStatus(Collection<JobStatusDescriptionEntity> jobStatus) {
-		this.jobStatus = jobStatus;
-	}
+    public void setJobCreationDateTime(Date jobCreationDateTime) {
+        this.jobCreationDateTime = jobCreationDateTime;
+    }
 
-	public JobFacade getFacade() {
-		return facade;
-	}
+    public Date getJobCompletionDateTime() {
+        return jobCompletionDateTime;
+    }
 
-	public void setFacade(JobFacade facade) {
-		this.facade = facade;
-	}
+    public void setJobCompletionDateTime(Date jobCompletionDateTime) {
+        this.jobCompletionDateTime = jobCompletionDateTime;
+    }
+
+    public Collection<JobStatusDescriptionEntity> getJobStatus() {
+        return jobStatus;
+    }
+
+    public void setJobStatus(Collection<JobStatusDescriptionEntity> jobStatus) {
+        this.jobStatus = jobStatus;
+    }
+
+    public JobFacade getFacade() {
+        return facade;
+    }
+
+    public void setFacade(JobFacade facade) {
+        this.facade = facade;
+    }
 
 }

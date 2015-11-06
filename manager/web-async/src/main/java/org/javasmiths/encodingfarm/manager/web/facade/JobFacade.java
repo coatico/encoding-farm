@@ -19,7 +19,7 @@ public interface JobFacade {
         
         public void delete(String id);
         
-        public void update(String id, String title, Date creationdate);
+        public void update(String id, String title, Date creationdate, String workerID, String VideoID);
 
 	public List<JobDto> listAll();
 	
