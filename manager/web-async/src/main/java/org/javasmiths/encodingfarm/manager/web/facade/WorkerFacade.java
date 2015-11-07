@@ -14,11 +14,11 @@ import org.javasmiths.encodingfarm.manager.web.dto.WorkerDto;
  */
 public interface WorkerFacade {
     
-	public void create(String workerName);
+	public void create(String name, Boolean status, String URL);
 
     public void delete(String id);
 
-    public void update(String id, String title);
+    public void update(String id, String name, Boolean status, String URL);
 
     public List<WorkerDto> listAll();
 	

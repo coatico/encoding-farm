@@ -2,7 +2,6 @@ package org.javasmiths.encodingfarm.sample.web.view;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;

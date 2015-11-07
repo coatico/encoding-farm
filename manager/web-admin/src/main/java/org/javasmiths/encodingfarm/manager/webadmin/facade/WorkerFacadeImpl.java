@@ -24,8 +24,28 @@ public class WorkerFacadeImpl implements WorkerFacade {
     private WorkerService workerService;
 
     @Override
-    public void create(String name) {
-        workerService.registerWorker(name);
+    public void create(String name,Boolean status, String URL) {
+        workerService.registerWorker(name, status, URL);
+    }
+	
+	@Override
+	public void edit(String Id, String Name, Boolean Status, String URL){
+		workerService.editWorker(Id, Name, Status, URL);
+	}
+
+    @Override
+    public void delete(String id) {
+        workerService.deleteWorker(id);
+    }
+
+	@Override
+    public void disable(String name) {
+        workerService.disableWorker(name);
+    }
+
+	@Override
+    public void enable(String name) {
+        workerService.enableWorker(name);
     }
 
     @Override
@@ -35,7 +55,9 @@ public class WorkerFacadeImpl implements WorkerFacade {
         for (WorkerEntity worker : workersE) {
             WorkerListDetailDto dto = new WorkerListDetailDto();
             dto.setId(worker.getId());
-            dto.setFirstName(worker.getWorkerName());
+            dto.setName(worker.getName());
+			dto.setURL(worker.getURL());
+			dto.setStatus(worker.isStatus());
             dtos.add(dto);
         }
         return dtos;

@@ -8,20 +8,22 @@ package org.javasmiths.encodingfarm.manager.webadmin.facade;
 import java.util.List;
 import org.javasmiths.encodingfarm.manager.webadmin.model.WorkerListDetailDto;
 
-
 /**
  *
  * @author Arne
  */
-
-
-
-
-
 public interface WorkerFacade {
 
-	public void create(String name);
+    public void create(String name, Boolean status, String URL);
 
-	public List<WorkerListDetailDto> listAll();
-	
+    public void delete(String id);
+
+    public void disable(String name);
+
+    public void enable(String name);
+
+    public List<WorkerListDetailDto> listAll();
+
+	public void edit(String Id, String name, Boolean status, String URL);
+
 }

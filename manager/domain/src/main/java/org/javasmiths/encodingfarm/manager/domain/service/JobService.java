@@ -15,11 +15,11 @@ import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
  */
 public interface JobService {
 
-    JobEntity registerJob(String jobTitle, Date creationdate);
+    JobEntity registerJob(String jobTitle, Date creationdate, String workerID, String videoID);
 
     JobEntity deleteJob(String id);
 
-    JobEntity updateJob(String id, String jobTitle, Date creationdate);
+    JobEntity updateJob(String id, String jobTitle, Date creationdate, String workerID, String videoID);
 
     List<JobEntity> listAll();
 }

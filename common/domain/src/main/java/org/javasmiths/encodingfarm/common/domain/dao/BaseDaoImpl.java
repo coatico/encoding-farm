@@ -15,14 +15,15 @@ import javax.persistence.criteria.CriteriaQuery;
  * @author thomas
  */
 public abstract class BaseDaoImpl<E> {
-    
+
     protected abstract EntityManager em();
-	
-	 protected abstract Class<E> entityClass();
+
+    protected abstract Class<E> entityClass();
 
     public void save(E dataEntity) {
         em().persist(dataEntity);
     }
+
     
      //Gegevens opzoeken in database aan de hand van een opgegeven id
     public E findById(String id) {

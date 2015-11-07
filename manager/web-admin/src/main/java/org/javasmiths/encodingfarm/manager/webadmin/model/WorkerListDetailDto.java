@@ -10,20 +10,14 @@ package org.javasmiths.encodingfarm.manager.webadmin.model;
  * @author Arne
  */
 public class WorkerListDetailDto {
-    
+
     private String id;
 
-    private String firstName;
+    private String Name;
 
-    private String lastName;
+    private boolean status;
 
-    private String sex;
-
-    private String birthdate;
-
-    private String email;
-    
-    private String job;
+    private String URL;
 
     public String getId() {
         return id;
@@ -33,52 +27,29 @@ public class WorkerListDetailDto {
         this.id = id;
     }
 
-        public String getJob() {
-        return job;
+    public String getName() {
+        return Name;
     }
 
-    public void setJob(String job) {
-        this.job = job;
-    }
-    public String getFirstName() {
-        return firstName;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public boolean isStatus() {
+        return status;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getURL() {
+        return URL;
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setURL(String URL) {
+        this.URL = URL;
     }
     
+
 }

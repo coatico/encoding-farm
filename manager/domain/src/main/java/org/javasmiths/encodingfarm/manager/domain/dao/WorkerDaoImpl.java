@@ -16,31 +16,29 @@ import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
  * @author Arne
  */
 @Stateless
-public class WorkerDaoImpl extends BaseDaoImpl<WorkerEntity> implements WorkerDao{
+public class WorkerDaoImpl extends BaseDaoImpl<WorkerEntity> implements WorkerDao {
 
-	@PersistenceContext(unitName = "managerPU")
-	protected EntityManager em;
-	
+    @PersistenceContext(unitName = "managerPU")
+    protected EntityManager em;
+
+    @Override
+    protected EntityManager em() {
+        return em;
+    }
 	
 	@Override
-	protected EntityManager em() {
-		return em;
-	}
-
-	@Override
-	protected Class<WorkerEntity> entityClass() {
-		return WorkerEntity.class;
-	}
+	public WorkerEntity findById(String id) {
+        return em.find(WorkerEntity.class, id);
+    }
 	
-	  @Override
-        public WorkerEntity findById(String id){
-            return em.find(WorkerEntity.class, id);
-        }
-
 	@Override
-	public void update(WorkerEntity dataEntity) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-    
+	 public void update(WorkerEntity workerEntity) {
+        em.merge(workerEntity);
+    }
+         
 
+    @Override
+    protected Class<WorkerEntity> entityClass() {
+        return WorkerEntity.class;
+    }
 }

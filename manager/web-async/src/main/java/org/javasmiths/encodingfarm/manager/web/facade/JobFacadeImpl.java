@@ -25,8 +25,8 @@ public class JobFacadeImpl implements JobFacade {
     private JobService jobService;
 
     @Override
-    public void create(String jobTitle, Date creationdate) {
-        jobService.registerJob(jobTitle, creationdate);
+    public void create(String jobTitle, Date creationdate, String workerID, String videoID) {
+        jobService.registerJob(jobTitle, creationdate, workerID, videoID);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class JobFacadeImpl implements JobFacade {
     }
 
     @Override
-    public void update(String id, String title, Date creationdate, String WorkerID, String VideoID) {
-        jobService.updateJob(id, title, creationdate);
+    public void update(String id, String title, Date creationdate, String workerID, String videoID) {
+        jobService.updateJob(id, title, creationdate, workerID, videoID);
     }
 
     @Override

@@ -23,9 +23,9 @@ public class VideoServiceImpl implements VideoService {
     private VideoDao dao;
 
     @Override
-    public VideoEntity registerVideo(String title, String videoLink, String videoCode, String videoDescription) {
+    public VideoEntity registerVideo(String videoTitle, String videoLink, String videoCode, String videoDescription) {
         VideoEntity videoEntity = new VideoEntity();
-        videoEntity.setVideoTitle(title);
+        videoEntity.setVideoTitle(videoTitle);
         videoEntity.setVideoCode(videoCode);
         videoEntity.setVideoDescription(videoDescription);
         videoEntity.setVideoLink(videoLink);

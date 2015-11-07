@@ -13,16 +13,16 @@ import org.javasmiths.encodingfarm.manager.domain.entity.WorkerEntity;
  * @author Arne
  */
 public interface WorkerDao {
-    
+
     public void save(WorkerEntity dataEntity);
 
-    
-    public void delete(String id);
-    
-    public WorkerEntity findById(String id);
-    
-    public void update(WorkerEntity dataEntity);
-    	
-		public List<WorkerEntity> listAll();
 
+      public void delete(String id);
+
+	public WorkerEntity findById(String id);
+	
+	public void update(WorkerEntity workerEntity);
+
+	
+    public List<WorkerEntity> listAll();
 }
