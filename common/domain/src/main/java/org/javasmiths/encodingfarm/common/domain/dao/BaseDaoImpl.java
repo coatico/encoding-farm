@@ -23,18 +23,7 @@ public abstract class BaseDaoImpl<E> {
     public void save(E dataEntity) {
         em().persist(dataEntity);
     }
-<<<<<<< HEAD
 
-    public E findById(String id) {
-        return em().find(entityClass(), id);
-    }
-
-    public void deleteById(String id) {
-        em().remove(findById(id));
-    }
-
-    public List<E> listAll() {
-=======
     
      //Gegevens opzoeken in database aan de hand van een opgegeven id
     public E findById(String id) {
@@ -47,7 +36,6 @@ public abstract class BaseDaoImpl<E> {
     }
 
 	public List<E> listAll() {
->>>>>>> refs/remotes/origin/Manager-async
         CriteriaQuery cq = em().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass()));
         Query q = em().createQuery(cq);

@@ -16,8 +16,8 @@ public interface WorkerDao {
 
     public void save(WorkerEntity dataEntity);
 
-<<<<<<< HEAD
-    public void deleteById(String id);
+
+      public void delete(String id);
 
 	public WorkerEntity findById(String id);
 	
@@ -25,15 +25,4 @@ public interface WorkerDao {
 
 	
     public List<WorkerEntity> listAll();
-=======
-    
-    public void delete(String id);
-    
-    public WorkerEntity findById(String id);
-    
-    public void update(WorkerEntity dataEntity);
-    	
-		public List<WorkerEntity> listAll();
->>>>>>> refs/remotes/origin/Manager-async
-
 }

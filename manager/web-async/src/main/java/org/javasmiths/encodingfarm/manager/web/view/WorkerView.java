@@ -30,6 +30,12 @@ public class WorkerView implements Serializable{
 	private String workerName;
     private List<WorkerDto> list = new LinkedList<>();
     
+    private Boolean status;
+    
+    private String URL;
+
+   
+    
 	@EJB
     private WorkerFacade facade;
 
@@ -39,7 +45,7 @@ public class WorkerView implements Serializable{
     }
 
     public void create(ActionEvent actionEvent) {
-        facade.create(workerName);
+        facade.create(workerName, status,URL);
         list = facade.listAll();
     }
 
@@ -48,8 +54,8 @@ public class WorkerView implements Serializable{
         list = facade.listAll();
     }
 
-    public void update(String id, String videoTitle) {
-        facade.update(id, videoTitle);
+    public void update(String id, String name, Boolean status, String URL) {
+        facade.update(id, name, status,URL );
     }
 
     public void onRowCancel(RowEditEvent event) {
@@ -76,6 +82,30 @@ public class WorkerView implements Serializable{
     public void deleteById(String id) {
         facade.delete(id);
         list = facade.listAll();
+    }
+    
+        public String getWorkerName() {
+        return workerName;
+    }
+
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 	
 }

@@ -28,10 +28,10 @@ import org.primefaces.event.RowEditEvent;
 public class VideoView implements Serializable {
 
     private String videoTitle;
-    private List<VideoDto> list = new LinkedList<>();
-    private String videoCode;
     private String videoLink;
+    private String videoCode;
     private String videoDescription;
+    private List<VideoDto> list = new LinkedList<>();
     @EJB
     private VideoFacade facade;
 
@@ -41,7 +41,7 @@ public class VideoView implements Serializable {
     }
 
     public void create(ActionEvent actionEvent) {
-        facade.create(videoTitle, videoCode, videoDescription, videoLink);
+        facade.create(videoTitle, videoLink,videoCode, videoDescription );
         list = facade.listAll();
     }
 
@@ -51,7 +51,7 @@ public class VideoView implements Serializable {
     }
 
     public void update(String id, String videoTitle) {
-        facade.update(id, videoTitle, videoCode, videoDescription, videoLink);
+        facade.update(id, videoTitle, videoLink,videoCode, videoDescription);
     }
 
     public void onRowCancel(RowEditEvent event) {
@@ -119,5 +119,5 @@ public class VideoView implements Serializable {
     public void setFacade(VideoFacade facade) {
         this.facade = facade;
     }
-    
+
 }

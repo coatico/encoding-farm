@@ -22,8 +22,8 @@ public class WorkerImpl implements WorkerFacade{
     private WorkerService workerService;
 
     @Override
-    public void create(String workerName) {
-        workerService.registerWorker(workerName);
+    public void create(String name, Boolean status, String URL) {
+        workerService.registerWorker(name,status,URL);
     }
 
     @Override
@@ -33,8 +33,8 @@ public class WorkerImpl implements WorkerFacade{
     }
 
     @Override
-    public void update(String id, String title) {
-        workerService.updateWorker(id, title);
+    public void update(String id, String name, Boolean status, String URL) {
+        workerService.editWorker(id, name, status, URL);
     }
 
     @Override

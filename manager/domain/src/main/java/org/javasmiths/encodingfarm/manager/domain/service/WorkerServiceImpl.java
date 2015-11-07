@@ -22,7 +22,6 @@ public class WorkerServiceImpl implements WorkerService {
 
     @EJB
     private WorkerDao dao;
-<<<<<<< HEAD
     private WorkerEntity we;
 	
 	private final static String[] picker;
@@ -43,7 +42,7 @@ public class WorkerServiceImpl implements WorkerService {
         return workerEntity;
     }
 	
-	public String editWorker(String id, String name, Boolean status, String URL){
+	public WorkerEntity editWorker(String id, String name, Boolean status, String URL){
 		WorkerEntity workerEntity = null;
         
         if(id != null) {
@@ -54,18 +53,22 @@ public class WorkerServiceImpl implements WorkerService {
         if(workerEntity == null){
             workerEntity = new WorkerEntity();
         }
-		
+        /* In WorkerEntity staat dubbele code, met andere benamingen */	
         workerEntity.setName(name);
         workerEntity.setStatus(status);
         workerEntity.setURL(URL);
         dao.update(workerEntity);
-			
+        
+        return workerEntity;
+        
+	/* Zie boven voor de refresh
         return "index.xhtml??faces-redirect=true";
+                */
 	}
 
     @Override
     public WorkerEntity deleteWorker(String id) {
-        dao.deleteById(id);
+        dao.delete(id);
         return null;
     }
 
@@ -90,36 +93,4 @@ public class WorkerServiceImpl implements WorkerService {
 	public static String[] getPicker() {
 		return picker;
 	}
-
-=======
-
-    @Override
-    public WorkerEntity registerWorker(String name) {
-        WorkerEntity workerEntity = new WorkerEntity();
-        workerEntity.setWorkerName(name);
-        dao.save(workerEntity);
-        return workerEntity;
-    }
-	
-    @Override
-    public WorkerEntity deleteWorker(String id) {
-        dao.delete(id);
-        return null;
-    }
-
-    @Override
-    public WorkerEntity updateWorker(String id, String title) {
-        WorkerEntity je = dao.findById(id);
-
-        je.setWorkerName(title);
-        dao.update(je);
-        return je;
-    }
-
-    @Override
-    public List<WorkerEntity> listAll() {
-        return dao.listAll();
-    }
-
->>>>>>> refs/remotes/origin/Manager-async
 }

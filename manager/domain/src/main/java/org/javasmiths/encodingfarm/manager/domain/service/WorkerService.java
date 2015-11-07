@@ -21,20 +21,9 @@ public interface WorkerService {
     WorkerEntity disableWorker(String name);
 
     WorkerEntity enableWorker(String name);
-	
-<<<<<<< HEAD
-	String editWorker(String Id, String name, Boolean status, String URL);
+
+    WorkerEntity editWorker(String id, String name, Boolean status, String URL);
 
     List<WorkerEntity> listAll();
 
-	
-
-=======
-    WorkerEntity deleteWorker(String id);
-
-    WorkerEntity updateWorker(String id, String workerName);
-
-	
-	List<WorkerEntity> listAll();
->>>>>>> refs/remotes/origin/Manager-async
 }

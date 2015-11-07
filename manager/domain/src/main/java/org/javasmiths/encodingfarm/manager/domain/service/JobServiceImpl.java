@@ -23,10 +23,12 @@ public class JobServiceImpl implements JobService {
     private JobDao dao;
 
     @Override
-    public JobEntity registerJob(String title, Date creationdate) {
+    public JobEntity registerJob(String title, Date creationdate, String workerID, String videoID) {
         JobEntity jobEntity = new JobEntity();
         jobEntity.setJobTitle(title);
         jobEntity.setJobCreationDateTime(creationdate);
+        jobEntity.setWorkerID(workerID);
+        jobEntity.setVideoID(videoID);
         dao.save(jobEntity);
         return jobEntity;
     }
@@ -38,11 +40,13 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public JobEntity updateJob(String id, String title, Date creationdate) {
+    public JobEntity updateJob(String id, String title, Date creationdate, String workerID, String videoID) {
         JobEntity je = dao.findById(id);
 
         je.setJobTitle(title);
         je.setJobCreationDateTime(creationdate);
+        je.setWorkerID(workerID);
+        je.setVideoID(videoID);
         dao.save(je);
         return je;
     }

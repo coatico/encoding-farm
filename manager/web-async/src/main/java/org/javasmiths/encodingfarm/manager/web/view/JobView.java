@@ -38,8 +38,8 @@ public class JobView implements Serializable {
     private Date jobCompletionDateTime;
     private Collection<JobStatusDescriptionEntity> jobStatus;
     private List<JobDto> list = new LinkedList<>();
-    private String WorkerID;
-    private String VideoID;
+    private String workerID;
+    private String videoID;
 
     @EJB
     private JobFacade facade;
@@ -50,23 +50,23 @@ public class JobView implements Serializable {
     }
 
     public String getWorkerID() {
-        return WorkerID;
+        return workerID;
     }
 
     public void setWorkerID(String WorkerID) {
-        this.WorkerID = WorkerID;
+        this.workerID = WorkerID;
     }
 
     public String getVideoID() {
-        return VideoID;
+        return videoID;
     }
 
     public void setVideoID(String VideoID) {
-        this.VideoID = VideoID;
+        this.videoID = VideoID;
     }
 
     public void create(ActionEvent actionEvent) {
-        facade.create(jobTitle, jobCreationDateTime);
+        facade.create(jobTitle, jobCreationDateTime, workerID, videoID);
         list = facade.listAll();
     }
 

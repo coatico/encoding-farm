@@ -24,7 +24,6 @@ public class WorkerFacadeImpl implements WorkerFacade {
     private WorkerService workerService;
 
     @Override
-<<<<<<< HEAD
     public void create(String name,Boolean status, String URL) {
         workerService.registerWorker(name, status, URL);
     }
@@ -64,23 +63,4 @@ public class WorkerFacadeImpl implements WorkerFacade {
         return dtos;
     }
 
-=======
-    public void create(String name) {
-        workerService.registerWorker(name);
-    }
-
-    @Override
-    public List<WorkerListDetailDto> listAll() {
-        List<WorkerListDetailDto> dtos = new LinkedList<>();
-        List<WorkerEntity> workersE = workerService.listAll();
-        for (WorkerEntity worker : workersE) {
-            WorkerListDetailDto dto = new WorkerListDetailDto();
-            dto.setId(worker.getId());
-            dto.setFirstName(worker.getWorkerName());
-            dtos.add(dto);
-        }
-        return dtos;
-    }
-
->>>>>>> refs/remotes/origin/Manager-async
 }

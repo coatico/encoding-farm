@@ -15,11 +15,11 @@ import org.javasmiths.encodingfarm.manager.web.dto.JobDto;
  */
 public interface JobFacade {
 
-	public void create(String jobTitle, Date creationdate);
+	public void create(String jobTitle, Date creationdate, String workerID, String videoID );
         
         public void delete(String id);
         
-        public void update(String id, String title, Date creationdate, String workerID, String VideoID);
+        public void update(String id, String title, Date creationdate, String workerID, String videoID);
 
 	public List<JobDto> listAll();
 	

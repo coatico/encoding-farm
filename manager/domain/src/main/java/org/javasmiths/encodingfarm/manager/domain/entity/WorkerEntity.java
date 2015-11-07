@@ -9,12 +9,10 @@ package org.javasmiths.encodingfarm.manager.domain.entity;
  *
  * @author Arne
  */
-<<<<<<< HEAD
-=======
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.CascadeType;
->>>>>>> refs/remotes/origin/Manager-async
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,13 +26,13 @@ public class WorkerEntity extends BaseTrackableEntity implements Serializable {
 
     //In deze File worden de Entities aangemaakt voor de tabel in de database.
     @Column
-<<<<<<< HEAD
+
     private String Name;
     @Column
     private boolean Status;
     @Column
     private String URL;
-	
+
 	
 
     public String getName() {
@@ -59,7 +57,8 @@ public class WorkerEntity extends BaseTrackableEntity implements Serializable {
 
     public void setURL(String URL) {
         this.URL = URL;
-=======
+
+    }
     private String workerName;
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -91,7 +90,6 @@ public class WorkerEntity extends BaseTrackableEntity implements Serializable {
 
     public void setWorkerJobStatusDescriptionEntity(Collection<JobStatusDescriptionEntity> workerJobStatusDescriptionEntity) {
         this.workerJobStatusDescriptionEntity = workerJobStatusDescriptionEntity;
->>>>>>> refs/remotes/origin/Manager-async
     }
 
 }

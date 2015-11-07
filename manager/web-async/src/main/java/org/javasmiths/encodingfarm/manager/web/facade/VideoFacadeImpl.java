@@ -47,9 +47,9 @@ public class VideoFacadeImpl implements VideoFacade {
             VideoDto dto = new VideoDto();
             dto.setId(video.getId());
             dto.setVideoTitle(video.getVideoTitle());
+             dto.setVideoLink(video.getVideoLink());
             dto.setVideoCode(video.getVideoCode());
             dto.setVideoDescription(video.getVideoDescription());
-            dto.setVideoLink(video.getVideoLink());
             dtos.add(dto);
         }
         return dtos;
