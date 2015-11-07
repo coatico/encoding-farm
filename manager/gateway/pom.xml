@@ -31,7 +31,11 @@
             <artifactId>payara-micro</artifactId>
             <version>4.1.153</version>
             <type>jar</type>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20090211</version>
         </dependency>
     </dependencies>
 </project>

@@ -22,10 +22,19 @@ public interface WorkerService {
 
     WorkerEntity enableWorker(String name);
 	
+<<<<<<< HEAD
 	String editWorker(String Id, String name, Boolean status, String URL);
 
     List<WorkerEntity> listAll();
 
 	
 
+=======
+    WorkerEntity deleteWorker(String id);
+
+    WorkerEntity updateWorker(String id, String workerName);
+
+	
+	List<WorkerEntity> listAll();
+>>>>>>> refs/remotes/origin/Manager-async
 }

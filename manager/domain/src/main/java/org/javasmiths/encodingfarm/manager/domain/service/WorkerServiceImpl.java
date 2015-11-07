@@ -22,6 +22,7 @@ public class WorkerServiceImpl implements WorkerService {
 
     @EJB
     private WorkerDao dao;
+<<<<<<< HEAD
     private WorkerEntity we;
 	
 	private final static String[] picker;
@@ -90,4 +91,35 @@ public class WorkerServiceImpl implements WorkerService {
 		return picker;
 	}
 
+=======
+
+    @Override
+    public WorkerEntity registerWorker(String name) {
+        WorkerEntity workerEntity = new WorkerEntity();
+        workerEntity.setWorkerName(name);
+        dao.save(workerEntity);
+        return workerEntity;
+    }
+	
+    @Override
+    public WorkerEntity deleteWorker(String id) {
+        dao.delete(id);
+        return null;
+    }
+
+    @Override
+    public WorkerEntity updateWorker(String id, String title) {
+        WorkerEntity je = dao.findById(id);
+
+        je.setWorkerName(title);
+        dao.update(je);
+        return je;
+    }
+
+    @Override
+    public List<WorkerEntity> listAll() {
+        return dao.listAll();
+    }
+
+>>>>>>> refs/remotes/origin/Manager-async
 }

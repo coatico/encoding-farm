@@ -36,9 +36,27 @@ public class WorkerDaoImpl extends BaseDaoImpl<WorkerEntity> implements WorkerDa
         em.merge(workerEntity);
     }
 
+<<<<<<< HEAD
     @Override
     protected Class<WorkerEntity> entityClass() {
         return WorkerEntity.class;
     }
+=======
+	@Override
+	protected Class<WorkerEntity> entityClass() {
+		return WorkerEntity.class;
+	}
+	
+	  @Override
+        public WorkerEntity findById(String id){
+            return em.find(WorkerEntity.class, id);
+        }
+
+	@Override
+	public void update(WorkerEntity dataEntity) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+    
+>>>>>>> refs/remotes/origin/Manager-async
 
 }

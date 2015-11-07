@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition template="./common/template.xhtml">
+        <ui:define name="title">
+            Handle Videos
+        </ui:define>
+        <ui:define name="content">
+            <b:row>
+                <b:panel>
+                    <h:form>
+                        Add Video <p:inputText value="#{video.videoTitle}"  label="Enter video here" id="video_crt_txt"/> 
+                        <p:watermark for="video_crt_txt" value="Enter video here" id="watermark" />
+                        Add Video <p:inputText value="#{video.videoCode}"  label="Enter videocode here" id="videocode_crt_txt"/> 
+                        <p:watermark for="videocode_crt_txt" value="Enter videocode here" id="watermark2" />
+                        Add Video <p:inputText value="#{video.videoDescription}"  label="Enter videodescription here" id="videodescr_crt_txt"/> 
+                        <p:watermark for="videodescr_crt_txt" value="Enter videodescription here" id="watermark3" />
+                        Add Video <p:inputText value="#{video.videoLink}"  label="Enter videolink here" id="videolink_crt_txt"/> 
+                        <p:watermark for="videolink_crt_txt" value="Enter videolink here" id="watermark4" />
+                        <p:commandButton value="Create" update="@form" actionListener="#{video.create}" />
+                        <hr/>
+
+
+                        <hr/>
+
+                        <p:growl id="msgs" showDetail="true"/>
+
+                        <p:dataTable id="videodatatable" var="videos" value="#{video.list}" editable="true" rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <f:facet name="header">
+                                List of Videos
+                            </f:facet>
+
+                            <p:ajax event="rowEdit" listener="#{video.update(videos.id, videos.videoTitle)}"/>
+                           <!-- <p:ajax event="rowEditCancel" listener="#{video.onRowCancel}" update=":form:msgs" />-->
+
+
+                            <p:column headerText="Id">
+                                <h:outputText value="#{videos.id}" />
+                            </p:column>
+                            <p:column headerText="videoTitle">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{videos.videoTitle}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{videos.videoTitle}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="videoCode">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{videos.videoCode}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{videos.videoCode}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="videoDescr">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{videos.videoDescription}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{videos.videoDescription}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="videoLink">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{videos.videoLink}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{videos.videoLink}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Actions">
+                                <p:commandButton value="Delete" update="@form" actionListener="#{video.delete(videos.id)}" />
+
+                            </p:column>
+                            <p:column style="width:32px">
+                                <p:rowEditor />
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </h:form>
+                </b:panel>
+
+
+            </b:row>
+            <b:row>
+                <h1>Rest Controller</h1>
+                <b:panel>
+                    <a href="rest/videos/" target="blank">json >> LocationController</a>
+                </b:panel>
+            </b:row>
+        </ui:define>
+    </ui:composition>
+</html>
+

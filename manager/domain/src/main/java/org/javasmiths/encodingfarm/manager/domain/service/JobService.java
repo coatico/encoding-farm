@@ -1,0 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.javasmiths.encodingfarm.manager.domain.service;
+
+import java.util.Date;
+import java.util.List;
+import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
+
+/**
+ *
+ * @author Elias Serneels
+ */
+public interface JobService {
+
+    JobEntity registerJob(String jobTitle, Date creationdate);
+
+    JobEntity deleteJob(String id);
+
+    JobEntity updateJob(String id, String jobTitle, Date creationdate);
+
+    List<JobEntity> listAll();
+}

@@ -9,17 +9,26 @@ package org.javasmiths.encodingfarm.manager.domain.entity;
  *
  * @author Arne
  */
+<<<<<<< HEAD
+=======
+import java.io.Serializable;
+import java.util.Collection;
+import javax.persistence.CascadeType;
+>>>>>>> refs/remotes/origin/Manager-async
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 
 @Entity
 @Table(name = "WORKERS")
-public class WorkerEntity extends BaseTrackableEntity {
+public class WorkerEntity extends BaseTrackableEntity implements Serializable {
 
     //In deze File worden de Entities aangemaakt voor de tabel in de database.
     @Column
+<<<<<<< HEAD
     private String Name;
     @Column
     private boolean Status;
@@ -50,6 +59,39 @@ public class WorkerEntity extends BaseTrackableEntity {
 
     public void setURL(String URL) {
         this.URL = URL;
+=======
+    private String workerName;
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Collection<workerJobEntity> workerworkerJob;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Collection<JobStatusDescriptionEntity> workerJobStatusDescriptionEntity;
+
+
+    public String getWorkerName() {
+        return workerName;
+    }
+
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
+    }
+
+    
+    public Collection<workerJobEntity> getWorkerworkerJob() {
+        return workerworkerJob;
+    }
+
+    public void setWorkerworkerJob(Collection<workerJobEntity> workerworkerJob) {
+        this.workerworkerJob = workerworkerJob;
+    }
+
+    public Collection<JobStatusDescriptionEntity> getWorkerJobStatusDescriptionEntity() {
+        return workerJobStatusDescriptionEntity;
+    }
+
+    public void setWorkerJobStatusDescriptionEntity(Collection<JobStatusDescriptionEntity> workerJobStatusDescriptionEntity) {
+        this.workerJobStatusDescriptionEntity = workerJobStatusDescriptionEntity;
+>>>>>>> refs/remotes/origin/Manager-async
     }
 
 }
