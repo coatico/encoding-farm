@@ -41,6 +41,14 @@ public class JobView implements Serializable {
     private String WorkerID;
     private String VideoID;
 
+    @EJB
+    private JobFacade facade;
+
+    @PostConstruct
+    public void init() {
+        list = facade.listAll();
+    }
+
     public String getWorkerID() {
         return WorkerID;
     }
@@ -55,14 +63,6 @@ public class JobView implements Serializable {
 
     public void setVideoID(String VideoID) {
         this.VideoID = VideoID;
-    }
-
-    @EJB
-    private JobFacade facade;
-
-    @PostConstruct
-    public void init() {
-        list = facade.listAll();
     }
 
     public void create(ActionEvent actionEvent) {

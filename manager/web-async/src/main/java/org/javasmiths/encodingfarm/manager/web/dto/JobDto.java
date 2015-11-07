@@ -30,23 +30,7 @@ public class JobDto {
     private Collection<JobStatusDescriptionEntity> jobStatus;
     private String WorkerID;
     private String VideoID;
-    private String status;
-
-    public String getVideoID() {
-        return VideoID;
-    }
-
-    public void setVideoID(String VideoID) {
-        this.VideoID = VideoID;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+ //   private String status;
 
     public String getWorkerID() {
         return WorkerID;
@@ -56,6 +40,23 @@ public class JobDto {
         this.WorkerID = WorkerID;
     }
 
+    public String getVideoID() {
+        return VideoID;
+    }
+
+    public void setVideoID(String VideoID) {
+        this.VideoID = VideoID;
+    }
+
+    /*
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+*/
     public String getjobTitle() {
         return jobTitle;
     }
