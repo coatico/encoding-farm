@@ -16,6 +16,13 @@
             </b:row>
             <b:row>
                 <b:panel>
+                    
+                    
+                    <form>
+                     <p:media value="http://www.youtube.com/v/qSjN6r9Up6g" width="420" height="315" player="flash"/>
+                    </form>
+                    
+                    
                     <h:form>
                         Add Video 
                         <p:inputText value="#{video.name}"  label="Enter videoname here" id="video_crt_name" /> 
@@ -52,7 +59,11 @@
                             <p:column headerText="videopath" style="display: none">
                                 <h:outputText value="#{vid.videopath}" />
                             </p:column>
-                            
+<!-- TEST 
+                             <p:column headerText="Video">
+                                <p:media value="http://www.youtube.com/embed/qSjN6r9Up6g" player="flash"/>
+                            </p:column>
+                       -->
                             <p:column headerText="description">
                                 <h:outputText value="#{vid.description}" />
                             </p:column>
