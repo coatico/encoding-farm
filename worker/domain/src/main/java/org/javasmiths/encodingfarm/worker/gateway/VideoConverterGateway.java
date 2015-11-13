@@ -14,5 +14,4 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
 public interface VideoConverterGateway {
 
 	public void convert(RequestEntity request);
-	
 }

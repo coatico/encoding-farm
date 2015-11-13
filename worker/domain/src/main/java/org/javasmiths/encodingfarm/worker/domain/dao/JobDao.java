@@ -15,6 +15,6 @@ public interface JobDao {
     
     public JobEntity findById(String id);
     
-    public void delete(JobEntity e);
+    public void deleteById(String id);
 
 }

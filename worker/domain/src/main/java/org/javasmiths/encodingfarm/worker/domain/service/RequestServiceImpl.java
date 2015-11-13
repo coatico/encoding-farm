@@ -45,10 +45,10 @@ public class RequestServiceImpl implements RequestService {
         RequestEntity request = dao.findById(id);
         if(!request.getJobs().isEmpty()) {
             for(JobEntity job: request.getJobs()) {
-                jDao.delete(job);
+                jDao.deleteById(job.getId());
             }
         }
-        dao.delete(request);
+        dao.deleteById(request.getId());
     }
 
 }
