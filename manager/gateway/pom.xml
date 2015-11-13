@@ -27,12 +27,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>fish.payara.extras</groupId>
-            <artifactId>payara-micro</artifactId>
-            <version>4.1.153</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20090211</version>
