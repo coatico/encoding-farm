@@ -24,52 +24,30 @@ and open the template in the editor.
                         <p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
                         <p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
                         <br/><br/>
+                        
                         Status:  
                         <p:selectOneButton value="#{worker.status}">
                             <f:selectItem itemLabel="Enabled" itemValue="true" />
                             <f:selectItem itemLabel="Disabled" itemValue="false" />
                         </p:selectOneButton>
 
-
                         <br/><br/>
-
+                        
                         URL	 : 	  
                         <p:inputText value="#{worker.URL}"  label="Enter name here"/> 
-
+                        
                         <br/><br/>
 
-                        <p:commandButton value="Create" update="@form" actionListener="#{worker.create}" />
-
-
-                        <hr/>
-
-
-                        <p:dataScroller id="ds" value="#{worker.list}" var="workers" chunkSize="10">
-                            <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                                <p:graphicImage /> 
-                                <p:outputPanel>
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <h:outputText value="Id:" />
-                                        <h:outputText value="#{workers.id}" style="font-weight: bold"/>
-
-                                        <h:outputText value="Name:" />
-                                        <h:outputText value="#{workers.name}" style="font-weight: bold"/>
-
-                                        <h:outputText value="Status:" />
-                                        <h:outputText value="#{workers.status}" style="font-weight: bold"/>
-
-                                        <h:outputText value="URL:" />
-                                        <h:outputText value="#{workers.URL}" style="font-weight: bold"/>
-                                    </h:panelGrid>
-                                </p:outputPanel>
-                            </h:panelGrid>
-                        </p:dataScroller>
-
-                        <hr/><hr/>
+                        <p:commandButton value="Create" update="@form :workerDatatable" actionListener="#{worker.create}" />
+                    </h:form>
+                </b:panel>
+                
+                <b:panel>
+                    <h:form id="workerDatatable">
                         <p:dataTable id="workeredit" var="workeredit" value="#{worker.list}" editable="true" editMode="cell" widgetVar="cellCars">
                             <f:facet name="header">Cell Editing with Click</f:facet>
 
-                            <p:ajax event="cellEdit" listener="#{worker.edit}" update=":form:ds" />
+                            <p:ajax event="cellEdit" listener="#{worker.edit}"  />
                             <p:column headerText="Id" sortBy="#{workeredit.id}" filterBy="#{workeredit.id}" filterMatchMode="contains">
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{workeredit.id}"/></f:facet>
@@ -104,11 +82,10 @@ and open the template in the editor.
                             </p:column>
 
                             <p:column>
-                                <p:commandButton value="Delete" update="@form" actionListener="#{worker.delete(workeredit.id)}"/>
+                                <p:commandButton value="Delete" update="@form :workerDatatable" actionListener="#{worker.delete(workeredit.id)}"/>
                             </p:column>
 							
                         </p:dataTable>
-
                     </h:form>
                 </b:panel>
             </b:row>

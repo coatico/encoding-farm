@@ -7,6 +7,7 @@ package org.javasmiths.encodingfarm.manager.gateway;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
@@ -14,26 +15,27 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Arne
  */
-public class Worker {
-    public void gway() {
+public class WorkerGatewayImpl implements WorkerGateway {
+    @Override
+    public void createWorker() {
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("");
-        Object o = target.request(MediaType.APPLICATION_JSON).get(Gway.class);
-        System.out.println("o");
+        WebTarget target = client.target("http://localhost:8080/web/rest/workers");
+        Object o = target.request(MediaType.APPLICATION_JSON).post(Entity.json(new Gway()));
         
     }
+
     
-
     public static class Gway {
+        
+        private long id = 1;
 
-        private Long id;
-
-        public Long getId() {
+        public long getId() {
             return id;
         }
 
-        public void setId(Long id) {
+        public void setId(long id) {
             this.id = id;
         }
     }
+     
 }
