@@ -15,8 +15,14 @@ import java.util.Observer;
 public class Baas implements Observer {
 
     @Override
-    public void update(Observable o, Object o1) {
-        System.out.println("JOEPIE UPDATE " + o1.toString());
+    public void update(Observable o, Object statusObject) {
+        try {
+            ConversionResult cResult = (ConversionResult) statusObject;
+            System.out.println("Wat doe ik? " + cResult.status + " " + cResult.info.uuid);
+            System.out.println("Hoe ver sta ik? " + cResult.progress);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-    
+
 }

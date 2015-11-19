@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Observable;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
@@ -26,75 +27,141 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
  *
  * @author joris
  */
-public class VideoConverterGatewayImpl extends Observable implements  VideoConverterGateway {
- 
-    private final String input = "../lib/video.mp4";
-    private final String output = "../lib/samson";
-    private final String sub = "../lib/test.srt";
-    private String ffmpeg = "../lib/ffmpeg.exe";
+public class VideoConverterGatewayImpl extends Observable implements VideoConverterGateway {
 
-    private double progressPercentage = 0 ;
+    private final Boolean printDebug = false;
+    private final String working = "../lib/";
+    private final String input = "video.mp4";
+    private final String output = "samson";
+    private final String sub = "test.srt";
+    private String ffmpeg = working + "ffmpeg.exe";
+
     @Override
     public void convert(RequestEntity request) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
         DateFormat parseFormat = new SimpleDateFormat("HH:mm:ss.SS");
-        Date date = new Date();
-        
-        if (System.getProperty("os.name").startsWith("Mac")) {
-            ffmpeg = "../lib/ffmpeg";
-        }
 
+        setOSDependantFFmpeg();
+
+        ConversionInfo info = createConversionInfo(request);
+        
         try {
-            File ffmpegFile = new File(ffmpeg);
-            File inputFile = new File(input);
-            File outputFile = new File(output + dateFormat.format(date) + ".avi");
-            File subFile = new File(sub);
-            String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", inputFile.getCanonicalPath(),(sub.length()>0) ? "-vf" : "",(sub.length()>0) ? "subtitles=" + subFile.getCanonicalPath() + "" : "", outputFile.getCanonicalPath()};
-            ProcessBuilder pb = new ProcessBuilder(args);
-            pb.redirectOutput();
-            pb.redirectError();
-            Process proc;
-            proc = pb.start();
+            ProcessBuilder pb = getProcessBuilder();
+            Process proc = pb.start();
             try (BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getErrorStream()))) {
-                String line;
-                String movieDuration = null;
-                while ((line = stdInput.readLine()) != null) {
-                    if (line.contains("Duration:")) {
-                        String[] duration = line.split("Duration=");
-                        movieDuration = duration[0].split(", start:")[0].split("Duration:")[1];
-                        System.out.println("TIJD IS " + movieDuration);
-                    }
-                    if (line.startsWith("frame=")) {
-                        String progress = line.split("time=")[1].split(" bitrate=")[0];
-                        // System.out.println(progress.trim() + " /" + (movieDuration == null ? "hh:mm:ss.ff": movieDuration.trim()));
-                        Date progressTime = parseFormat.parse(progress);
-                        Date totalTime = parseFormat.parse(movieDuration);
-                        double test = round((100.0 / getTime(totalTime)) * getTime(progressTime), 2);
-                        System.out.println(test + "%");
-                        progressPercentage = test;
-                        setChanged();
-                        notifyObservers(progressPercentage);
-                    }
-                    System.out.println(line);
+                Boolean parseResult = parseOutput(stdInput, parseFormat, info);
+                if(parseResult) {
+                    print("DONE", false);
+                    updateProgress(info, Status.COMPLETED);
+                    return;
                 }
-                System.out.println("DONE");
             } catch (ParseException ex) {
                 Logger.getLogger(VideoConverterGatewayImpl.class.getName()).log(Level.SEVERE, null, ex);
+                updateProgress(info, Status.ERROR, ex.getMessage());
             }
             proc.waitFor();
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(VideoConverterGatewayImpl.class.getName()).log(Level.SEVERE, null, ex);
+            updateProgress(info, Status.ERROR, ex.getMessage());
         }
+        updateProgress(null, Status.UNKNOWN);
 
     }
-    
-    public static double round(double value, int places) {
-    if (places < 0) throw new IllegalArgumentException();
 
-    BigDecimal bd = new BigDecimal(value);
-    bd = bd.setScale(places, RoundingMode.HALF_UP);
-    return bd.doubleValue();
-}
+    private Boolean parseOutput(final BufferedReader stdInput, DateFormat parseFormat, ConversionInfo info) throws IOException, ParseException {
+        String line = null;
+        String movieDuration = null;
+        while ((line = stdInput.readLine()) != null) {
+            if (line.contains("No such file or directory")){
+                updateProgress(info, Status.ERROR, line);
+                return false;
+            }
+            if (line.contains("Duration:")) {
+                String[] duration = line.split("Duration=");
+                movieDuration = duration[0].split(", start:")[0].split("Duration:")[1];
+                print("TIJD IS " + movieDuration);
+            }
+            if (line.startsWith("frame=")) {
+                String progress = line.split("time=")[1].split(" bitrate=")[0];
+                // System.out.println(progress.trim() + " /" + (movieDuration == null ? "hh:mm:ss.ff": movieDuration.trim()));
+                Date progressTime = parseFormat.parse(progress);
+                Date totalTime = parseFormat.parse(movieDuration);
+                double calculatedProgress = round((100.0 / getTime(totalTime)) * getTime(progressTime), 2);
+                print(calculatedProgress + "%");
+                updateProgress(info, Status.INPROGRESS, calculatedProgress);
+            }
+            print(line);
+        }
+        return true;
+    }
+    
+    public ConversionInfo createConversionInfo(RequestEntity request){
+        ConversionInfo info =  new ConversionInfo(request);
+        info.uuid = UUID.randomUUID().toString(); 
+        return info;
+    }
+
+    public void updateProgress(ConversionInfo conversionInfo, Status status) {
+       updateProgress(conversionInfo, status, "", 0.0);
+    }
+
+    public void updateProgress(ConversionInfo conversionInfo, Status status, Double progress) {
+       updateProgress(conversionInfo, status, "", progress);
+    }
+
+    public void updateProgress(ConversionInfo conversionInfo, Status status, String message) {
+       updateProgress(conversionInfo, status, message, 0.0);
+    }
+
+    public void updateProgress(ConversionInfo conversionInfo, Status status, String message, Double progress) {
+        setChanged();
+        ConversionResult result = createConversionResult(conversionInfo, status, message);
+        result.progress = progress;
+        notifyObservers(result);
+    }
+    
+    public ConversionResult createConversionResult(ConversionInfo conversionInfo, Status status){
+        return createConversionResult(conversionInfo, status, null);
+    }
+    
+    public ConversionResult createConversionResult(ConversionInfo conversionInfo, Status status, String message){
+        ConversionResult result = new ConversionResult();
+        result.status = status;
+        result.info = conversionInfo;
+        result.message = message;
+        return result;
+    }
+
+    public void setOSDependantFFmpeg() {
+        if (System.getProperty("os.name").startsWith("Mac")) {
+            ffmpeg = working + "ffmpeg";
+        }
+    }
+
+    public ProcessBuilder getProcessBuilder() throws IOException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        Date date = new Date();
+        File ffmpegFile = new File(ffmpeg);
+        /*File inputFile = new File(input);
+         File outputFile = new File(output + dateFormat.format(date) + ".avi");
+         File subFile = new File(sub);*/
+        String outputFile = output + dateFormat.format(date) + ".avi";
+        String[] args = new String[]{ffmpegFile.getCanonicalPath(), "-i", input, (sub.length() > 0) ? "-vf" : "", (sub.length() > 0) ? "subtitles=" + sub + "" : "", outputFile};
+        ProcessBuilder pb = new ProcessBuilder(args);
+        pb.directory(new File(working));
+        pb.redirectOutput();
+        pb.redirectError();
+        return pb;
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
 
     private Double getTime(Date date) {
         Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
@@ -110,4 +177,14 @@ public class VideoConverterGatewayImpl extends Observable implements  VideoConve
         return t;
     }
 
+    private void print(String message, Boolean print) {
+        if (!print) {
+            return;
+        }
+        System.out.println(message);
+    }
+
+    private void print(String message) {
+        print(message, printDebug);
+    }
 }
