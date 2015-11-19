@@ -21,6 +21,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(org.javasmiths.encodingfarm.web.controller.TaskController.class);
+		resources.add(org.javasmiths.encodingfarm.web.controller.UserController.class);
     }
 
 }

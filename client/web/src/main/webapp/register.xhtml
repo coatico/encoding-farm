@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:b="http://bootsfaces.net/ui"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./common/template.xhtml">
+
+            <ui:define name="title">
+                register
+            </ui:define>
+
+            <ui:define name="navbar">
+                Register Page
+            </ui:define>
+
+            <ui:define name="content">
+
+
+                <legend> Register Here </legend> 
+                <!-- Register employee form -->
+                <h:form>
+                    <br/>
+                    <!-- First name input -->
+                    First Name: <h:inputText class="logcolor" style="margin-right: 850px; margin-left: auto; float: right;"  label="first_name"  value="${users.firstName}" required="true">
+                    </h:inputText>
+                    <br/><br/>
+                    <!-- Last name input -->
+                    Last Name: <h:inputText class="logcolor" style="margin-right: 850px; margin-left: auto; float: right;" label="last_name" value="${users.lastName}" required="true">
+                    </h:inputText>
+                    <br/><br/>
+                    <!-- Date of Birth input -->
+                    Date of birth: <h:inputText class="logcolor" style="margin-right: 850px; margin-left: auto; float: right;" label="birth_date" value="${users.birthdate}" required="true">
+                        <!-- Date of Birth validator -->
+                    </h:inputText>
+                    <br/><br/>
+                    <!-- Email input -->
+                    Email: <h:inputText class="logcolor" style="margin-right: 850px; margin-left: auto; float: right;" label="Email" required="true" value="${users.email}" >
+                        <!-- Email validator -->
+                    </h:inputText>
+                    <br/><br/>
+
+
+                    <h:message for="emailAddress" errorStyle="color:red; display:block" />
+                    <br/><br/>
+                    <!-- Username input -->
+                    User name: <h:inputText class="logcolor" style="margin-right: 850px; margin-left: auto; float: right;" label="user_name" value="${users.username}" required="true">
+                    </h:inputText>
+                    <br/> <br/>
+                    <!-- Password input -->
+                    Password: <h:inputSecret class="logcolor" style="margin-right: 850px; margin-left: auto; float: right;" label="password"  value="${users.password}" required="true" >
+                    </h:inputSecret>
+                    <br/><br/>
+
+
+
+                    <!-- Gender selection -->
+                    <h:selectOneRadio value="#{users.sex}">
+                        <f:selectItem itemValue="Male" itemLabel="Male" />
+                        <f:selectItem itemValue="Female" itemLabel="Female" />
+
+                    </h:selectOneRadio>	   
+
+                    <br/><br/><br/>
+                    <!-- Register Button -->
+                    <h:commandButton  class="btn btn-primary" action="${users.createUser}" style="width:15%" value="Register"></h:commandButton>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
