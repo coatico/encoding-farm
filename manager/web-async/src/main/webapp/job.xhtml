@@ -24,10 +24,10 @@
                        
          
  Worker id<p:inputText value="#{job.workerID}"  label="Enter WorkerID here" id="jobWorker_crt_txt"/> 
-                        <p:watermark for="job_crt_txt" value="Enter workerID here" id="watermark2" />
+                        <p:watermark for="jobWorker_crt_txt" value="Enter workerID here" id="watermark2" />
                         
                         Video id<p:inputText value="#{job.videoID}"  label="Enter videoID here" id="jobVideo_crt_txt"/> 
-                        <p:watermark for="job_crt_txt" value="Enter videoID here" id="watermark3" />
+                        <p:watermark for="jobVideo_crt_txt" value="Enter videoID here" id="watermark3" />
                         
  <p:commandButton value="Create" update=":form:jobdatatable" actionListener="#{job.create}" />
                      
@@ -69,9 +69,13 @@
                                     <f:facet name="input"><h:inputText value="#{jobs.jobCreationDateTime}" style="width:96%" label="Title"><f:convertDateTime pattern="yyyy-MM-dd hh:mm:ss" /></h:inputText></f:facet>
                                 </p:cellEditor>
                             </p:column>
+                            <p:column headerText="Priority">
+                                <h:outputText value="#{jobs.priority}" />
+                            </p:column>
                             <p:column style="width: 3%;margin-left: auto; margin-right: auto;">                                    
                                 <p:commandLink styleClass="ui-icon ui-icon-trash" style="width: 16px;height: 16px;" update=":form:jobdatatable" actionListener="#{job.delete(jobs.id)}" type="image" />
                             </p:column>
+                            
                             <p:column style="width: 3%;margin-left: auto; margin-right: auto;">
                                 <p:rowEditor />
                             </p:column>

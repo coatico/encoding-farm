@@ -27,7 +27,7 @@ import org.primefaces.event.RowEditEvent;
 @Named("worker")
 public class WorkerView implements Serializable{
 	
-	private String workerName;
+    private String workerName;
     private List<WorkerDto> list = new LinkedList<>();
     
     private Boolean status;
@@ -45,7 +45,7 @@ public class WorkerView implements Serializable{
     }
 
     public void create(ActionEvent actionEvent) {
-        facade.create(workerName, status,URL);
+        facade.create(workerName, status, URL);
         list = facade.listAll();
     }
 

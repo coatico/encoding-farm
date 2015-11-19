@@ -40,6 +40,7 @@ public class JobView implements Serializable {
     private List<JobDto> list = new LinkedList<>();
     private String workerID;
     private String videoID;
+    private int priority;
 
     @EJB
     private JobFacade facade;
@@ -154,6 +155,19 @@ public class JobView implements Serializable {
 
     public void setJobStatus(Collection<JobStatusDescriptionEntity> jobStatus) {
         this.jobStatus = jobStatus;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
+    }
+
+    public void setRandomPriority() {
+        this.priority = randomWithRange(1,5);
     }
 
     public JobFacade getFacade() {

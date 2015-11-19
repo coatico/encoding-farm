@@ -30,6 +30,7 @@ public class JobDto {
     private Collection<JobStatusDescriptionEntity> jobStatus;
     private String workerID;
     private String videoID;
+    private int priority;
  //   private String status;
 
     public String getWorkerID() {
@@ -121,5 +122,15 @@ public class JobDto {
     public void setJobStatus(Collection<JobStatusDescriptionEntity> jobStatus) {
         this.jobStatus = jobStatus;
     }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+    
+    
 
 }

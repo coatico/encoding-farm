@@ -32,6 +32,7 @@ public class VideoView implements Serializable {
     private String videoCode;
     private String videoDescription;
     private List<VideoDto> list = new LinkedList<>();
+    
     @EJB
     private VideoFacade facade;
 
@@ -50,7 +51,7 @@ public class VideoView implements Serializable {
         list = facade.listAll();
     }
 
-    public void update(String id, String videoTitle) {
+   public void update(String id, String videoTitle) {
         facade.update(id, videoTitle, videoLink,videoCode, videoDescription);
     }
 
