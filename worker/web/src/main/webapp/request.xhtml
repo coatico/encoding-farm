@@ -28,7 +28,7 @@
                         <p:commandButton value="Create" update="@form" actionListener="#{requests.create}" />
                         <hr/>
                         <p:dataTable var="req" value="#{requests.list}" editable="true">
-                            <p:ajax event="rowEdit" listener="#{requests.onEdit}" update=":form1:messages" />  
+                            <p:ajax event="rowEdit" listener="#{requests.onEdit(rowEdit, req)}" update=":form1:messages" />  
                                                 <p:ajax event="rowEditCancel" listener="#{requests.onCancel}" update=":form1:messages" /> 
                             <p:column headerText="Id">
                                 <p:cellEditor>  
@@ -36,16 +36,16 @@
                                         <h:outputText value="#{req.id}" />  
                                     </f:facet>  
                                     <f:facet name="input">  
-                                        <p:inputText value="#{req.id}" style="width:100%"/>  
+                                        <h:outputText value="#{req.id}" style="width:100%; margin-left: 10px"/>  
                                     </f:facet>  
                                 </p:cellEditor> 
                             </p:column>
-                            <p:column headerText="Video Path">
+                            <p:column headerText="Video Path" width="22%">
                                 <p:cellEditor>  
                                     <f:facet name="output">  
                                         <h:outputText value="#{req.path}" />  
                                     </f:facet>  
-                                    <f:facet name="input">  
+                                    <f:facet name="input">
                                         <p:inputText value="#{req.path}" style="width:100%"/>  
                                     </f:facet>  
                                 </p:cellEditor> 
@@ -56,12 +56,12 @@
                                         <h:outputText value="#{req.jobs}" />  
                                     </f:facet>  
                                     <f:facet name="input">  
-                                        <p:inputText value="#{req.jobs}" style="width:100%"/>  
+                                        <h:outputText value="#{req.jobs}" style="width:100%; margin-left: 10px"/>   
                                     </f:facet>  
                                 </p:cellEditor> 
                             </p:column>
                             <p:column style="width: 4%"><p:rowEditor />  </p:column>
-                            <p:column headerText="Actions" style="width: 7%">
+                            <p:column headerText="Actions" style="width: 10%">
                                 <p:commandButton value="Delete" update="@form" actionListener="#{requests.remove(req.id)}"/>
                             </p:column>
                         </p:dataTable>

@@ -17,9 +17,20 @@ public class JobEntity extends BaseTrackableEntity {
 
     @ManyToOne(targetEntity = RequestEntity.class, fetch = FetchType.LAZY)
     private RequestEntity request;
-
+    
+    @ManyToOne(targetEntity = WorkerEntity.class, fetch = FetchType.LAZY)
+    private WorkerEntity worker;
+    
     @Column
     private String status;
+
+    public WorkerEntity getWorker() {
+        return worker;
+    }
+
+    public void setWorker(WorkerEntity worker) {
+        this.worker = worker;
+    }
 
     public RequestEntity getRequest() {
         return request;

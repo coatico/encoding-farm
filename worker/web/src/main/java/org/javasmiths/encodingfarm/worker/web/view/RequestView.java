@@ -78,16 +78,18 @@ public class RequestView {
     
    
 
-    public void onEdit(RequestDto dto, RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Item Edited", ((RequestDto) event.getObject()).getId());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        facade.save(dto);
-    }
-
-    public void onCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Editing Cancelled");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
+    public void onEdit(RowEditEvent event, RequestDto dto) {              
+        /*FacesMessage msg = new FacesMessage("Item Edited",((RequestDto) event.getObject()).getId());  
+        FacesContext.getCurrentInstance().addMessage(null, msg);*/
+        facade.update(dto);
+        list = facade.listAll();
+    }  
+       
+    public void onCancel(RowEditEvent event) {  
+        FacesMessage msg = new FacesMessage("Editing Cancelled");   
+        FacesContext.getCurrentInstance().addMessage(null, msg); 
+        
+    } 
 }
 
 

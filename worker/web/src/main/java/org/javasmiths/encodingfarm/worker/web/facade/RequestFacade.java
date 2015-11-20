@@ -20,5 +20,5 @@ public interface RequestFacade {
     
     public void remove(String id);
     
-    public void save(RequestDto dto);
+    public void update(RequestDto dto);
 }

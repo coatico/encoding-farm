@@ -17,6 +17,8 @@ public class testFFMPEG {
     public static void main(String[] args) {
         Baas boss = new Baas();
         VideoConverterGatewayImpl vc = new VideoConverterGatewayImpl();
+        vc.addObserver(boss);
+        
 
         vc.convert(null);
     }

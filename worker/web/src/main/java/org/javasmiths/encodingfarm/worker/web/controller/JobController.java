@@ -7,9 +7,13 @@ package org.javasmiths.encodingfarm.worker.web.controller;
 
 import java.util.List;
 import javax.ejb.EJB;
+import javax.json.JsonObject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import org.javasmiths.encodingfarm.worker.web.dto.JobDto;
 import org.javasmiths.encodingfarm.worker.web.facade.JobFacade;
 
@@ -27,5 +31,13 @@ public class JobController {
     @Produces({"application/json", "application/xml"})
     public List<JobDto> listAll() {
         return facade.listAll();
+    }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String createJob(JsonObject json) {
+        String status = json.getString("status");
+        facade.create(status);
+        return "created job with status: " + status;
     }
 }
