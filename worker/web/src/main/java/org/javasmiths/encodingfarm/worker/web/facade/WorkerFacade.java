@@ -13,7 +13,7 @@ import org.javasmiths.encodingfarm.worker.web.dto.WorkerDto;
  * @author Elliot
  */
 public interface WorkerFacade {
-    public void create(String path);
+    public void create(String url);
 
     public List<WorkerDto> listAll();
     
