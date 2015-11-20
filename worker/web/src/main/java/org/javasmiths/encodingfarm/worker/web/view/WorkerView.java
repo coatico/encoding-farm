@@ -17,7 +17,7 @@ import javax.faces.application.FacesMessage;
  * @author Elliot
  */
 @RequestScoped
-@Named("requests")
+@Named("workers")
 public class WorkerView {
 
     
@@ -42,11 +42,11 @@ public class WorkerView {
         list = facade.listAll();
     }
 
-    public String getPath() {
+    public String getUrl() {
         return url;
     }
 
-    public void setPath(String url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 
