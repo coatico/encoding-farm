@@ -26,7 +26,6 @@ public class FileEntity extends BaseTrackableEntity implements Serializable {
 	private String fileDescription;
 
 	public FileEntity() {
-
 	}
 
 	public FileEntity(String title, String filePath, String desc) {

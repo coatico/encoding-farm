@@ -23,8 +23,7 @@ public class UserEntity extends BaseTrackableEntity implements Serializable {
 
 	//@OneToMany(mappedBy = "userEntity", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private UserEntity userEntity;
-	
-	
+
 	private String firstName;
 
 	private String lastName;
@@ -39,8 +38,19 @@ public class UserEntity extends BaseTrackableEntity implements Serializable {
 
 	private String email;
 
-	public UserEntity() {
+	public UserEntity(UserEntity userEntity, String firstName, String lastName, String sex, String birthdate, String Password, String username, String email) {
+		this.userEntity = userEntity;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.sex = sex;
+		this.birthdate = birthdate;
+		this.Password = Password;
+		this.username = username;
+		this.email = email;
+	}
 
+	public UserEntity() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	public UserEntity getUserEntity() {
@@ -50,8 +60,7 @@ public class UserEntity extends BaseTrackableEntity implements Serializable {
 	public void setUserEntity(UserEntity userEntity) {
 		this.userEntity = userEntity;
 	}
-	
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -107,8 +116,5 @@ public class UserEntity extends BaseTrackableEntity implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
 
 }

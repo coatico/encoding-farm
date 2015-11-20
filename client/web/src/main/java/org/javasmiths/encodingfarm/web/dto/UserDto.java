@@ -15,7 +15,7 @@ public class UserDto {
 	private String lastName;
 	private String sex;
 	private String birthdate;
-	private String Password;
+	private String password;
 	private String username;
 	private String email;
 
@@ -52,11 +52,11 @@ public class UserDto {
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String Password) {
-		this.Password = Password;
+		this.password = Password;
 	}
 
 	public String getUsername() {
@@ -74,6 +74,7 @@ public class UserDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	
 	
 	
