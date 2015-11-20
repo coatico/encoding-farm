@@ -21,7 +21,7 @@ import org.javasmiths.encodingfarm.web.dto.UserDto;
  */
 
 @RequestScoped
-@Named("users")
+@Named("USERS")
 public class UserView {
 	private List<UserDto> list = new LinkedList<>();
 	private String firstName;
