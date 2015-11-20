@@ -18,15 +18,12 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
  *
  * @author Jeroen
  */
-
 @Entity
 @Table(name = "WORKER")
 public class WorkerEntity extends BaseTrackableEntity {
 
-    
-@OneToMany(targetEntity = JobEntity.class, fetch = FetchType.LAZY, mappedBy = "request")
-private List<JobEntity> jobs;
-
+    @OneToMany(targetEntity = JobEntity.class, fetch = FetchType.LAZY, mappedBy = "worker")
+    private List<JobEntity> jobs;
 
     @Column
     private String url;
@@ -46,7 +43,5 @@ private List<JobEntity> jobs;
     public void setUrl(String url) {
         this.url = url;
     }
-    
-    
-    
+
 }
