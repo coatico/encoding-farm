@@ -8,29 +8,34 @@
     <h:head>
         <title><ui:insert name="title">Home</ui:insert></title>
         <!--<link href="https://bootswatch.com/cyborg/bootstrap.min.css" type="text/css" rel="stylesheet"/>-->
-		<link href="https://bootswatch.com/darkly/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        <link href="https://bootswatch.com/darkly/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     </h:head>
     <h:body>
         <b:container fluid="true">
             <b:row>
                 <b:jumbotron>
-                    <h1>Hello Sample App</h1>
-                    <p>A simple app to have a framework to expose general architecture</p>
+                    <h1>Encoding-farm Manager(Async)</h1>
+                    <p>A simple app to have a framework to encode videos</p>
                     <!--<p><a class="btn btn-primary btn-lg">Learn more</a></p>-->
                 </b:jumbotron>
             </b:row>
             <b:row>
                 <b:column col-sm="3">
                     <b:panel look="primary" collapsible="false">
-                        <f:facet name="heading" >Components</f:facet>   
+                        <f:facet name="heading" >Menu</f:facet>   
 
                         <b:listLinks>
-							<b:navLink header="Home" />
-							<b:navLink href="index.xhtml" value="Homepage" icon="home" iconAlign="left"/>
-							
+                            <b:navLink header="Home" />
+                            <b:navLink href="index.xhtml" value="Homepage" icon="home" iconAlign="left"/>
+
                             <b:navLink header="Jobs" />
-                            <b:navLink href="job.xhtml" value="Show Jobs" icon="resize-small" iconAlign="left"/>
-                           
+                            <b:navLink href="job.xhtml" value="Jobs" icon="resize-small" iconAlign="left"/>
+                            <b:navLink header="Workers" />
+                            <b:navLink href="worker.xhtml" value="Worker" icon="resize-small" iconAlign="left"/>
+                            <b:navLink href="workerjobs.xhtml" value="Worker Job Description" icon="resize-small" iconAlign="left"/>
+                            <b:navLink header="Videos" />
+                            <b:navLink href="video.xhtml" value="Video" icon="resize-small" iconAlign="left"/>
+
                         </b:listLinks>
                     </b:panel>
                 </b:column>

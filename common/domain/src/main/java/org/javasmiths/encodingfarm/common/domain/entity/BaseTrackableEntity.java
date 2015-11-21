@@ -22,59 +22,77 @@ import javax.persistence.Version;
 @MappedSuperclass
 public class BaseTrackableEntity implements Serializable {
 
-	@Id
-	private String id = UUID.randomUUID().toString();
+    @Id
+    private String id = UUID.randomUUID().toString();
+    private String workerID = UUID.randomUUID().toString();
+    private String videoID = UUID.randomUUID().toString();
 
-	@Version
-	@Column(name = "V")
-	private Long version;
+    @Version
+    @Column(name = "V")
+    private Long version;
 
-	@Column(name = "CREATED_ON")
-	private Date createdOn;
-	@Column(name = "LAST_UPDATED_ON")
-	private Date lastUpdatedOn;
+    @Column(name = "CREATED_ON")
+    private Date createdOn;
+    @Column(name = "LAST_UPDATED_ON")
+    private Date lastUpdatedOn;
 
-	@PreUpdate
-	protected void onUpdate() {
-		lastUpdatedOn = new Date();
-	}
+    @PreUpdate
+    protected void onUpdate() {
+        lastUpdatedOn = new Date();
+    }
 
-	@PrePersist
-	protected void onCreate() {
-		createdOn = new Date();
-		onUpdate();
-	}
+    @PrePersist
+    protected void onCreate() {
+        createdOn = new Date();
+        onUpdate();
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getWorkerID() {
+        return workerID;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setWorkerID(String workerID) {
+        this.workerID = workerID;
+    }
 
-	public Long getVersion() {
-		return version;
-	}
+    public String getVideoID() {
+        return videoID;
+    }
 
-	public void setVersion(Long version) {
-		this.version = version;
-	}
+    public void setVideoID(String videoID) {
+        this.videoID = videoID;
+    }
 
-	public Date getCreatedOn() {
-		return createdOn;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public Date getLastUpdatedOn() {
-		return lastUpdatedOn;
-	}
+    public Long getVersion() {
+        return version;
+    }
 
-	public void setLastUpdatedOn(Date lastUpdatedOn) {
-		this.lastUpdatedOn = lastUpdatedOn;
-	}
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public Date getLastUpdatedOn() {
+        return lastUpdatedOn;
+    }
+
+    public void setLastUpdatedOn(Date lastUpdatedOn) {
+        this.lastUpdatedOn = lastUpdatedOn;
+    }
 
 }

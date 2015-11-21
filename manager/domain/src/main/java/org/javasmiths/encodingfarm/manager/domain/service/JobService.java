@@ -5,6 +5,7 @@
  */
 package org.javasmiths.encodingfarm.manager.domain.service;
 
+import java.util.Date;
 import java.util.List;
 import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
 
@@ -13,7 +14,12 @@ import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
  * @author Elias Serneels
  */
 public interface JobService {
-    JobEntity registerJob(String name);
-	
-	List<JobEntity> listAll();
+
+    JobEntity registerJob(String jobTitle, Date creationdate, String workerID, String videoID);
+
+    JobEntity deleteJob(String id);
+
+    JobEntity updateJob(String id, String jobTitle, Date creationdate, String workerID, String videoID);
+
+    List<JobEntity> listAll();
 }

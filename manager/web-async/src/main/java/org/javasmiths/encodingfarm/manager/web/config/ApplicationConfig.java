@@ -1,10 +1,10 @@
 package org.javasmiths.encodingfarm.manager.web.config;
 
 import java.util.Set;
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-import org.javasmiths.encodingfarm.manager.web.controller.JobController;
 
-@javax.ws.rs.ApplicationPath("rest")
+@ApplicationPath("manager")
 public class ApplicationConfig extends Application {
 
     @Override
@@ -20,7 +20,10 @@ public class ApplicationConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+
         resources.add(org.javasmiths.encodingfarm.manager.web.controller.JobController.class);
+        resources.add(org.javasmiths.encodingfarm.manager.web.controller.VideoController.class);
+        resources.add(org.javasmiths.encodingfarm.manager.web.controller.WorkerController.class);
     }
 
 }

@@ -31,7 +31,11 @@ public abstract class BaseDaoImpl<E> {
     public void deleteById(String id) {
         em().remove(findById(id));
     }
-
+    
+    public void delete(String id) {
+        em().remove(findById(id));
+    }
+    
     public E findById(String id) {
         return em().find(entityClass(), id);
     }
