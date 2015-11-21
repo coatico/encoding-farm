@@ -22,6 +22,10 @@ public class JobServiceImpl implements JobService {
     @EJB
     private JobDao dao;
 
+    
+    
+    
+    
     @Override
     public JobEntity registerJob(String title, Date creationdate, String workerID, String videoID) {
         JobEntity jobEntity = new JobEntity();

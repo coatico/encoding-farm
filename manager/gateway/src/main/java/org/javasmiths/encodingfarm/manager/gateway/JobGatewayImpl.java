@@ -22,6 +22,7 @@ import org.json.Test;
 public class JobGatewayImpl implements JobGateway {
 
     @Override
+    
     public void convert(JobEntity job) {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://localhost:8080//json-sample/convert-job.json");
@@ -29,9 +30,11 @@ public class JobGatewayImpl implements JobGateway {
         System.out.println("o");
     }
 
+        
     @PostConstruct
     public static void main(String[] args) {
         String string = "";
+        System.out.println("lalalal");
 //        try {
 //                        // MANIER 1
 //			// temp JSON inputfile
