@@ -5,7 +5,12 @@
  */
 package org.javasmiths.encodingfarm.manager.domain.service;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
@@ -24,6 +29,11 @@ public class WorkerServiceImpl implements WorkerService {
     private WorkerDao dao;
     private WorkerEntity we;
 	
+	Logger logger = Logger.getLogger("MyLog");  
+    FileHandler fh;  
+
+  
+	
 	private final static String[] picker;
 	
 	   static {
@@ -34,12 +44,39 @@ public class WorkerServiceImpl implements WorkerService {
 
     @Override
     public WorkerEntity registerWorker(String name, Boolean status, String URL) {
+		if (name != null && status != null && URL != null) {
         WorkerEntity workerEntity = new WorkerEntity();
         workerEntity.setName(name);
         workerEntity.setStatus(status);
 		workerEntity.setURL(URL);
         dao.save(workerEntity);
-        return workerEntity;
+		}
+		
+
+		/*try {
+			// This block configure the logger with handler and formatter
+			fh = new FileHandler("/tmp/test/MyLogFile.log");
+		} catch (IOException ex) {
+			Logger.getLogger(WorkerServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (SecurityException ex) {
+			Logger.getLogger(WorkerServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+		}
+        logger.addHandler(fh);
+        SimpleFormatter formatter = new SimpleFormatter();  
+        fh.setFormatter(formatter);  
+
+        // the following statement is used to log any messages  
+        logger.info("My first log");  
+
+ 
+
+		logger.info("Hi How r u?");
+		
+		
+		*/
+		
+		
+        return null;
     }
 	
 	public WorkerEntity editWorker(String id, String name, Boolean status, String URL){
