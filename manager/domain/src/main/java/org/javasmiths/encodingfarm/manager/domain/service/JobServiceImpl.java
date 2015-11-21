@@ -9,8 +9,10 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
 import org.javasmiths.encodingfarm.manager.domain.dao.JobDao;
+import org.javasmiths.encodingfarm.manager.gateway.JobGateway;
 
 /**
  *
@@ -22,9 +24,8 @@ public class JobServiceImpl implements JobService {
     @EJB
     private JobDao dao;
 
-    
-    
-    
+    /*@EJB
+    private JobGateway jgw;*/
     
     @Override
     public JobEntity registerJob(String title, Date creationdate, String workerID, String videoID) {
@@ -58,6 +59,12 @@ public class JobServiceImpl implements JobService {
     @Override
     public List<JobEntity> listAll() {
         return dao.listAll();
+    }
+    
+    @Override
+    public void gw() {
+        //jgw.testConvert("ditiseentest");
+        System.out.println("test");
     }
 
 }

@@ -22,4 +22,6 @@ public interface JobService {
     JobEntity updateJob(String id, String jobTitle, Date creationdate, String workerID, String videoID);
 
     List<JobEntity> listAll();
+    
+    public void gw();
 }

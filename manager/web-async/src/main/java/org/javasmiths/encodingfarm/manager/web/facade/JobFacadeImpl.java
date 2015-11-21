@@ -56,5 +56,10 @@ public class JobFacadeImpl implements JobFacade {
         }
         return dtos;
     }
+    
+    @Override
+    public void gw() {
+        jobService.gw();
+    }
 
 }

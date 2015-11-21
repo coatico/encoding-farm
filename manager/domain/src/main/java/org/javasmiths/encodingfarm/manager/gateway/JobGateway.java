@@ -14,5 +14,7 @@ import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
 public interface JobGateway {
     
     public void convert(JobEntity job);
+    
+    public void testConvert(String str);
 
 }

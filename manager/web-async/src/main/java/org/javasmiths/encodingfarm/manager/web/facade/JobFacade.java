@@ -22,5 +22,7 @@ public interface JobFacade {
         public void update(String id, String title, Date creationdate, String workerID, String videoID);
 
 	public List<JobDto> listAll();
+        
+        public void gw();
 	
 }

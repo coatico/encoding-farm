@@ -13,24 +13,27 @@
         <ui:define name="content">
             <b:row>
                 <b:panel>
+                    <h:form>
+                        <h:commandButton action="#{job.gw}" value="TestJobGateway"/>
+                    </h:form>
                     <h:form id="form">
                         Job Title <p:inputText value="#{job.jobTitle}"  label="Enter job title here" id="job_crt_txt"/> 
                         <p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
-                       
+
                         Job starttime <p:calendar id="starttime" value="#{job.jobCreationDateTime}" locale="nl" pattern="dd/MM/yyyy"  />
                         <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{job.jobCreationDateTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
                             <f:convertDateTime pattern="HH:mm" />
                         </p:inputMask>
-                       
-         
- Worker id<p:inputText value="#{job.workerID}"  label="Enter WorkerID here" id="jobWorker_crt_txt"/> 
+
+
+                        Worker id<p:inputText value="#{job.workerID}"  label="Enter WorkerID here" id="jobWorker_crt_txt"/> 
                         <p:watermark for="job_crt_txt" value="Enter workerID here" id="watermark2" />
-                        
+
                         Video id<p:inputText value="#{job.videoID}"  label="Enter videoID here" id="jobVideo_crt_txt"/> 
                         <p:watermark for="job_crt_txt" value="Enter videoID here" id="watermark3" />
-                        
- <p:commandButton value="Create" update=":form:jobdatatable" actionListener="#{job.create}" />
-                     
+
+                        <p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
+
 
                         <p:growl id="msgs" showDetail="true"/>
 

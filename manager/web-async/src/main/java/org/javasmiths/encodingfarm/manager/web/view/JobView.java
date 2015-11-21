@@ -163,5 +163,9 @@ public class JobView implements Serializable {
     public void setFacade(JobFacade facade) {
         this.facade = facade;
     }
+    
+    public void gw() {
+        facade.gw();
+    } 
 
 }
