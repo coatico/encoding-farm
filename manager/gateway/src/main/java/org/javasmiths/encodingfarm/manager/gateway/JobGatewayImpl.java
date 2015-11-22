@@ -6,7 +6,7 @@
 package org.javasmiths.encodingfarm.manager.gateway;
 
 import dto.JobDto;
-import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -19,6 +19,7 @@ import org.javasmiths.encodingfarm.manager.domain.entity.JobEntity;
  *
  * @author Elias Serneels
  */
+@Stateless
 public class JobGatewayImpl implements JobGateway {
 
     @Override
