@@ -15,13 +15,14 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.javasmiths.encodingfarm.web.dto.UserDto;
 
+
 /**
  *
  * @author thomas
  */
 
 @RequestScoped
-@Named("USERS")
+@Named("users")
 public class UserView {
 	private List<UserDto> list = new LinkedList<>();
 	private String firstName;
@@ -120,9 +121,7 @@ public class UserView {
 		this.email = email;
 	}
 
-	public void setFacade(UserFacade facade) {
-		this.facade = facade;
-	}
+
 	
 	
 	
