@@ -15,40 +15,37 @@ import javax.inject.Named;
 import org.javasmiths.encodingfarm.web.dto.TaskDto;
 import org.javasmiths.encodingfarm.web.facade.TaskFacade;
 
-
-
-
 @RequestScoped
 @Named("tasks")
 public class TaskView {
+
 	private List<TaskDto> list = new LinkedList<>();
 	private String name;
-	
 	private String title;
 	private String filePath;
 	private String description;
-	
+
 	@EJB
 	private TaskFacade facade;
-	
+
 	@PostConstruct
-	public void init(){
+	public void init() {
 		list = facade.listAll();
 	}
-	
+
 	public void createTask(ActionEvent actionEvent) {
 		facade.createTask(title, filePath, description);
-                title="";
-                filePath="";
-                description="";
+		title = "";
+		filePath = "";
+		description = "";
 		list = facade.listAll();
 	}
-	
+
 	public void deleteTask(String id) {
 		facade.deleteTask(id);
 		list = facade.listAll();
 	}
-	
+
 	public void updateTask(String id, String title, String filePath, String description) {
 		facade.updateTask(id, title, filePath, description);
 		list = facade.listAll();
@@ -77,8 +74,6 @@ public class TaskView {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 
 	public List<TaskDto> getList() {
 		return list;
@@ -87,8 +82,5 @@ public class TaskView {
 	public void setList(List<TaskDto> list) {
 		this.list = list;
 	}
-	
-	
-	
-	
+
 }

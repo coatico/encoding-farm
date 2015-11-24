@@ -120,9 +120,7 @@ public class UserView {
 		this.email = email;
 	}
 
-	public void setFacade(UserFacade facade) {
-		this.facade = facade;
-	}
+
 	
 	
 	
