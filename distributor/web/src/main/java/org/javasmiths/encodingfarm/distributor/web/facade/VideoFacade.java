@@ -10,5 +10,6 @@ public interface VideoFacade {
     public List<VideoDto> listAll();
 	
 	public void remove(String id);
+        public void upload();
 
 }

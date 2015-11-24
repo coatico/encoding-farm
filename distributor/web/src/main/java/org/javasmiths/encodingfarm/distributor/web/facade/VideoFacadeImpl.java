@@ -38,5 +38,8 @@ public class VideoFacadeImpl implements VideoFacade {
 	public void remove(String id) {
 		videoService.remove(id); 
 	}
+        public void upload(){
+            videoService.upload();
+        }
 
 }
