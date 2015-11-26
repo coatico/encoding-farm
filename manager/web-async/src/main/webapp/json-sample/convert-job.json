@@ -1,0 +1,12 @@
+{
+  "id": "lalala",
+  "meta": {
+    "file": "filepathlocatie",
+    "title": "schonenTitel",
+    "description": "Nen uitleg",
+    "profile": 1,
+    "userName": "neNaam",
+    "priority": 1,
+    "subtitle": "subtitleLocatie"
+  }
+}

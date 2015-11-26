@@ -21,6 +21,8 @@ import org.javasmiths.encodingfarm.worker.web.dto.RequestDto;
 import org.javasmiths.encodingfarm.worker.web.facade.RequestFacade;
 import org.primefaces.event.RowEditEvent;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 /**
  *
  * @author Quintendockx
@@ -29,7 +31,6 @@ import javax.faces.application.FacesMessage;
 @Named("requests")
 public class RequestView {
 
-    
     private String path;
     private List<RequestDto> list = new LinkedList<>();
 
@@ -40,7 +41,7 @@ public class RequestView {
     private void init() {
         list = facade.listAll();
     }
-    
+
     public void remove(String id) {
         facade.remove(id);
         list = facade.listAll();

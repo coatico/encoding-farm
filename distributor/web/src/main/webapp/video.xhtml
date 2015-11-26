@@ -11,29 +11,67 @@
             Handle Videos
         </ui:define>
         <ui:define name="content">
-            <b:row>
+<!--            <b:row>
                 <h1>View Component</h1>
-            </b:row>
-            <b:row>
+            </b:row>-->
+<b:row>
                 <b:panel>
+                    
+                    
+                    <form>
+                     <p:media value="http://www.youtube.com/v/qSjN6r9Up6g" width="420" height="315" player="flash"/>
+                    </form>
+                    
+                    
                     <h:form>
-                        Add Video <p:inputText value="#{video.name}"  label="Enter videoname here" id="video_crt_txt"/> 
-                        <p:watermark for="video_crt_txt" value="Enter videoname here" id="watermark" />
+                        Add Video 
+                        <p:inputText value="#{video.name}"  label="Enter videoname here" id="video_crt_name" /> 
+                        <p:selectOneMenu value="#{video.videopath}">
+                            <f:selectItem itemLabel="Choose a videopath"/>
+                            <f:selectItem itemLabel="Videos/1.mp4" itemValue="Videos/1.mp4"/>
+                            <f:selectItem itemLabel="Videos/2.mp4" itemValue="Videos/2.mp4"/>
+                        </p:selectOneMenu>
+                        <p:selectOneMenu value="#{video.thumbnail}">
+                            <f:selectItem itemLabel="Choose a thumbnailpath"/>
+                            <f:selectItem itemLabel="Thumbnails/1.jpg" itemValue="Thumbnails/1.jpg"/>
+                            <f:selectItem itemLabel="Thumbnails/2.jpg" itemValue="Thumbnails/2.jpg"/>
+                        </p:selectOneMenu>                        
+                        <p:inputTextarea value="#{video.description}" label="Write a description" id="video_crt_desc"/>
+
+                        <p:watermark for="video_crt_name" value="Enter videoname here" id="watermark" />                        
+                        <p:watermark for="video_crt_desc" value="Write a description" id="watermark4" />
+                        
                         <p:commandButton value="Create" update="@form" actionListener="#{video.create}" />
+                        <!--<video width="420" height="315">Testen of het path werkte.
+                            <source src="Videos/1.mp4" type="Video/mp4"/>
+                        </video>-->
                         <hr/>
-                        <p:dataTable var="vid" value="#{video.list}">
-                            <p:column headerText="Id">
+                        <p:dataTable id="tabel" var="vid" value="#{video.list}">
+                            <p:column headerText="Id" style="display: none">
                                 <h:outputText value="#{vid.id}" />
                             </p:column>
-
+                            <p:column headerText="" style="text-align: center">
+                                <img src="#{vid.thumbnail}" height="102" width="180"/>
+                            </p:column>
                             <p:column headerText="Name">
                                 <h:outputText value="#{vid.name}" />
                             </p:column>
-							  <p:column headerText="Action">
-								<a href="video.xhtml?edit=${vid.id}"><i class="fa fa-pencil"></i></a>
-								<a href="video.xhtml?delete=${vid.id}"><i class="fa fa-trash-o"></i></a>
+                            <p:column headerText="videopath" style="display: none">
+                                <h:outputText value="#{vid.videopath}" />
+                            </p:column>
+<!-- TEST 
+                             <p:column headerText="Video">
+                                <p:media value="http://www.youtube.com/embed/qSjN6r9Up6g" player="flash"/>
+                            </p:column>
+                       -->
+                            <p:column headerText="description">
+                                <h:outputText value="#{vid.description}" />
+                            </p:column>
+                            <p:column headerText="">
+                                <p:commandButton update="@form" actionListener="#{video.remove(vid.id)}" icon="ui-icon-trash"/>
+       
                             </p:column> 
-							
+
                         </p:dataTable>
                     </h:form>
                 </b:panel>

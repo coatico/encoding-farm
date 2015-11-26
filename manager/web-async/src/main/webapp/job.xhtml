@@ -4,42 +4,90 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:p="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
     <ui:composition template="./common/template.xhtml">
         <ui:define name="title">
             Handle Jobs
         </ui:define>
         <ui:define name="content">
-			<b:row>
-				<h1>View Component</h1>
-			</b:row>
             <b:row>
-				<b:panel>
-					<h:form>
-						Add Job <p:inputText value="#{job.name}"  label="Enter job here" id="job_crt_txt"/> 
-						<p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
-						<p:commandButton value="Create" update="@form" actionListener="#{job.create}" />
-						<hr/>
-						<p:dataTable var="jobs" value="#{job.list}">
-							<p:column headerText="Id">
-								<h:outputText value="#{jobs.id}" />
-							</p:column>
+                <b:panel>
+                    <h:form id="form">
+                        Job Title <p:inputText value="#{job.jobTitle}"  label="Enter job title here" id="job_crt_txt"/> 
+                        <p:watermark for="job_crt_txt" value="Enter job here" id="watermark" />
+                       
+                        Job starttime <p:calendar id="starttime" value="#{job.jobCreationDateTime}" locale="nl" pattern="dd/MM/yyyy"  />
+                        <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{job.jobCreationDateTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
+                            <f:convertDateTime pattern="HH:mm" />
+                        </p:inputMask>
+                       
+         
+ Worker id<p:inputText value="#{job.workerID}"  label="Enter WorkerID here" id="jobWorker_crt_txt"/> 
+                        <p:watermark for="job_crt_txt" value="Enter workerID here" id="watermark2" />
+                        
+                        Video id<p:inputText value="#{job.videoID}"  label="Enter videoID here" id="jobVideo_crt_txt"/> 
+                        <p:watermark for="job_crt_txt" value="Enter videoID here" id="watermark3" />
+                        
+ <p:commandButton value="Create" update=":form:jobdatatable" actionListener="#{job.create}" />
+                     
 
-							<p:column headerText="Name">
-								<h:outputText value="#{jobs.name}" />
-							</p:column>
-						</p:dataTable>
-					</h:form>
-				</b:panel>
+                        <p:growl id="msgs" showDetail="true"/>
 
-			</b:row>
-			<b:row>
-				<h1>Rest Controller</h1>
-				<b:panel>
-					<a href="rest/jobs/" target="blank">json >> LocationController</a>
-				</b:panel>
-			</b:row>
+                        <p:dataTable id="jobdatatable" var="jobs" value="#{job.list}" editable="true" rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     lazy="true"
+                                     rowsPerPageTemplate="5,10,15">
+
+                            <f:facet name="header">
+                                List of Jobs
+                            </f:facet>
+
+                            <p:ajax event="rowEdit" listener="#{job.update(jobs.id, jobs.jobTitle, jobs.jobCreationDateTime, jobs.workerID, jobs.videoID)}" update=":form:msgs,:form:jobdatatable" />
+                            <p:ajax event="rowEditCancel" listener="#{job.onRowCancel}" update=":form:msgs" />
+
+                            <p:column headerText="Id">
+                                <h:outputText value="#{jobs.id}" />
+                            </p:column>
+                            <p:column headerText="WorkerID">
+                                <h:outputText value="#{jobs.workerID}" />
+                            </p:column>
+                            <p:column headerText="VideoID">
+                                <h:outputText value="#{jobs.videoID}" />
+                            </p:column>
+
+                            <p:column headerText="jobTitle">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{jobs.jobTitle}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{jobs.jobTitle}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="jobStartTime">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{jobs.jobCreationDateTime}"><f:convertDateTime pattern="yyyy-MM-dd hh:mm:ss" /></h:outputText></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{jobs.jobCreationDateTime}" style="width:96%" label="Title"><f:convertDateTime pattern="yyyy-MM-dd hh:mm:ss" /></h:inputText></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column style="width: 3%;margin-left: auto; margin-right: auto;">                                    
+                                <p:commandLink styleClass="ui-icon ui-icon-trash" style="width: 16px;height: 16px;" update=":form:jobdatatable" actionListener="#{job.delete(jobs.id)}" type="image" />
+                            </p:column>
+                            <p:column style="width: 3%;margin-left: auto; margin-right: auto;">
+                                <p:rowEditor />
+                            </p:column>
+
+                        </p:dataTable>
+                    </h:form>
+                </b:panel>
+
+
+            </b:row>
+            <b:row>
+                <h1>Rest Controller</h1>
+                <b:panel>
+                    <a href="rest/jobs/" target="blank">json >> JobController</a>
+                </b:panel>
+            </b:row>
         </ui:define>
     </ui:composition>
 </html>

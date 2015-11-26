@@ -25,5 +25,6 @@ public class ApplicationConfig extends Application{
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(org.javasmiths.encodingfarm.worker.web.controller.JobController.class);
         resources.add(org.javasmiths.encodingfarm.worker.web.controller.RequestController.class);
+        resources.add(org.javasmiths.encodingfarm.worker.web.controller.WorkerController.class);
     }
 }

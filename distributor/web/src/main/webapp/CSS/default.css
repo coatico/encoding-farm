@@ -7,8 +7,26 @@ and open the template in the editor.
     Created on : 15-Oct-2015, 14:50:24
     Author     : Coati
 */
+
 body{
-    background-color: red;
-   
-    
+    background: linear-gradient(#182848,#4b6cb7); 
+    color: azure;
+    min-height: 900px;
+}
+
+a{
+    color: #4b6cb7;
+}
+a:hover{
+    color:white;
+}
+
+
+.jumbotron{
+    margin-top: -10px;
+    background-color: #121B2E;
+    padding: 10px;
+}
+h2#jumbotron_header{
+    color:red;
 }

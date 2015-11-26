@@ -5,6 +5,7 @@
  */
 package org.javasmiths.encodingfarm.manager.web.facade;
 
+import java.util.Date;
 import java.util.List;
 import org.javasmiths.encodingfarm.manager.web.dto.JobDto;
 
@@ -14,7 +15,11 @@ import org.javasmiths.encodingfarm.manager.web.dto.JobDto;
  */
 public interface JobFacade {
 
-	public void create(String name);
+	public void create(String jobTitle, Date creationdate, String workerID, String videoID );
+        
+        public void delete(String id);
+        
+        public void update(String id, String title, Date creationdate, String workerID, String videoID);
 
 	public List<JobDto> listAll();
 	

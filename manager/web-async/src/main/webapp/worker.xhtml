@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition template="./common/template.xhtml">
+        <ui:define name="title">
+            Handle Workers
+        </ui:define>
+        <ui:define name="content">
+            <b:row>
+                <b:panel>
+                    <h:form>
+                        Add Worker <p:inputText value="#{worker.workerName}"  label="Enter job here" id="worker_crt_txt"/> 
+                        <p:watermark for="worker_crt_txt" value="Enter worker here" id="watermark" />
+                        <p:commandButton value="Create" update="@form" actionListener="#{worker.create}" />
+                        <hr/>
+
+
+                        <hr/>
+
+                        <p:growl id="msgs" showDetail="true"/>
+
+                        <p:dataTable id="workerdatatable" var="workers" value="#{worker.list}" editable="true" rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <f:facet name="header">
+                                List of Workers
+                            </f:facet>
+
+                            <p:ajax event="rowEdit" listener="#{worker.update(jobs.id, worker.workerName)}"/>
+                           <!-- <p:ajax event="rowEditCancel" listener="#{worker.onRowCancel}" update=":form:msgs" />-->
+
+
+                            <p:column headerText="Id">
+                                <h:outputText value="#{workers.id}" />
+                            </p:column>
+                            <p:column headerText="jobTitle">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{workers.workerName}" /></f:facet>
+                                    <f:facet name="input"><h:inputText value="#{workers.workerName}" style="width:96%" label="Title" /></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Actions">
+                                <p:commandButton value="Delete" update="@form" actionListener="#{worker.delete(workers.id)}" />
+
+                            </p:column>
+                            <p:column style="width:32px">
+                                <p:rowEditor />
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </h:form>
+                </b:panel>
+
+
+            </b:row>
+            <b:row>
+                <h1>Rest Controller</h1>
+                <b:panel>
+                    <a href="rest/jobs/" target="blank">json >> LocationController</a>
+                </b:panel>
+            </b:row>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -13,8 +13,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import org.javasmiths.encodingfarm.worker.domain.entity.JobEntity;
-import org.javasmiths.encodingfarm.worker.gateway.VideoConverterGateway;
 import org.javasmiths.encodingfarm.worker.web.dto.JobDto;
 import org.javasmiths.encodingfarm.worker.web.facade.JobFacade;
 
@@ -41,8 +39,10 @@ public class JobController {
     @Path("/post")
     @Consumes(MediaType.APPLICATION_JSON)
     //@Produces({"application/json"})
-    public void addJob(String path){
+    public void addJob(String status){
        
+        facade.create(status);
+        //return "created job with status: " + status;
         //return "haha";
     }
 }
