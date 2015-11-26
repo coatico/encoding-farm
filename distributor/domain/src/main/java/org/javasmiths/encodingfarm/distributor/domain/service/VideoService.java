@@ -10,4 +10,5 @@ public interface VideoService {
     List<VideoEntity> listAll();
 	
 	public void remove(String id);
+        public void upload();
 }

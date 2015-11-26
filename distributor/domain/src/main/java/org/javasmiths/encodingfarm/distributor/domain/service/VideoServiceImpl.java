@@ -5,12 +5,14 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.javasmiths.encodingfarm.distributor.domain.dao.VideoDao;
 import org.javasmiths.encodingfarm.distributor.domain.entity.VideoEntity;
+import org.javasmiths.encodingfarm.distributor.domain.gateway.VideoUpload;
 
 @Stateless
 public class VideoServiceImpl implements VideoService {
 
     @EJB
     private VideoDao dao;
+    private VideoUpload gateway;
 
     @Override
     public VideoEntity registerVideo(String name, String videopath, String thumbnail, String description) {
@@ -27,9 +29,13 @@ public class VideoServiceImpl implements VideoService {
     public List<VideoEntity> listAll() {
         return dao.listAll();
     }
-	
-	public void remove(String id) {
-		dao.delete(dao.findById(id));
-	}
+
+    public void remove(String id) {
+        dao.delete(dao.findById(id));
+    }
+
+    public void upload() {
+        gateway.upload();
+    }
 
 }
