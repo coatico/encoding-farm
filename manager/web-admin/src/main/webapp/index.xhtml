@@ -19,12 +19,13 @@ and open the template in the editor.
             <b:row>
                 <b:panel>
                     <h:form id="form">
+
                         <p:growl id="msgs" showDetail="true"/>
                         Add Worker: 
                         <p:inputText value="#{worker.name}"  label="Enter name here" id="worker_crt_txt"/> 
                         <p:watermark for="worker_crt_txt" value="Enter the name for the worker here" id="watermark" />
                         <br/><br/>
-                        
+
                         Status:  
                         <p:selectOneButton value="#{worker.status}">
                             <f:selectItem itemLabel="Enabled" itemValue="true" />
@@ -32,16 +33,29 @@ and open the template in the editor.
                         </p:selectOneButton>
 
                         <br/><br/>
-                        
+
                         URL	 : 	  
-                        <p:inputText value="#{worker.URL}"  label="Enter name here"/> 
-                        
+                        <p:inputText value="#{worker.URL}"  label="Enter name here" />
+                 
+
                         <br/><br/>
 
-                        <p:commandButton value="Create" update="@form :workerDatatable" actionListener="#{worker.create}" />
+                        <p:commandButton value="Create" update="@form :workerDatatable" actionListener="#{worker.create}" icon="ui-icon-refresh" />
+                        <p:ajaxStatus>
+                            <f:facet name="default">
+                                <h:outputText value="Create a worker" />
+                            </f:facet>
+
+                            <f:facet name="complete">
+                                <h:outputText value="Worker Created" />
+                            </f:facet>
+                            <f:facet name="error" >
+                                <h:outputText value="Error" />
+                            </f:facet>
+                        </p:ajaxStatus>
                     </h:form>
                 </b:panel>
-                
+
                 <b:panel>
                     <h:form id="workerDatatable">
                         <p:dataTable id="workeredit" var="workeredit" value="#{worker.list}" editable="true" editMode="cell" widgetVar="cellCars">
@@ -82,9 +96,9 @@ and open the template in the editor.
                             </p:column>
 
                             <p:column>
-                                <p:commandButton value="Delete" update="@form :workerDatatable" actionListener="#{worker.delete(workeredit.id)}"/>
+                                <p:commandButton global="false" value="Delete" update="@form :workerDatatable" actionListener="#{worker.delete(workeredit.id)}"/>
                             </p:column>
-							
+
                         </p:dataTable>
                     </h:form>
                 </b:panel>
