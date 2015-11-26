@@ -40,19 +40,7 @@ and open the template in the editor.
 
                         <br/><br/>
 
-                        <p:commandButton value="Create" update="@form :workerDatatable" actionListener="#{worker.create}" icon="ui-icon-refresh" />
-                        <p:ajaxStatus>
-                            <f:facet name="default">
-                                <h:outputText value="Create a worker" />
-                            </f:facet>
-
-                            <f:facet name="complete">
-                                <h:outputText value="Worker Created" />
-                            </f:facet>
-                            <f:facet name="error" >
-                                <h:outputText value="Error" />
-                            </f:facet>
-                        </p:ajaxStatus>
+                        <p:commandButton value="Create" update="@form :workerDatatable" actionListener="#{worker.create}"  />
                     </h:form>
                 </b:panel>
 
