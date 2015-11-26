@@ -19,19 +19,19 @@
                 <b:panel>
                     <h:form>
                         Add Video 
-                        <p:inputText value="#{video.name}"  label="Enter videoname here" id="video_crt_name" /> 
-                        <p:selectOneMenu value="#{video.videopath}">
+                        <p:inputText value="#{video.name}"  label="Enter videoname here" id="video_crt_name" styleClass="setHeight"/> 
+                        <p:selectOneMenu value="#{video.videopath}" styleClass="setHeight">
                             <f:selectItem itemLabel="Choose a videopath"/>
                             <f:selectItem itemLabel="Videos/1.mp4" itemValue="Videos/1.mp4"/>
                             <f:selectItem itemLabel="Videos/2.mp4" itemValue="Videos/2.mp4"/>
                             <f:selectItem itemLabel="Videos/testVid.mp4" itemValue="Videos/testVid.mp4"/>
                         </p:selectOneMenu>
-                        <p:selectOneMenu value="#{video.thumbnail}">
+                        <p:selectOneMenu value="#{video.thumbnail}" styleClass="setHeight">
                             <f:selectItem itemLabel="Choose a thumbnailpath"/>
                             <f:selectItem itemLabel="Thumbnails/1.jpg" itemValue="Thumbnails/1.jpg"/>
                             <f:selectItem itemLabel="Thumbnails/2.jpg" itemValue="Thumbnails/2.jpg"/>
                         </p:selectOneMenu>                        
-                        <p:inputTextarea value="#{video.description}" label="Write a description" id="video_crt_desc"/>
+                        <p:inputTextarea value="#{video.description}" label="Write a description" id="video_crt_desc" styleClass="setHeight"/>
 
                         <p:watermark for="video_crt_name" value="Enter videoname here" id="watermark" />                        
                         <p:watermark for="video_crt_desc" value="Write a description" id="watermark4" />
