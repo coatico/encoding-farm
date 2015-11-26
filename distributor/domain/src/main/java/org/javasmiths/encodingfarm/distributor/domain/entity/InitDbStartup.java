@@ -40,6 +40,13 @@ public class InitDbStartup {
         videoEntity1.setDescription("this is a second description");
         objectsToSave.add(videoEntity1);
         
+        VideoEntity videoEntity2 = new VideoEntity();
+        videoEntity2.setName("Lama");
+        videoEntity2.setVideopath("Videos/testVid.mp4");
+        videoEntity2.setThumbnail("Thumbnails/1.jpg");
+        videoEntity2.setDescription("A video of a lama happily jumping around");
+        objectsToSave.add(videoEntity2);
+        
         for (Object objectsToSave1 : objectsToSave){
             em.persist(objectsToSave1);
         }
