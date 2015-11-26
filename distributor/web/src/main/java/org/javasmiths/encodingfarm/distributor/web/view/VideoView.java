@@ -40,6 +40,10 @@ public class VideoView {
         list = facade.listAll();
     }
 
+    public void upload() {
+        facade.upload();
+    }
+
     public String getName() {
         return name;
     }
