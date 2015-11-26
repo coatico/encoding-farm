@@ -51,6 +51,6 @@ public class JobFacadeImpl implements JobFacade {
     
     @Override
     public void update(JobDto dto) {
-        jobService.update(dto.getId(), dto.getStatus());
+       // jobService.update(dto.getId(), dto.getStatus());
     }
 }

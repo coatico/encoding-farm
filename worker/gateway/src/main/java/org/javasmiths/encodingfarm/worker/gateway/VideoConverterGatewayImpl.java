@@ -21,7 +21,9 @@ import java.util.Observable;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
+import org.javasmiths.encodingfarm.worker.domain.service.JobService;
 
 /**
  *
@@ -29,6 +31,9 @@ import org.javasmiths.encodingfarm.worker.domain.entity.RequestEntity;
  */
 public class VideoConverterGatewayImpl extends Observable implements VideoConverterGateway {
 
+    @EJB
+    private JobService jobService;
+    
     private final Boolean printDebug = false;
     private final String working = "../lib/";
     private final String input = "video.mp4";

@@ -60,8 +60,8 @@ public class InitDB {
         je4.setStatus("Interrupted");
         objectsToSave.add(je4);
 
-        for (Object o : objectsToSave) {
+       /* for (Object o : objectsToSave) {
             em.persist(o);
-        }
+        }*/
     }
 }
