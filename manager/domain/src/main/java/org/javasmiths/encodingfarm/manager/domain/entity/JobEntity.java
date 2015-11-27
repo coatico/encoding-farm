@@ -1,17 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.javasmiths.encodingfarm.manager.domain.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -30,17 +27,24 @@ public class JobEntity extends BaseTrackableEntity implements Serializable {
     @Column(name = "jobTitle")
     @Type(type = "text")
     private String jobTitle;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Collection<VideoEntity> jobVideo;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Collection<WorkerEntity> jobWorker;
+
+    @ManyToOne(targetEntity = JobStatusDescriptionEntity.class, fetch = FetchType.LAZY)
+    private VideoEntity jobVideo;
+
+    @ManyToOne(targetEntity = JobStatusDescriptionEntity.class, fetch = FetchType.LAZY)
+    private JobStatusDescriptionEntity jobStatus;
+
+    @ManyToOne(targetEntity = WorkerEntity.class, fetch = FetchType.LAZY)
+    private WorkerEntity jobWorker;
+
     @Column(name = "jobCreationDateTime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date jobCreationDateTime;
+    @Column(name = "jobCompletionDateTime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date jobCompletionDateTime;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Collection<JobStatusDescriptionEntity> jobStatus;
+    @Column(name = "jobprogress", nullable = false, columnDefinition = "int default 0")
+    private int jobprogress;
 
     public String getJobTitle() {
         return jobTitle;
@@ -66,28 +70,37 @@ public class JobEntity extends BaseTrackableEntity implements Serializable {
         this.jobCompletionDateTime = jobCompletionDateTime;
     }
 
-    public Collection<JobStatusDescriptionEntity> getJobStatus() {
-        return jobStatus;
-    }
-
-    public void setJobStatus(Collection<JobStatusDescriptionEntity> jobStatus) {
-        this.jobStatus = jobStatus;
-    }
-
-    public Collection<VideoEntity> getJobVideo() {
+    public VideoEntity getJobVideo() {
         return jobVideo;
     }
 
-    public void setJobVideo(Collection<VideoEntity> jobVideo) {
+    public void setJobVideo(VideoEntity jobVideo) {
         this.jobVideo = jobVideo;
     }
 
-    public Collection<WorkerEntity> getJobWorker() {
+    public JobStatusDescriptionEntity getJobStatus() {
+        return jobStatus;
+    }
+
+    public void setJobStatus(JobStatusDescriptionEntity jobStatus) {
+        this.jobStatus = jobStatus;
+    }
+
+    public WorkerEntity getJobWorker() {
         return jobWorker;
     }
 
-    public void setJobWorker(Collection<WorkerEntity> jobWorker) {
+    public void setJobWorker(WorkerEntity jobWorker) {
         this.jobWorker = jobWorker;
     }
+
+    public int getJobprogress() {
+        return jobprogress;
+    }
+
+    public void setJobprogress(int jobprogress) {
+        this.jobprogress = jobprogress;
+    }
+
 
 }

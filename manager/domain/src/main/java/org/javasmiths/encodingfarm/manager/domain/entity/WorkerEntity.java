@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.javasmiths.encodingfarm.manager.domain.entity;
 
 /**
  *
  * @author Arne
  */
-
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.CascadeType;
@@ -24,16 +18,12 @@ import org.javasmiths.encodingfarm.common.domain.entity.BaseTrackableEntity;
 @Table(name = "WORKERS")
 public class WorkerEntity extends BaseTrackableEntity implements Serializable {
 
-    //In deze File worden de Entities aangemaakt voor de tabel in de database.
     @Column
-
     private String Name;
     @Column
     private boolean Status;
     @Column
     private String URL;
-
-	
 
     public String getName() {
         return Name;
@@ -60,12 +50,11 @@ public class WorkerEntity extends BaseTrackableEntity implements Serializable {
 
     }
     private String workerName;
-    
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<workerJobEntity> workerworkerJob;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<JobStatusDescriptionEntity> workerJobStatusDescriptionEntity;
-
 
     public String getWorkerName() {
         return workerName;
@@ -75,7 +64,6 @@ public class WorkerEntity extends BaseTrackableEntity implements Serializable {
         this.workerName = workerName;
     }
 
-    
     public Collection<workerJobEntity> getWorkerworkerJob() {
         return workerworkerJob;
     }
