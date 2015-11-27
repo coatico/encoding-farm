@@ -35,7 +35,7 @@ public class JobGatewayImpl implements JobGateway {
         System.out.println("EUREKA!");
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://localhost:8080/web/worker/jobs");
-        Response r = target.request(MediaType.APPLICATION_JSON).post(Entity.json(new JobDto(str)));
+        Response r = target.request(MediaType.APPLICATION_JSON).post(Entity.json(new JobDto()));
         System.out.println(r.getStatus());        
     }
 }

@@ -7,11 +7,7 @@ package dto;
  */
 public class JobDto {
     
-    private String status;
-    
-    public JobDto(String status) {
-        this.status = status;
-    }
+    private String status = "ditiseentest";
 
     public String getStatus() {
         return status;

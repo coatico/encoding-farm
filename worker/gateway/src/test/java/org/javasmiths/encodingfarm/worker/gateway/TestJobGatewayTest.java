@@ -23,8 +23,8 @@ public class TestJobGatewayTest {
      */
     @Test
     public void testTest() {
-        TestJobGateway t = new TestJobGateway();
-        t.test();
+        /*TestJobGateway t = new TestJobGateway();
+        t.test();*/
     }
     
 }

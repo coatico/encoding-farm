@@ -24,8 +24,8 @@ public class JobServiceImpl implements JobService {
     @EJB
     private JobDao dao;
 
-    /*@EJB
-    private JobGateway jgw;*/
+    @EJB
+    private JobGateway jgw;
     
     @Override
     public JobEntity registerJob(String title, Date creationdate, String workerID, String videoID) {
@@ -63,7 +63,7 @@ public class JobServiceImpl implements JobService {
     
     @Override
     public void gw() {
-        //jgw.testConvert("ditiseentest");
+        jgw.testConvert("ditiseentest");
         System.out.println("test");
     }
 
