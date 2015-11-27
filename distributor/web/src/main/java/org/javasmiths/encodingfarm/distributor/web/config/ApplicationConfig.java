@@ -20,8 +20,9 @@ public class ApplicationConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(org.javasmiths.encodingfarm.distributor.domain.entity.InitDbStartup.class);
         resources.add(org.javasmiths.encodingfarm.distributor.web.controller.MockClientController.class);
-        resources.add(org.javasmiths.encodingfarm.distributor.web.controller.VideoController.class);
+		resources.add(org.javasmiths.encodingfarm.distributor.web.controller.VideoController.class);
     }
 
 }
