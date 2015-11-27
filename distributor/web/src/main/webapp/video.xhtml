@@ -26,17 +26,17 @@
                             <f:selectItem itemLabel="Videos/2.mp4" itemValue="Videos/2.mp4"/>
                             <f:selectItem itemLabel="Videos/testVid.mp4" itemValue="Videos/testVid.mp4"/>
                         </p:selectOneMenu>
-                        <p:selectOneMenu value="#{video.thumbnail}" styleClass="setHeight" class="addVideo2">
+                        <p:selectOneMenu value="#{video.thumbnail}" styleClass="setHeight" class="addVideo">
                             <f:selectItem itemLabel="Choose a thumbnailpath"/>
                             <f:selectItem itemLabel="Thumbnails/1.jpg" itemValue="Thumbnails/1.jpg"/>
                             <f:selectItem itemLabel="Thumbnails/2.jpg" itemValue="Thumbnails/2.jpg"/>
                         </p:selectOneMenu>                        
-                        <p:inputTextarea value="#{video.description}" label="Write a description" id="video_crt_desc" styleClass="setHeight" class="addVideo2"/>
+                        <p:inputTextarea value="#{video.description}" label="Write a description" id="video_crt_desc" styleClass="setHeight" class="addVideo"/>
 
                         <p:watermark for="video_crt_name" value="Enter videoname here" id="watermark" />                        
                         <p:watermark for="video_crt_desc" value="Write a description" id="watermark4" />
 
-                        <p:commandButton value="Create" update="@form" actionListener="#{video.create}" class="addVideo2"/>
+                        <p:commandButton value="Create" update="@form" actionListener="#{video.create}" class="addVideo"/>
 
                         <hr/>
                         <p:dataTable id="tabel" var="vid" value="#{video.list}">
